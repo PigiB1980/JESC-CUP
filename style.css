@@ -1,0 +1,17 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #3a1c71, #d76d77, #ffaf7b);
+    color: white;
+    text-align: center;
+    padding: 2em;
+}
+table {
+    width: 90%;
+    margin: 2em auto;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.1);
+}
+th, td {
+    border: 1px solid #fff;
+    padding: 0.5em;
+}
