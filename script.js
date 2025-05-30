@@ -6,11 +6,14 @@ fetch('data-2003.json')
 
     // Funzione per trasformare codice ISO in emoji bandiera
     function codeToEmoji(code) {
-      if (!code) return '';
-      return code
-        .toUpperCase()
-        .replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
-    }
+  if (!code) return '';
+  // Assicura che il codice sia maiuscolo
+  const upperCode = code.toUpperCase();
+  // Trasforma ogni lettera in Regional Indicator Symbol Letter
+  return [...upperCode]
+    .map(c => String.fromCodePoint(c.charCodeAt(0) + 127397))
+    .join('');
+}
 
     data.forEach(item => {
       const tr = document.createElement('tr');
