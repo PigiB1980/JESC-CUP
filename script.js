@@ -9,11 +9,9 @@ fetch('data-2003.json')
       // Cell con bandiera + nome paese
       const tdPaese = document.createElement('td');
       const imgFlag = document.createElement('img');
-      imgFlag.src = `flags/${item.code}.png`;  // usa il codice per caricare immagine
+      imgFlag.src = `flags/${item.code}.png`;
       imgFlag.alt = `${item.paese} flag`;
-      imgFlag.style.width = '24px';
-      imgFlag.style.marginRight = '8px';
-      imgFlag.style.verticalAlign = 'middle';
+      imgFlag.classList.add('flag-icon');
       tdPaese.appendChild(imgFlag);
 
       const spanText = document.createElement('span');
