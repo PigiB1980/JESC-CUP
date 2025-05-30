@@ -1,22 +1,48 @@
-const results = document.getElementById('results');
-
 fetch('data-2003.json')
   .then(response => response.json())
-  .then(dati => {
-    dati.forEach((entry, index) => {
-      const totale = (entry.voto * 10) * entry.voce * entry.coreografia;
+  .then(data => {
+    const tbody = document.getElementById('results');
+
+    data.forEach(item => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${index + 1}°</td>
-        <td><img src="flags/${entry.code}.png" alt="${entry.paese} flag" class="flag-icon">${entry.paese}</td>
-        <td>${entry.voto}</td>
-        <td>${entry.voce.toFixed(2)}</td>
-        <td>${entry.coreografia.toFixed(2)}</td>
-        <td>${totale.toFixed(1)}</td>
-      `;
-      results.appendChild(tr);
+
+      // Cell con bandiera + nome paese
+      const tdPaese = document.createElement('td');
+      const imgFlag = document.createElement('img');
+      imgFlag.src = `flags/${item.code}.png`;  // usa il codice per caricare immagine
+      imgFlag.alt = `${item.paese} flag`;
+      imgFlag.style.width = '24px';
+      imgFlag.style.marginRight = '8px';
+      imgFlag.style.verticalAlign = 'middle';
+      tdPaese.appendChild(imgFlag);
+
+      const spanText = document.createElement('span');
+      spanText.textContent = item.paese;
+      tdPaese.appendChild(spanText);
+      tr.appendChild(tdPaese);
+
+      // Altre celle con dati
+      const tdVoto = document.createElement('td');
+      tdVoto.textContent = item.voto.toFixed(1);
+      tr.appendChild(tdVoto);
+
+      const tdVoce = document.createElement('td');
+      tdVoce.textContent = item.voce.toFixed(1);
+      tr.appendChild(tdVoce);
+
+      const tdCoreo = document.createElement('td');
+      tdCoreo.textContent = item.coreografia.toFixed(1);
+      tr.appendChild(tdCoreo);
+
+      // Calcolo punteggio totale
+      const punteggioTotale = (item.voto * 10) * item.voce * item.coreografia;
+      const tdTotale = document.createElement('td');
+      tdTotale.textContent = punteggioTotale.toFixed(2);
+      tr.appendChild(tdTotale);
+
+      tbody.appendChild(tr);
     });
   })
   .catch(error => {
-    console.error('Errore nel caricamento dei dati:', error);
+    console.error('Errore caricamento dati:', error);
   });
