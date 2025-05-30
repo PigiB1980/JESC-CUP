@@ -37,7 +37,7 @@ th, td {
 
 /* Solo la prima colonna allineata a sinistra */
 td:first-child {
-    text-align: left; !important;
+    text-align: left !important;
     vertical-align: middle;
 }
 
