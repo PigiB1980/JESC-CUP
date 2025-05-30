@@ -93,3 +93,12 @@ footer {
   width: 100%;  /* sempre al 100% del contenitore */
   height: 100%;
 }
+
+#top-videos h2 {
+  font-family: 'Arial Black', Arial, sans-serif; /* cambia con il font che preferisci */
+  font-size: 3em;  /* dimensione più grande */
+  font-weight: bold; /* grassetto */
+  text-align: center; /* centrato */
+  color: #ffd700; /* colore oro, ad esempio */
+  text-shadow: 1px 1px 2px #000; /* ombra testo per risalto */
+}
