@@ -34,6 +34,11 @@ th, td {
     padding: 12px;
     text-align: center;
 }
+/* Allinea la seconda colonna (Paese) a sinistra */
+tbody td:nth-child(2) {
+    text-align: left !important;
+    vertical-align: middle;
+}
 
 /* Allinea la prima colonna a sinistra */
 td:first-child {
