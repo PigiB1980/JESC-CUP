@@ -38,7 +38,7 @@ th, td {
 /* Allinea la prima colonna a sinistra */
 td:first-child {
     text-align: left;
-    vertical-align: middle;
+    vertical-align: left;
 }
 
 /* Bandierine dimensioni */
