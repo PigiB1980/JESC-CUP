@@ -1,104 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>JESC CUP 2003</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
-            color: #fff;
-            margin: 0;
-            padding: 20px;
-        }
-
-        header, footer {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin: 0.2em 0;
-        }
-
-        main {
-            max-width: 900px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 16px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1em;
-        }
-
-        th, td {
-            padding: 12px;
-            text-align: center;
-        }
-
-        th {
-            background-color: rgba(255, 255, 255, 0.2);
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        tr:first-child td::before {
-            content: "🥇 ";
-        }
-        tr:nth-child(2) td::before {
-            content: "🥈 ";
-        }
-        tr:nth-child(3) td::before {
-            content: "🥉 ";
-        }
-
-        footer {
-            margin-top: 40px;
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>🎤 JESC CUP – Edizione 2003</h1>
-        <p>Prima edizione storica della nostra competizione virtuale! Ecco i risultati.</p>
-    </header>
-
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Paese</th>
-                    <th title="Voto alla canzone, da 1 a 10">🎵 Canzone</th>
-                    <th title="Coefficiente voce, da 1.0 a 2.0">🎙️ Voce</th>
-                    <th title="Coefficiente coreografia, da 1.0 a 2.0">💃 Coreografia</th>
-                    <th title="(Canzone × 10) × Voce × Coreografia">⭐ Totale</th>
-                </tr>
-            </thead>
-            <tbody id="results"></tbody>
+    <h1>🎤 JESC CUP – Edizione 2003</h1>
+    <table>
+        <thead>
             <tr>
-  <td>🇧🇪 Belgio</td>
-  <td>7.5</td>
-  <td>1.6</td>
-  <td>2.0</td>
-  <td>240.00</td>
-</tr>
-        </table>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 JESC CUP – Progetto non ufficiale a scopo creativo</p>
-    </footer>
+                <th>Paese</th>
+                <th>Voto Canzone</th>
+                <th>Voce</th>
+                <th>Coreografia</th>
+                <th>Punteggio Totale</th>
+            </tr>
+        </thead>
+        <tbody id="results"></tbody>
+    </table>
 
     <script src="script.js"></script>
 </body>
