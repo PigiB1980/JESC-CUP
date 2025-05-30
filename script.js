@@ -21,7 +21,7 @@ fetch('data-2003.json')
       // Colonna Paese con emoji bandiera
       const tdPaese = document.createElement('td');
       const flagEmoji = codeToEmoji(item.code || '');
-      tdPaese.textContent = flagEmoji + ' ' + item.paese;
+tdPaese.textContent = flagEmoji + ' ' + item.paese;
       tr.appendChild(tdPaese);
 
       // Voto canzone
