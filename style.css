@@ -43,6 +43,11 @@ td:first-child {
 
 /* Margine tra bandiera e nome paese */
 .flag-icon {
+    width: 24px;
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+    
     margin-right: 8px;
     vertical-align: middle;
 }
