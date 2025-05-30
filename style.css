@@ -35,19 +35,16 @@ th, td {
     text-align: center;
 }
 
-/* Solo la prima colonna allineata a sinistra */
+/* Allinea la prima colonna a sinistra */
 td:first-child {
-    text-align: left !important;
+    text-align: left;
     vertical-align: middle;
 }
 
-/* Margine tra bandiera e nome paese */
+/* Bandierine dimensioni */
 .flag-icon {
     width: 24px;
-  height: auto;
-  margin-right: 8px;
-  vertical-align: middle;
-    
+    height: auto;
     margin-right: 8px;
     vertical-align: middle;
 }
