@@ -58,16 +58,6 @@ tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-tr:first-child td::before {
-    content: "🥇 ";
-}
-tr:nth-child(2) td::before {
-    content: "🥈 ";
-}
-tr:nth-child(3) td::before {
-    content: "🥉 ";
-}
-
 footer {
     margin-top: 40px;
     font-size: 0.9em;
