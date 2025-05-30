@@ -1,48 +1,48 @@
-fetch('data/data.2003.json')
+fetch('data-2003.json')
   .then(response => response.json())
   .then(data => {
     const tbody = document.getElementById('results');
-    tbody.innerHTML = ''; // pulisco il contenuto precedente
-    
+    tbody.innerHTML = '';
+
+    // Funzione per trasformare codice ISO in emoji bandiera
+    function codeToEmoji(code) {
+      if (!code) return '';
+      return code
+        .toUpperCase()
+        .replace(/./g, char => String.fromCodePoint(char.charCodeAt(0) + 127397));
+    }
+
     data.forEach(item => {
       const tr = document.createElement('tr');
-      
-      // Colonna Paese con bandiera
+
+      // Colonna Paese con emoji bandiera
       const tdPaese = document.createElement('td');
-      const img = document.createElement('img');
-      img.src = `flags/${item.code}.png`; // cartella flags con immagini bandiere
-      img.alt = `${item.paese} bandiera`;
-      img.style.width = '24px';
-      img.style.marginRight = '8px';
-      img.style.verticalAlign = 'middle';
-      tdPaese.appendChild(img);
-      tdPaese.appendChild(document.createTextNode(item.paese));
+      const flagEmoji = codeToEmoji(item.code || '');
+      tdPaese.textContent = flagEmoji + ' ' + item.paese;
       tr.appendChild(tdPaese);
-      
-      // Voto Canzone
+
+      // Voto canzone
       const tdVoto = document.createElement('td');
       tdVoto.textContent = item.voto.toFixed(1);
       tr.appendChild(tdVoto);
-      
+
       // Voce
       const tdVoce = document.createElement('td');
       tdVoce.textContent = item.voce.toFixed(1);
       tr.appendChild(tdVoce);
-      
+
       // Coreografia
       const tdCoreo = document.createElement('td');
       tdCoreo.textContent = item.coreografia.toFixed(1);
       tr.appendChild(tdCoreo);
-      
-      // Punteggio Totale = (voto*10)*voce*coreografia
-      const tdTotale = document.createElement('td');
-      const totale = (item.voto * 10) * item.voce * item.coreografia;
-      tdTotale.textContent = totale.toFixed(1);
-      tr.appendChild(tdTotale);
-      
+
+      // Punteggio totale calcolato
+      const tdPunteggio = document.createElement('td');
+      const punteggio = item.voto * 10 * item.voce * item.coreografia;
+      tdPunteggio.textContent = punteggio.toFixed(1);
+      tr.appendChild(tdPunteggio);
+
       tbody.appendChild(tr);
     });
   })
-  .catch(error => {
-    console.error('Errore nel caricamento dei dati:', error);
-  });
+  .catch(error => console.error('Errore nel caricamento dati:', error));
