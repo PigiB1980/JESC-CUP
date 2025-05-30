@@ -78,7 +78,7 @@ footer {
     opacity: 0.8;
 }
 .video-container {
-  max-width: 400px;  /* larghezza massima più piccola */
+  max-width: 600px;  /* larghezza massima più piccola */
   margin: 0 auto 2em auto; /* centra il contenitore e margine sotto */
   position: relative;
   padding-bottom: 56.25%; /* mantiene il rapporto 16:9 */
