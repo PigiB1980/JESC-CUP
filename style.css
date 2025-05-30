@@ -78,18 +78,19 @@ footer {
     opacity: 0.8;
 }
 .video-container {
+  max-width: 400px;  /* larghezza massima più piccola */
+  margin: 0 auto 2em auto; /* centra il contenitore e margine sotto */
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* mantiene il rapporto 16:9 */
   height: 0;
   overflow: hidden;
-  margin-bottom: 2em;
 }
 
 .video-container iframe {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%;  /* sempre al 100% del contenitore */
   height: 100%;
 }
 
