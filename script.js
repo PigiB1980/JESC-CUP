@@ -1,49 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const tbody = document.getElementById('results');
-  tbody.innerHTML = '';
+fetch('data-2003.json')
+  .then(response => response.json())
+  .then(data => {
+    const tbody = document.getElementById('results');
 
-  // Funzione per convertire codice paese in emoji bandiera
-  function codeToEmoji(countryCode) {
-  const OFFSET = 0x1F1E6 - 'A'.charCodeAt(0);
-  const chars = countryCode.toUpperCase().split('');
-  return String.fromCodePoint(
-    chars[0].charCodeAt(0) + OFFSET,
-    chars[1].charCodeAt(0) + OFFSET
-  );
-}
-    code = code.toUpperCase();
-    return (mapping[code[0]] || '') + (mapping[code[1]] || '');
-  }
+    data.forEach(item => {
+      const tr = document.createElement('tr');
 
-  // Dati di prova, un solo paese per vedere la bandiera
-  const testData = [
-    { paese: 'Belgio', code: 'be', voto: 7.5, voce: 1.6, coreografia: 2.0 }
-  ];
+      // Cell con bandiera + nome paese
+      const tdPaese = document.createElement('td');
+      const imgFlag = document.createElement('img');
+      imgFlag.src = `flags/${item.code}.png`;  // usa il codice per caricare immagine
+      imgFlag.alt = `${item.paese} flag`;
+      imgFlag.style.width = '24px';
+      imgFlag.style.marginRight = '8px';
+      imgFlag.style.verticalAlign = 'middle';
+      tdPaese.appendChild(imgFlag);
 
-  testData.forEach(item => {
-    const tr = document.createElement('tr');
+      const spanText = document.createElement('span');
+      spanText.textContent = item.paese;
+      tdPaese.appendChild(spanText);
+      tr.appendChild(tdPaese);
 
-    const tdPaese = document.createElement('td');
-    tdPaese.textContent = codeToEmoji(item.code) + ' ' + item.paese;
-    tr.appendChild(tdPaese);
+      // Altre celle con dati
+      const tdVoto = document.createElement('td');
+      tdVoto.textContent = item.voto.toFixed(1);
+      tr.appendChild(tdVoto);
 
-    const tdVoto = document.createElement('td');
-    tdVoto.textContent = item.voto;
-    tr.appendChild(tdVoto);
+      const tdVoce = document.createElement('td');
+      tdVoce.textContent = item.voce.toFixed(1);
+      tr.appendChild(tdVoce);
 
-    const tdVoce = document.createElement('td');
-    tdVoce.textContent = item.voce;
-    tr.appendChild(tdVoce);
+      const tdCoreo = document.createElement('td');
+      tdCoreo.textContent = item.coreografia.toFixed(1);
+      tr.appendChild(tdCoreo);
 
-    const tdCoreo = document.createElement('td');
-    tdCoreo.textContent = item.coreografia;
-    tr.appendChild(tdCoreo);
+      // Calcolo punteggio totale
+      const punteggioTotale = (item.voto * 10) * item.voce * item.coreografia;
+      const tdTotale = document.createElement('td');
+      tdTotale.textContent = punteggioTotale.toFixed(2);
+      tr.appendChild(tdTotale);
 
-    const tdTotale = document.createElement('td');
-    const totale = item.voto * 10 * item.voce * item.coreografia;
-    tdTotale.textContent = totale.toFixed(2);
-    tr.appendChild(tdTotale);
-
-    tbody.appendChild(tr);
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(error => {
+    console.error('Errore caricamento dati:', error);
   });
-});
