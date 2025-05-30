@@ -58,13 +58,13 @@ tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.05);
 }
 /* Medaglie solo nella prima cella (colonna Posizione) */
-tr:first-child td:first-child::before {
+tr:first-child td:first-child::after {
     content: "🥇 ";
 }
-tr:nth-child(2) td:first-child::before {
+tr:nth-child(2) td:first-child::after {
     content: "🥈 ";
 }
-tr:nth-child(3) td:first-child::before {
+tr:nth-child(3) td:first-child::after {
     content: "🥉 ";
 }
 footer {
