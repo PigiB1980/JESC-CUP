@@ -59,13 +59,13 @@ tr:nth-child(even) {
 }
 /* Medaglie solo nella prima cella (colonna Posizione) */
 tr:first-child td:first-child::after {
-    content: "🥇 ";
+    content: "   🥇";
 }
 tr:nth-child(2) td:first-child::after {
-    content: "🥈 ";
+    content: "   🥈";
 }
 tr:nth-child(3) td:first-child::after {
-    content: "🥉 ";
+    content: "   🥉";
 }
 footer {
     margin-top: 40px;
