@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JESC CUP 2004</title>
+  <link rel="stylesheet" href="stile.css" />
+</head>
+<body>
+  <header>
+    <h1>JESC CUP 2004</h1>
+  </header>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Voto Canzone</th>
+          <th>Voce</th>
+          <th>Coreografia</th>
+          <th>Totale</th>
+        </tr>
+      </thead>
+      <tbody id="results"></tbody>
+    </table>
+  </main>
+
+  <section id="top-videos">
+    <h2>🎬 Top 3</h2>
+    <div class="video-container">
+      <!-- Video 1° posto -->
+      <iframe src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <!-- Video 2° posto -->
+      <iframe src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <!-- Video 3° posto -->
+      <iframe src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 JESC CUP – Edizione 2004
+  </footer>
+
+  <script>
+    const results = document.getElementById('results');
+
+    fetch('data-2004.json')
+      .then(response => response.json())
+      .then(data => {
+        data.sort((a, b) => {
+          const totalA = (a.voto * 10) * a.voce * a.coreografia;
+          const totalB = (b.voto * 10) * b.voce * b.coreografia;
+          return totalB - totalA;
+        });
+
+        data.forEach((item, index) => {
+          const tr = document.createElement('tr');
+
+          const tdPos = document.createElement('td');
+          tdPos.textContent = `${index + 1}°`;
+          tr.appendChild(tdPos);
+
+          const tdPaese = document.createElement('td');
+          const imgFlag = document.createElement('img');
+          imgFlag.src = `flags/${item.code}.png`;
+          imgFlag.alt = `${item.paese} flag`;
+          imgFlag.classList.add('flag-icon');
+          tdPaese.appendChild(imgFlag);
+
+          const spanText = document.createElement('span');
+          spanText.textContent = item.paese;
+          tdPaese.appendChild(spanText);
+          tr.appendChild(tdPaese);
+
+          const tdVoto = document.createElement('td');
+          tdVoto.textContent = item.voto.toFixed(1);
+          tr.appendChild(tdVoto);
+
+          const tdVoce = document.createElement('td');
+          tdVoce.textContent = item.voce.toFixed(1);
+          tr.appendChild(tdVoce);
+
+          const tdCoreo = document.createElement('td');
+          tdCoreo.textContent = item.coreografia.toFixed(1);
+          tr.appendChild(tdCoreo);
+
+          const totale = (item.voto * 10) * item.voce * item.coreografia;
+          const tdTotale = document.createElement('td');
+          tdTotale.textContent = totale.toFixed(2);
+          tr.appendChild(tdTotale);
+
+          results.appendChild(tr);
+        });
+      })
+      .catch(error => {
+        console.error('Errore caricamento dati:', error);
+      });
+  </script>
+</body>
+</html>
