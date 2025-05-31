@@ -1,56 +1,78 @@
-const results = document.getElementById('results');
+document.addEventListener('DOMContentLoaded', () => {
+  const anno = document.body.getAttribute('data-anno');
+  if (!anno) {
+    console.error('Nessun anno trovato nell\'attributo data-anno del body');
+    return;
+  }
 
-// Leggi l'anno dall'attributo data-anno del body
-const anno = document.body.getAttribute('data-anno');
+  const jsonFile = `data-${anno}.json`;
+  const tbody = document.getElementById('results');
+  if (!tbody) {
+    console.error('Elemento tbody con id "results" non trovato');
+    return;
+  }
 
-fetch(`data-${anno}.json`)
-  .then(response => response.json())
-  .then(data => {
-    data.forEach((item, index) => {
-      const tr = document.createElement('tr');
+  fetch(jsonFile)
+    .then(response => {
+      if (!response.ok) throw new Error(`Impossibile caricare il file ${jsonFile}`);
+      return response.json();
+    })
+    .then(data => {
+      // Calcola il totale e aggiungi come proprietà
+      data.forEach(item => {
+        item.totale = (item.voto * 10) * item.voce * item.coreografia;
+      });
 
-      // Colonna posizione
-      const tdPos = document.createElement('td');
-      tdPos.textContent = `${index + 1}°`;
-      tr.appendChild(tdPos);
+      // Ordina decrescente per totale
+      data.sort((a, b) => b.totale - a.totale);
 
-      // Colonna paese con bandierina
-      const tdPaese = document.createElement('td');
-      const imgFlag = document.createElement('img');
-      imgFlag.src = `flags/${item.code}.png`;
-      imgFlag.alt = `${item.paese} flag`;
-      imgFlag.classList.add('flag-icon');
-      tdPaese.appendChild(imgFlag);
+      tbody.innerHTML = ''; // Pulisci la tabella
 
-      const spanText = document.createElement('span');
-      spanText.textContent = item.paese;
-      tdPaese.appendChild(spanText);
-      tr.appendChild(tdPaese);
+      data.forEach((item, index) => {
+        const tr = document.createElement('tr');
 
-      // Voto canzone
-      const tdVoto = document.createElement('td');
-      tdVoto.textContent = item.voto.toFixed(1);
-      tr.appendChild(tdVoto);
+        // Colonna posizione
+        const tdPos = document.createElement('td');
+        tdPos.textContent = `${index + 1}°`;
+        tr.appendChild(tdPos);
 
-      // Coeff. voce
-      const tdVoce = document.createElement('td');
-      tdVoce.textContent = item.voce.toFixed(1);
-      tr.appendChild(tdVoce);
+        // Colonna paese con bandierina
+        const tdPaese = document.createElement('td');
+        const imgFlag = document.createElement('img');
+        imgFlag.src = `flags/${item.code}.png`;
+        imgFlag.alt = `${item.paese} flag`;
+        imgFlag.classList.add('flag-icon');
+        tdPaese.appendChild(imgFlag);
 
-      // Coeff. coreografia
-      const tdCoreo = document.createElement('td');
-      tdCoreo.textContent = item.coreografia.toFixed(1);
-      tr.appendChild(tdCoreo);
+        const spanText = document.createElement('span');
+        spanText.textContent = ` ${item.paese}`;
+        tdPaese.appendChild(spanText);
+        tr.appendChild(tdPaese);
 
-      // Totale calcolato
-      const totale = (item.voto * 10) * item.voce * item.coreografia;
-      const tdTotale = document.createElement('td');
-      tdTotale.textContent = totale.toFixed(2);
-      tr.appendChild(tdTotale);
+        // Voto canzone (1 decimale)
+        const tdVoto = document.createElement('td');
+        tdVoto.textContent = item.voto.toFixed(1);
+        tr.appendChild(tdVoto);
 
-      results.appendChild(tr);
+        // Coeff. voce (2 decimali)
+        const tdVoce = document.createElement('td');
+        tdVoce.textContent = item.voce.toFixed(2);
+        tr.appendChild(tdVoce);
+
+        // Coeff. coreografia (2 decimali)
+        const tdCoreo = document.createElement('td');
+        tdCoreo.textContent = item.coreografia.toFixed(2);
+        tr.appendChild(tdCoreo);
+
+        // Totale (2 decimali)
+        const tdTotale = document.createElement('td');
+        tdTotale.textContent = item.totale.toFixed(2);
+        tr.appendChild(tdTotale);
+
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(error => {
+      console.error('Errore nel caricamento o elaborazione dati:', error);
     });
-  })
-  .catch(error => {
-    console.error('Errore caricamento dati:', error);
-  });
+});
