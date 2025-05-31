@@ -56,27 +56,20 @@
             font-size: 0.9em;
             opacity: 0.8;
         }
-
-        /* Optional: flag icons */
         .flag-icon {
             width: 24px;
             height: 16px;
             vertical-align: middle;
-            margin-right: 6px;
-            border: 1px solid #ccc;
+            margin-right: 8px;
+            border: 1px solid #ddd;
             border-radius: 2px;
-        }
-
-        .video-container {
-            margin-bottom: 2em;
-            text-align: center;
         }
     </style>
 </head>
-<body>
+<body data-anno="2004">
     <header>
         <h1>🎤 JESC CUP – Lillehammer 2004</h1>
-        <p>Seconda edizione del Junior Eurovision Song Contest! Ecco i risultati.</p>
+        <p>Seconda edizione del Junior Eurovision Song Contest. Ecco i risultati.</p>
     </header>
 
     <main>
@@ -96,7 +89,21 @@
 
         <section id="top-videos">
             <h2 style="font-size: 3em; text-align: center;">🎥 I VIDEO !! - JESC 2004</h2>
-            <!-- Inserisci qui i video top 3 con iframe YouTube -->
+            
+            <h3>🥇 1° - <img class="flag-icon" src="flags/lt.png" alt="Bandiera Lituania"> LITUANIA - Vilija - "Amarino"</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/_0LfRQ5hzZ8" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            </div>
+            
+            <h3>🥈 2° - <img class="flag-icon" src="flags/no.png" alt="Bandiera Norvegia"> NORVEGIA - Christina - "Balalaika"</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/pmkGRnS6tHg" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <h3>🥉 3° - <img class="flag-icon" src="flags/ru.png" alt="Bandiera Russia"> RUSSIA - Vladislav Krutskikh - "Doroga k solntsu"</h3>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/fVXUIR89LCc" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+            </div>
         </section>
     </main>
 
@@ -104,30 +111,6 @@
         <p>&copy; 2025 JESC CUP – Progetto non ufficiale a scopo creativo</p>
     </footer>
 
-    <script>
-        // Carica i dati da data-2004.json e popola la tabella
-        fetch('data-2004.json')
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.getElementById('results');
-                tbody.innerHTML = '';
-                data.forEach((item, index) => {
-                    const totale = (item.voto * 10) * item.voce * item.coreografia;
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${index + 1}</td>
-                        <td>${item.paese}</td>
-                        <td>${item.voto.toFixed(1)}</td>
-                        <td>${item.voce.toFixed(2)}</td>
-                        <td>${item.coreografia.toFixed(2)}</td>
-                        <td>${totale.toFixed(2)}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            })
-            .catch(error => {
-                console.error('Errore caricamento dati:', error);
-            });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
