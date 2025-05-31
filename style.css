@@ -107,3 +107,40 @@ footer {
   color: yellow;
   font-weight: bold;
 }
+#nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 30, 80, 0.7);
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9em;
+  user-select: none;
+  box-shadow: none; /* togliamo ombra */
+  border-bottom: 1px solid #444; /* linea sottile sotto */
+}
+
+#nav-buttons button {
+  background-color: transparent;
+  border: 1.5px solid #f0d000;
+  color: #f0d000;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 600;
+}
+
+#nav-buttons button:hover:not(:disabled) {
+  background-color: #f0d000;
+  color: #1e1e50;
+}
+
+#nav-buttons button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
