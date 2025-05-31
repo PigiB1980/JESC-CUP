@@ -19,9 +19,10 @@ h1 {
 main {
     max-width: 900px;
     margin: auto;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.75); /* più opaco rispetto al 0.5 */
     padding: 20px;
     border-radius: 16px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* ombra intorno per risaltare */
 }
 
 table {
@@ -44,6 +45,8 @@ tbody td:nth-child(2) {
 td:first-child {
     text-align: left !important;
     vertical-align: middle;
+    color: #000; /* testo scuro nelle celle per contrasto */
+    text-shadow: none;
 }
 
 /* Bandierine dimensioni */
@@ -55,12 +58,14 @@ td:first-child {
 }
 
 th {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.35); /* leggermente più opaco */
     font-weight: bold;
+    color: #000; /* testo scuro per maggior contrasto */
+    text-shadow: none; /* rimuovo ombra testo */
 }
 
 tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(220, 220, 220, 0.4); /* righe alternate con grigio chiaro trasparente */
 }
 /* Medaglie solo nella prima cella (colonna Posizione) */
 tr:first-child td:first-child::after {
