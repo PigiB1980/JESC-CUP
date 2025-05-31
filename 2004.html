@@ -3,83 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JESC CUP - Risultati</title>
+  <title>JESC CUP - 2004</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #222; color: #eee; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { padding: 10px; text-align: center; border-bottom: 1px solid #444; }
-    tbody td:nth-child(2) { text-align: left; }
-    .flag-icon { width: 24px; margin-right: 8px; vertical-align: middle; }
-    .video-container { max-width: 600px; margin: 20px auto; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header, footer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0.2em 0;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+    tbody td:nth-child(2) {
+      text-align: left !important;
+      vertical-align: middle;
+    }
+    td:first-child {
+      text-align: left !important;
+      vertical-align: middle;
+    }
+    .flag-icon {
+      width: 24px;
+      height: auto;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    th {
+      background-color: rgba(255, 255, 255, 0.2);
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    tr:first-child td:first-child::after {
+      content: " 🥇";
+    }
+    tr:nth-child(2) td:first-child::after {
+      content: " 🥈";
+    }
+    tr:nth-child(3) td:first-child::after {
+      content: " 🥉";
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+    .video-container {
+      max-width: 600px;
+      margin: 0 auto 2em auto;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #top-videos h2 {
+      font-family: 'Fredoka', Arial, sans-serif;
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      color: #ffd700;
+      text-shadow: 1px 1px 2px #000;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>JESC CUP - 2004</h1>
+  </header>
 
-  <h1>JESC CUP - Risultati <span id="year-title"></span></h1>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Voto</th>
+          <th>Voce</th>
+          <th>Coreografia</th>
+          <th>Totale</th>
+        </tr>
+      </thead>
+      <tbody id="results">
+        <!-- Le righe dei risultati saranno inserite qui da JavaScript -->
+      </tbody>
+    </table>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Posizione</th>
-        <th>Paese</th>
-        <th>Voto</th>
-        <th>Voce</th>
-        <th>Coreografia</th>
-        <th>Totale</th>
-      </tr>
-    </thead>
-    <tbody id="results"></tbody>
-  </table>
+    <section id="top-videos">
+      <h2>Video Top 3</h2>
+      <div class="video-container" id="video1"></div>
+      <div class="video-container" id="video2"></div>
+      <div class="video-container" id="video3"></div>
+    </section>
+  </main>
 
-  <div id="top-videos">
-    <div id="video1" class="video-container"></div>
-    <div id="video2" class="video-container"></div>
-    <div id="video3" class="video-container"></div>
-  </div>
+  <footer>
+    <p>© 2025 JESC CUP - Tutti i diritti riservati</p>
+  </footer>
 
   <script>
-    // Prende l'anno dal nome file es. 2004.html
-    const year = window.location.pathname.match(/(\d{4})\.html$/)?.[1] || '2003';
-    document.getElementById('year-title').textContent = year;
-
-    fetch(`data-${year}.json`)
-      .then(res => res.json())
+    fetch('data-2004.json')
+      .then(response => response.json())
       .then(data => {
         const results = document.getElementById('results');
         const videoContainers = ['video1', 'video2', 'video3'];
-        results.innerHTML = '';
+        const sorted = [...data].sort((a, b) => {
+          const scoreA = (a.voto * 10) * a.voce * a.coreografia;
+          const scoreB = (b.voto * 10) * b.voce * b.coreografia;
+          return scoreB - scoreA;
+        });
 
-        // Ordina per totale
-        const sorted = [...data].sort((a,b) => ((b.voto*10)*b.voce*b.coreografia) - ((a.voto*10)*a.voce*a.coreografia));
-
-        sorted.forEach((item, i) => {
+        sorted.forEach((item, index) => {
           const tr = document.createElement('tr');
 
-          tr.innerHTML = `
-            <td>${i+1}°</td>
-            <td><img src="flags/${item.code}.png" alt="${item.paese} flag" class="flag-icon">${item.paese}</td>
-            <td>${item.voto.toFixed(1)}</td>
-            <td>${item.voce.toFixed(1)}</td>
-            <td>${item.coreografia.toFixed(1)}</td>
-            <td>${((item.voto*10)*item.voce*item.coreografia).toFixed(2)}</td>
-          `;
+          const tdPos = document.createElement('td');
+          tdPos.textContent = `${index + 1}°`;
+          tr.appendChild(tdPos);
+
+          const tdPaese = document.createElement('td');
+          const imgFlag = document.createElement('img');
+          imgFlag.src = `flags/${item.code}.png`;
+          imgFlag.alt = `${item.paese} flag`;
+          imgFlag.classList.add('flag-icon');
+          tdPaese.appendChild(imgFlag);
+          const spanText = document.createElement('span');
+          spanText.textContent = item.paese;
+          tdPaese.appendChild(spanText);
+          tr.appendChild(tdPaese);
+
+          const tdVoto = document.createElement('td');
+          tdVoto.textContent = item.voto.toFixed(1);
+          tr.appendChild(tdVoto);
+
+          const tdVoce = document.createElement('td');
+          tdVoce.textContent = item.voce.toFixed(1);
+          tr.appendChild(tdVoce);
+
+          const tdCoreo = document.createElement('td');
+          tdCoreo.textContent = item.coreografia.toFixed(1);
+          tr.appendChild(tdCoreo);
+
+          const totale = (item.voto * 10) * item.voce * item.coreografia;
+          const tdTotale = document.createElement('td');
+          tdTotale.textContent = totale.toFixed(2);
+          tr.appendChild(tdTotale);
 
           results.appendChild(tr);
 
-          // Video top 3
-          if (i < 3 && item.video) {
+          if (index < 3 && item.video) {
             const iframe = document.createElement('iframe');
-            iframe.src = item.video.replace('watch?v=', 'embed/');
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.src = item.video.replace("watch?v=", "embed/");
+            iframe.frameBorder = "0";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
             iframe.allowFullscreen = true;
-            document.getElementById(videoContainers[i]).appendChild(iframe);
+            document.getElementById(videoContainers[index]).appendChild(iframe);
           }
         });
       })
-      .catch(err => console.error('Errore caricamento dati:', err));
+      .catch(error => {
+        console.error('Errore caricamento dati:', error);
+      });
   </script>
-
 </body>
 </html>
