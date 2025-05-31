@@ -19,10 +19,10 @@ h1 {
 main {
     max-width: 900px;
     margin: auto;
-    background: rgba(255, 255, 255, 0.75); /* più opaco rispetto al 0.5 */
+    background: rgba(255, 255, 255, 0.75); /* più opaco per leggibilità */
     padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* ombra intorno per risaltare */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* ombra per risalto */
 }
 
 table {
@@ -34,7 +34,10 @@ table {
 th, td {
     padding: 12px;
     text-align: center;
+    color: #000; /* testo scuro per contrasto */
+    text-shadow: none;
 }
+
 /* Allinea la seconda colonna (Paese) a sinistra */
 tbody td:nth-child(2) {
     text-align: left !important;
@@ -45,8 +48,6 @@ tbody td:nth-child(2) {
 td:first-child {
     text-align: left !important;
     vertical-align: middle;
-    color: #000; /* testo scuro nelle celle per contrasto */
-    text-shadow: none;
 }
 
 /* Bandierine dimensioni */
@@ -58,15 +59,15 @@ td:first-child {
 }
 
 th {
-    background-color: rgba(255, 255, 255, 0.35); /* leggermente più opaco */
+    background-color: rgba(255, 255, 255, 0.35); /* intestazioni più leggibili */
     font-weight: bold;
-    color: #000; /* testo scuro per maggior contrasto */
-    text-shadow: none; /* rimuovo ombra testo */
+    color: #000;
 }
 
 tr:nth-child(even) {
-    background-color: rgba(220, 220, 220, 0.4); /* righe alternate con grigio chiaro trasparente */
+    background-color: rgba(220, 220, 220, 0.4); /* righe alternate più chiare */
 }
+
 /* Medaglie solo nella prima cella (colonna Posizione) */
 tr:first-child td:first-child::after {
     content: " 🥇";
@@ -77,33 +78,37 @@ tr:nth-child(2) td:first-child::after {
 tr:nth-child(3) td:first-child::after {
     content: " 🥉";
 }
+
 footer {
     margin-top: 40px;
     font-size: 0.9em;
     opacity: 0.8;
 }
+
+/* Video embed responsive */
 .video-container {
-  max-width: 600px;  /* larghezza massima più piccola */
-  margin: 0 auto 2em auto; /* centra il contenitore e margine sotto */
-  position: relative;
-  padding-bottom: 56.25%; /* mantiene il rapporto 16:9 */
-  height: 0;
-  overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto 2em auto;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
 }
 
 .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;  /* sempre al 100% del contenitore */
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
+/* Titolo sezione video */
 #top-videos h2 {
-  font-family: 'Fredoka', Arial, sans-serif; /* cambia con il font che preferisci */
-  font-size: 3em;  /* dimensione più grande */
-  font-weight: bold; /* grassetto */
-  text-align: center; /* centrato */
-  color: #ffd700; /* colore oro, ad esempio */
-  text-shadow: 1px 1px 2px #000; /* ombra testo per risalto */
+    font-family: 'Fredoka', Arial, sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px #000;
 }
