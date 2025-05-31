@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       data.forEach((item, index) => {
         const tr = document.createElement('tr');
-
+// Aggiungi la classe top-three alle prime 3 posizioni
+  if (index < 3) {
+    tr.classList.add('top-three');
+  }
         // Colonna posizione
         const tdPos = document.createElement('td');
         tdPos.textContent = `${index + 1}°`;
