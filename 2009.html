@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>JESC CUP 2009</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -13,7 +13,8 @@
             padding: 20px;
         }
 
-        header, footer {
+        header,
+        footer {
             text-align: center;
             margin-bottom: 20px;
         }
@@ -37,7 +38,8 @@
             margin-top: 1em;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: center;
         }
@@ -51,31 +53,25 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
+        .flag-icon {
+            width: 24px;
+            height: auto;
+            margin-right: 8px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+
         footer {
             margin-top: 40px;
             font-size: 0.9em;
             opacity: 0.8;
         }
-
-        .flag-icon {
-            width: 24px;
-            height: 16px;
-            vertical-align: middle;
-            margin-right: 6px;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-        }
-
-        .video-container {
-            margin-bottom: 2em;
-            text-align: center;
-        }
     </style>
 </head>
-<body>
+<body data-anno="2009">
     <header>
-        <h1>🎤 JESC CUP – Kiev 2009</h1>
-        <p>Settima edizione del Junior Eurovision Song Contest! Ecco i risultati.</p>
+        <h1>🎤 JESC CUP – 2009</h1>
+        <p>Edizione 2009 del Junior Eurovision Song Contest. Ecco i risultati!</p>
     </header>
 
     <main>
@@ -95,7 +91,7 @@
 
         <section id="top-videos">
             <h2 style="font-size: 3em; text-align: center;">🎥 I VIDEO !! - JESC 2009</h2>
-            <!-- Inserisci qui i video top 3 con iframe YouTube -->
+            <!-- Inserisci i video top 3 qui -->
         </section>
     </main>
 
@@ -104,28 +100,62 @@
     </footer>
 
     <script>
-        // Carica i dati da data-2009.json e popola la tabella
         fetch('data-2009.json')
             .then(response => response.json())
             .then(data => {
                 const tbody = document.getElementById('results');
                 tbody.innerHTML = '';
-                data.forEach((item, index) => {
-                    const totale = (item.voto * 10) * item.voce * item.coreografia;
+
+                data.forEach((entry, index) => {
+                    const totale = (entry.voto * 10) * entry.voce * entry.coreografia;
+
                     const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${index + 1}</td>
-                        <td>${item.paese}</td>
-                        <td>${item.voto.toFixed(1)}</td>
-                        <td>${item.voce.toFixed(2)}</td>
-                        <td>${item.coreografia.toFixed(2)}</td>
-                        <td>${totale.toFixed(2)}</td>
-                    `;
+
+                    // Posizione
+                    const tdPos = document.createElement('td');
+                    tdPos.textContent = (index + 1) + '°';
+
+                    // Paese con bandiera
+                    const tdPaese = document.createElement('td');
+                    const imgFlag = document.createElement('img');
+                    imgFlag.src = `flags/${entry.code}.png`;
+                    imgFlag.alt = `${entry.paese} flag`;
+                    imgFlag.classList.add('flag-icon');
+                    tdPaese.appendChild(imgFlag);
+
+                    const spanText = document.createElement('span');
+                    spanText.textContent = entry.paese;
+                    tdPaese.appendChild(spanText);
+
+                    // Voto canzone
+                    const tdVoto = document.createElement('td');
+                    tdVoto.textContent = entry.voto.toFixed(1);
+
+                    // Coeff. voce
+                    const tdVoce = document.createElement('td');
+                    tdVoce.textContent = entry.voce.toFixed(2);
+
+                    // Coeff. coreografia
+                    const tdCoreo = document.createElement('td');
+                    tdCoreo.textContent = entry.coreografia.toFixed(2);
+
+                    // Totale
+                    const tdTotale = document.createElement('td');
+                    tdTotale.textContent = totale.toFixed(2);
+
+                    // Append celle riga
+                    tr.appendChild(tdPos);
+                    tr.appendChild(tdPaese);
+                    tr.appendChild(tdVoto);
+                    tr.appendChild(tdVoce);
+                    tr.appendChild(tdCoreo);
+                    tr.appendChild(tdTotale);
+
                     tbody.appendChild(tr);
                 });
             })
-            .catch(error => {
-                console.error('Errore caricamento dati:', error);
+            .catch(err => {
+                console.error('Errore nel caricamento del file data-2009.json:', err);
             });
     </script>
 </body>
