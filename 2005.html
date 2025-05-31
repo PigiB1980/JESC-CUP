@@ -53,6 +53,14 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
+        .flag-icon {
+            width: 24px;
+            height: auto;
+            margin-right: 8px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+
         footer {
             margin-top: 40px;
             font-size: 0.9em;
@@ -104,14 +112,40 @@
                     const totale = (entry.voto * 10) * entry.voce * entry.coreografia;
 
                     const tr = document.createElement('tr');
+
+                    // Crea colonna Paese con bandiera
+                    const tdPaese = document.createElement('td');
+                    const imgFlag = document.createElement('img');
+                    imgFlag.src = `flags/${entry.code}.png`;
+                    imgFlag.alt = `${entry.paese} flag`;
+                    imgFlag.classList.add('flag-icon');
+                    tdPaese.appendChild(imgFlag);
+
+                    const spanText = document.createElement('span');
+                    spanText.textContent = entry.paese;
+                    tdPaese.appendChild(spanText);
+
                     tr.innerHTML = `
                         <td>${index + 1}</td>
-                        <td>${entry.paese}</td>
-                        <td>${entry.voto}</td>
-                        <td>${entry.voce.toFixed(2)}</td>
-                        <td>${entry.coreografia.toFixed(2)}</td>
-                        <td>${totale.toFixed(2)}</td>
                     `;
+                    tr.appendChild(tdPaese);
+
+                    const tdVoto = document.createElement('td');
+                    tdVoto.textContent = entry.voto.toFixed(1);
+                    tr.appendChild(tdVoto);
+
+                    const tdVoce = document.createElement('td');
+                    tdVoce.textContent = entry.voce.toFixed(2);
+                    tr.appendChild(tdVoce);
+
+                    const tdCoreo = document.createElement('td');
+                    tdCoreo.textContent = entry.coreografia.toFixed(2);
+                    tr.appendChild(tdCoreo);
+
+                    const tdTotale = document.createElement('td');
+                    tdTotale.textContent = totale.toFixed(2);
+                    tr.appendChild(tdTotale);
+
                     tbody.appendChild(tr);
                 });
             })
@@ -121,3 +155,4 @@
     </script>
 </body>
 </html>
+
