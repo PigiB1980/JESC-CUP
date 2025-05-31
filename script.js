@@ -52,14 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
         tdVoto.textContent = item.voto.toFixed(1);
         tr.appendChild(tdVoto);
 
-        // Coeff. voce (2 decimali)
+        // Coeff. voce (1 decimale)
         const tdVoce = document.createElement('td');
-        tdVoce.textContent = item.voce.toFixed(2);
+        tdVoce.textContent = item.voce.toFixed(1);
         tr.appendChild(tdVoce);
 
-        // Coeff. coreografia (2 decimali)
+        // Coeff. coreografia (1 decimale)
         const tdCoreo = document.createElement('td');
-        tdCoreo.textContent = item.coreografia.toFixed(2);
+        tdCoreo.textContent = item.coreografia.toFixed(1);
         tr.appendChild(tdCoreo);
 
         // Totale (2 decimali)
