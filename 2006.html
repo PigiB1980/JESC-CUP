@@ -99,63 +99,6 @@
         <p>&copy; 2025 JESC CUP – Progetto non ufficiale a scopo creativo</p>
     </footer>
 
-    <script>
-        fetch('data-2006.json')
-            .then(response => response.json())
-            .then(data => {
-                const tbody = document.getElementById('results');
-                tbody.innerHTML = '';
-
-                data.forEach((entry, index) => {
-                    const totale = (entry.voto * 10) * entry.voce * entry.coreografia;
-
-                    const tr = document.createElement('tr');
-
-                    // Paese con bandiera
-                    const tdPaese = document.createElement('td');
-                    const imgFlag = document.createElement('img');
-                    imgFlag.src = `flags/${entry.code}.png`;
-                    imgFlag.alt = `${entry.paese} flag`;
-                    imgFlag.classList.add('flag-icon');
-                    tdPaese.appendChild(imgFlag);
-
-                    const spanText = document.createElement('span');
-                    spanText.textContent = entry.paese;
-                    tdPaese.appendChild(spanText);
-
-                    // Posizione
-                    const tdPos = document.createElement('td');
-                    tdPos.textContent = (index + 1) + '°';
-
-                    tr.appendChild(tdPos);
-                    tr.appendChild(tdPaese);
-
-                    // Voto canzone
-                    const tdVoto = document.createElement('td');
-                    tdVoto.textContent = entry.voto.toFixed(1);
-                    tr.appendChild(tdVoto);
-
-                    // Coeff. voce
-                    const tdVoce = document.createElement('td');
-                    tdVoce.textContent = entry.voce.toFixed(2);
-                    tr.appendChild(tdVoce);
-
-                    // Coeff. coreografia
-                    const tdCoreo = document.createElement('td');
-                    tdCoreo.textContent = entry.coreografia.toFixed(2);
-                    tr.appendChild(tdCoreo);
-
-                    // Totale
-                    const tdTotale = document.createElement('td');
-                    tdTotale.textContent = totale.toFixed(2);
-                    tr.appendChild(tdTotale);
-
-                    tbody.appendChild(tr);
-                });
-            })
-            .catch(err => {
-                console.error('Errore nel caricamento del file data-2006.json:', err);
-            });
-    </script>
+     <script src="script.js"></script>
 </body>
 </html>
