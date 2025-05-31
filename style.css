@@ -112,7 +112,7 @@ footer {
   top: 10px;
   left: 10px;
   background-color: #4444aa;
-  color: white;
+  color: white !important;
   padding: 6px 12px;
   border-radius: 6px;
   text-decoration: none;
