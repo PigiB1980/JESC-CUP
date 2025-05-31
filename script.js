@@ -4,7 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Nessun anno trovato nell\'attributo data-anno del body');
     return;
   }
+const currentYear = parseInt(anno, 10);
+  const minYear = 2003;
+  const maxYear = 2011;
 
+  // Gestione pulsanti navigazione anno
+  const prevBtn = document.getElementById('prev-year');
+  const nextBtn = document.getElementById('next-year');
+
+  if (currentYear > minYear) {
+    prevBtn.addEventListener('click', () => {
+      window.location.href = `${currentYear - 1}.html`;
+    });
+  } else {
+    prevBtn.disabled = true;
+    prevBtn.style.opacity = 0.5;
+  }
+
+  if (currentYear < maxYear) {
+    nextBtn.addEventListener('click', () => {
+      window.location.href = `${currentYear + 1}.html`;
+    });
+  } else {
+    nextBtn.disabled = true;
+    nextBtn.style.opacity = 0.5;
+  }
   const jsonFile = `data-${anno}.json`;
   const tbody = document.getElementById('results');
   if (!tbody) {
