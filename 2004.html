@@ -1,202 +1,133 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JESC CUP - 2004</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
-      color: #fff;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <title>JESC CUP 2004</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
 
-    header, footer {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        header, footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    h1 {
-      font-size: 2.5em;
-      margin: 0.2em 0;
-    }
+        h1 {
+            font-size: 2.5em;
+            margin: 0.2em 0;
+        }
 
-    main {
-      max-width: 900px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 16px;
-    }
+        main {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
 
-    th, td {
-      padding: 12px;
-      text-align: center;
-    }
-    tbody td:nth-child(2) {
-      text-align: left !important;
-      vertical-align: middle;
-    }
-    td:first-child {
-      text-align: left !important;
-      vertical-align: middle;
-    }
-    .flag-icon {
-      width: 24px;
-      height: auto;
-      margin-right: 8px;
-      vertical-align: middle;
-    }
-    th {
-      background-color: rgba(255, 255, 255, 0.2);
-      font-weight: bold;
-    }
-    tr:nth-child(even) {
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-    tr:first-child td:first-child::after {
-      content: " 🥇";
-    }
-    tr:nth-child(2) td:first-child::after {
-      content: " 🥈";
-    }
-    tr:nth-child(3) td:first-child::after {
-      content: " 🥉";
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      opacity: 0.8;
-    }
-    .video-container {
-      max-width: 600px;
-      margin: 0 auto 2em auto;
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    #top-videos h2 {
-      font-family: 'Fredoka', Arial, sans-serif;
-      font-size: 3em;
-      font-weight: bold;
-      text-align: center;
-      color: #ffd700;
-      text-shadow: 1px 1px 2px #000;
-    }
-  </style>
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Optional: flag icons */
+        .flag-icon {
+            width: 24px;
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 6px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+        }
+
+        .video-container {
+            margin-bottom: 2em;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>JESC CUP - 2004</h1>
-  </header>
+    <header>
+        <h1>🎤 JESC CUP – Lillehammer 2004</h1>
+        <p>Seconda edizione del Junior Eurovision Song Contest! Ecco i risultati.</p>
+    </header>
 
-  <main>
-    <table>
-      <thead>
-        <tr>
-          <th>Posizione</th>
-          <th>Paese</th>
-          <th>Voto</th>
-          <th>Voce</th>
-          <th>Coreografia</th>
-          <th>Totale</th>
-        </tr>
-      </thead>
-      <tbody id="results">
-        <!-- Le righe dei risultati saranno inserite qui da JavaScript -->
-      </tbody>
-    </table>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos.</th>
+                    <th>Paese</th>
+                    <th title="Voto alla canzone, da 1 a 10">🎵 Canzone</th>
+                    <th title="Coefficiente voce, da 1.0 a 2.0">🎙️ Voce</th>
+                    <th title="Coefficiente coreografia, da 1.0 a 2.0">💃 Coreografia</th>
+                    <th title="(Canzone × 10) × Voce × Coreografia">⭐ Totale</th>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
 
-    <section id="top-videos">
-      <h2>Video Top 3</h2>
-      <div class="video-container" id="video1"></div>
-      <div class="video-container" id="video2"></div>
-      <div class="video-container" id="video3"></div>
-    </section>
-  </main>
+        <section id="top-videos">
+            <h2 style="font-size: 3em; text-align: center;">🎥 I VIDEO !! - JESC 2004</h2>
+            <!-- Inserisci qui i video top 3 con iframe YouTube -->
+        </section>
+    </main>
 
-  <footer>
-    <p>© 2025 JESC CUP - Tutti i diritti riservati</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 JESC CUP – Progetto non ufficiale a scopo creativo</p>
+    </footer>
 
-  <script>
-    fetch('data-2004.json')
-      .then(response => response.json())
-      .then(data => {
-        const results = document.getElementById('results');
-        const videoContainers = ['video1', 'video2', 'video3'];
-        const sorted = [...data].sort((a, b) => {
-          const scoreA = (a.voto * 10) * a.voce * a.coreografia;
-          const scoreB = (b.voto * 10) * b.voce * b.coreografia;
-          return scoreB - scoreA;
-        });
-
-        sorted.forEach((item, index) => {
-          const tr = document.createElement('tr');
-
-          const tdPos = document.createElement('td');
-          tdPos.textContent = `${index + 1}°`;
-          tr.appendChild(tdPos);
-
-          const tdPaese = document.createElement('td');
-          const imgFlag = document.createElement('img');
-          imgFlag.src = `flags/${item.code}.png`;
-          imgFlag.alt = `${item.paese} flag`;
-          imgFlag.classList.add('flag-icon');
-          tdPaese.appendChild(imgFlag);
-          const spanText = document.createElement('span');
-          spanText.textContent = item.paese;
-          tdPaese.appendChild(spanText);
-          tr.appendChild(tdPaese);
-
-          const tdVoto = document.createElement('td');
-          tdVoto.textContent = item.voto.toFixed(1);
-          tr.appendChild(tdVoto);
-
-          const tdVoce = document.createElement('td');
-          tdVoce.textContent = item.voce.toFixed(1);
-          tr.appendChild(tdVoce);
-
-          const tdCoreo = document.createElement('td');
-          tdCoreo.textContent = item.coreografia.toFixed(1);
-          tr.appendChild(tdCoreo);
-
-          const totale = (item.voto * 10) * item.voce * item.coreografia;
-          const tdTotale = document.createElement('td');
-          tdTotale.textContent = totale.toFixed(2);
-          tr.appendChild(tdTotale);
-
-          results.appendChild(tr);
-
-          if (index < 3 && item.video) {
-            const iframe = document.createElement('iframe');
-            iframe.src = item.video.replace("watch?v=", "embed/");
-            iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            iframe.allowFullscreen = true;
-            document.getElementById(videoContainers[index]).appendChild(iframe);
-          }
-        });
-      })
-      .catch(error => {
-        console.error('Errore caricamento dati:', error);
-      });
-  </script>
+    <script>
+        // Carica i dati da data-2004.json e popola la tabella
+        fetch('data-2004.json')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('results');
+                tbody.innerHTML = '';
+                data.forEach((item, index) => {
+                    const totale = (item.voto * 10) * item.voce * item.coreografia;
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${item.paese}</td>
+                        <td>${item.voto.toFixed(1)}</td>
+                        <td>${item.voce.toFixed(2)}</td>
+                        <td>${item.coreografia.toFixed(2)}</td>
+                        <td>${totale.toFixed(2)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Errore caricamento dati:', error);
+            });
+    </script>
 </body>
 </html>
