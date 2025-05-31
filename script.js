@@ -1,6 +1,9 @@
 const results = document.getElementById('results');
 
-fetch('data-2003.json')
+// Leggi l'anno dall'attributo data-anno del body
+const anno = document.body.getAttribute('data-anno');
+
+fetch(`data-${anno}.json`)
   .then(response => response.json())
   .then(data => {
     data.forEach((item, index) => {
@@ -16,7 +19,7 @@ fetch('data-2003.json')
       const imgFlag = document.createElement('img');
       imgFlag.src = `flags/${item.code}.png`;
       imgFlag.alt = `${item.paese} flag`;
-      imgFlag.classList.add('flag-icon');  // QUI assegni la classe
+      imgFlag.classList.add('flag-icon');
       tdPaese.appendChild(imgFlag);
 
       const spanText = document.createElement('span');
