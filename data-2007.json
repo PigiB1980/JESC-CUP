@@ -4,16 +4,16 @@
   {"paese": "Armenia", "code": "am", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Cipro", "code": "cy", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Portogallo", "code": "pt", "voto": 0, "voce": 0, "coreografia": 0},
-  {"paese": "Russia", "code": "ru", "voto": 6.0, "voce": 1.5, "coreografia": 1.7},
+  {"paese": "Russia", "code": "ru", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Romania", "code": "ro", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Bulgaria", "code": "bg", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Serbia", "code": "rs", "voto": 0, "voce": 0, "coreografia": 0},
-  {"paese": "Paesi Bassi", "code": "nl", "voto": 6.5, "voce": 1.5, "coreografia": 1.5},
+  {"paese": "Paesi Bassi", "code": "nl", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Macedonia", "code": "mk", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Ucraina", "code": "ua", "voto": 0, "voce": 0, "coreografia": 0},
-  {"paese": "Svezia", "code": "se", "voto": 8.0, "voce": 1.7, "coreografia": 1.6},
+  {"paese": "Svezia", "code": "se", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Malta", "code": "mt", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Grecia", "code": "gr", "voto": 0, "voce": 0, "coreografia": 0},
   {"paese": "Lituania", "code": "lt", "voto": 0, "voce": 0, "coreografia": 0},
-  {"paese": "Bielorussia", "code": "by", "voto": 7.0, "voce": 1.6, "coreografia": 1.8}
+  {"paese": "Bielorussia", "code": "by", "voto": 0, "voce": 0, "coreografia": 0}
 ]
