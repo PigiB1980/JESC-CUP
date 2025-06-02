@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>JESC CUP 2012</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header,
+        footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0.2em 0;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1em;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .flag-icon {
+            width: 24px;
+            height: auto;
+            margin-right: 8px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body data-anno="2012">
+    <a href="index.html" class="home-button">🏠 Home</a>
+    <header style="text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 36px;">
+        <h1 style="font-size: 2.5em; margin: 0.2em 0;">🎤 JESC CUP – Amsterdam 2012</h1>
+        <img src="images/2012.png" alt="Logo 2012" style="height: 5em; background: white; padding: 4px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.3);" />
+      </div>
+      <p>Decima edizione del Junior Eurovision Song Contest. Ecco i risultati!</p>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos.</th>
+                    <th>Paese</th>
+                    <th title="Voto alla canzone, da 1 a 10">🎵 Canzone</th>
+                    <th title="Coefficiente voce, da 1.0 a 2.0">🎙️ Voce</th>
+                    <th title="Coefficiente coreografia, da 1.0 a 2.0">💃 Coreografia</th>
+                    <th title="(Canzone × 10) × Voce × Coreografia">⭐ Totale</th>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
+
+        <section id="top-videos">
+            <h2 style="font-size: 3em; text-align: center;">🎥 I VIDEO !! - JESC 2012</h2>
+            <!-- Inserisci qui i video top 3 -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 JESC CUP – Progetto non ufficiale a scopo creativo</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
