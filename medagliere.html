@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Medagliere JESC CUP 2003-2024</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #222;
+      color: #eee;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #555;
+      text-align: center;
+    }
+    th {
+      background-color: #444;
+    }
+    tr:nth-child(even) {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Medagliere JESC CUP 2003-2024</h1>
+  <p>Caricamento dati in corso...</p>
+  <table id="medagliere" style="display:none;">
+    <thead>
+      <tr>
+        <th>Paese</th>
+        <th>Oro 🥇</th>
+        <th>Argento 🥈</th>
+        <th>Bronzo 🥉</th>
+        <th>Totale</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+(async () => {
+  const startYear = 2003;
+  const endYear = 2024;
+  const results = {}; // { paese: { oro: 0, argento: 0, bronzo: 0 } }
+
+  // Funzione per aggiornare messaggio
+  const p = document.querySelector('p');
+
+  for(let year = startYear; year <= endYear; year++) {
+    p.textContent = `Caricamento dati anno ${year}...`;
+    try {
+      const response = await fetch(`data-${year}.json`);
+      if (!response.ok) {
+        console.warn(`Impossibile caricare data-${year}.json`);
+        continue;
+      }
+      const data = await response.json();
+
+      // Ipotizzando che data sia una lista ordinata per posizione 1°,2°,3°, o che tu abbia in qualche modo una proprietà 'posizione'
+      // Se non c'è una proprietà posizione, dobbiamo usare l'ordine in elenco
+
+      // Qui assumo che i primi 3 elementi siano 1°, 2°, 3° (modifica se diverso)
+      for(let i=0; i<3; i++) {
+        if(!data[i]) break;
+        const country = data[i].paese;
+        if(!results[country]) results[country] = { oro:0, argento:0, bronzo:0 };
+        if(i === 0) results[country].oro++;
+        else if(i === 1) results[country].argento++;
+        else if(i === 2) results[country].bronzo++;
+      }
+    } catch(e) {
+      console.error(`Errore caricando data-${year}.json:`, e);
+    }
+  }
+
+  p.style.display = 'none'; // nascondo messaggio
+
+  // Costruisco tabella
+  const tbody = document.querySelector('#medagliere tbody');
+  // Ordino per numero oro, argento, bronzo
+  const sortedCountries = Object.entries(results).sort((a,b) => {
+    if(b[1].oro !== a[1].oro) return b[1].oro - a[1].oro;
+    if(b[1].argento !== a[1].argento) return b[1].argento - a[1].argento;
+    if(b[1].bronzo !== a[1].bronzo) return b[1].bronzo - a[1].bronzo;
+    return a[0].localeCompare(b[0]);
+  });
+
+  for(const [country, medaglie] of sortedCountries) {
+    const totale = medaglie.oro + medaglie.argento + medaglie.bronzo;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${country}</td>
+      <td>${medaglie.oro}</td>
+      <td>${medaglie.argento}</td>
+      <td>${medaglie.bronzo}</td>
+      <td>${totale}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  document.getElementById('medagliere').style.display = 'table';
+})();
+</script>
+
+</body>
+</html>
