@@ -77,11 +77,13 @@ footer {
     font-size: 0.9em;
     opacity: 0.8;
 }
+/* Contenitore video responsive */
 .video-container {
-  max-width: 700px;  /* larghezza massima più piccola */
-  margin: 0 auto 2em auto; /* centra il contenitore e margine sotto */
   position: relative;
-  padding-bottom: 56.25%; /* mantiene il rapporto 16:9 */
+  width: 100%;
+  max-width: 600px;  /* larghezza massima */
+  margin: 0 auto;    /* centrato orizzontalmente */
+  padding-bottom: 56.25%; /* rapporto 16:9 (9/16 = 0.5625) */
   height: 0;
   overflow: hidden;
 }
@@ -90,9 +92,11 @@ footer {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;  /* sempre al 100% del contenitore */
+  width: 100%;
   height: 100%;
+  border: none;
 }
+
 
 #top-videos h2 {
   font-family: 'Fredoka', Arial, sans-serif; /* cambia con il font che preferisci */
