@@ -95,6 +95,24 @@ footer {
   border: 0;
 }
 
+.video-small {
+  position: relative;
+  padding-bottom: 45%; /* meno alto del classico 56.25% */
+  height: 0;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 1em auto;
+}
+
+.video-small iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 #top-videos h2 {
   font-family: 'Fredoka', Arial, sans-serif; /* cambia con il font che preferisci */
   font-size: 3em;  /* dimensione più grande */
