@@ -2,112 +2,175 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Medagliere JESC CUP 2003-2024</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #222;
-      color: #eee;
+      background: #1e1e50;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
       padding: 20px;
     }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .year-section {
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 15px 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .year-section h2 {
+      margin-top: 0;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      border-bottom: 2px solid #ff4081;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1em;
+      color: white;
     }
+
     th, td {
       padding: 8px;
-      border: 1px solid #555;
-      text-align: center;
+      text-align: left;
     }
+
     th {
-      background-color: #444;
+      border-bottom: 1px solid #ff4081;
+      font-weight: 700;
     }
-    tr:nth-child(even) {
-      background-color: #333;
+
+    tr:nth-child(1) td:first-child {
+      color: gold;
+      font-weight: bold;
+    }
+    tr:nth-child(2) td:first-child {
+      color: silver;
+      font-weight: bold;
+    }
+    tr:nth-child(3) td:first-child {
+      color: #cd7f32; /* bronzo */
+      font-weight: bold;
+    }
+
+    img.flag-icon {
+      width: 24px;
+      height: 16px;
+      vertical-align: middle;
+      margin-right: 8px;
+      border-radius: 3px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    }
+
+    .loading {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 50px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <h1>Medagliere JESC CUP 2003-2024</h1>
-  <p>Caricamento dati in corso...</p>
-  <table id="medagliere" style="display:none;">
-    <thead>
-      <tr>
-        <th>Paese</th>
-        <th>Oro 🥇</th>
-        <th>Argento 🥈</th>
-        <th>Bronzo 🥉</th>
-        <th>Totale</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <h1>Medagliere JESC CUP - Podio dal 2003 al 2024</h1>
 
-<script>
-(async () => {
-  const startYear = 2003;
-  const endYear = 2024;
-  const results = {}; // { paese: { oro: 0, argento: 0, bronzo: 0 } }
+  <div id="medagliere-container">
+    <p class="loading">Caricamento dati in corso…</p>
+  </div>
 
-  // Funzione per aggiornare messaggio
-  const p = document.querySelector('p');
+  <script>
+    const anni = [];
+    for(let y = 2003; y <= 2024; y++) anni.push(y);
 
-  for(let year = startYear; year <= endYear; year++) {
-    p.textContent = `Caricamento dati anno ${year}...`;
-    try {
-      const response = await fetch(`data-${year}.json`);
-      if (!response.ok) {
-        console.warn(`Impossibile caricare data-${year}.json`);
-        continue;
-      }
-      const data = await response.json();
+    const medagliereContainer = document.getElementById('medagliere-container');
+    medagliereContainer.innerHTML = ''; // pulisco loading
 
-      // Ipotizzando che data sia una lista ordinata per posizione 1°,2°,3°, o che tu abbia in qualche modo una proprietà 'posizione'
-      // Se non c'è una proprietà posizione, dobbiamo usare l'ordine in elenco
-
-      // Qui assumo che i primi 3 elementi siano 1°, 2°, 3° (modifica se diverso)
-      for(let i=0; i<3; i++) {
-        if(!data[i]) break;
-        const country = data[i].paese;
-        if(!results[country]) results[country] = { oro:0, argento:0, bronzo:0 };
-        if(i === 0) results[country].oro++;
-        else if(i === 1) results[country].argento++;
-        else if(i === 2) results[country].bronzo++;
-      }
-    } catch(e) {
-      console.error(`Errore caricando data-${year}.json:`, e);
+    // Funzione per calcolare il punteggio
+    function calcolaPunteggio(entry) {
+      return (entry.voto * 10) * entry.voce * entry.coreografia;
     }
-  }
 
-  p.style.display = 'none'; // nascondo messaggio
+    // Funzione per creare la mini tabella podio
+    function creaTabellaPodio(anno, dati) {
+      // Ordino in base al punteggio decrescente
+      dati.sort((a, b) => calcolaPunteggio(b) - calcolaPunteggio(a));
 
-  // Costruisco tabella
-  const tbody = document.querySelector('#medagliere tbody');
-  // Ordino per numero oro, argento, bronzo
-  const sortedCountries = Object.entries(results).sort((a,b) => {
-    if(b[1].oro !== a[1].oro) return b[1].oro - a[1].oro;
-    if(b[1].argento !== a[1].argento) return b[1].argento - a[1].argento;
-    if(b[1].bronzo !== a[1].bronzo) return b[1].bronzo - a[1].bronzo;
-    return a[0].localeCompare(b[0]);
-  });
+      // Prendo i primi 3
+      const top3 = dati.slice(0, 3);
 
-  for(const [country, medaglie] of sortedCountries) {
-    const totale = medaglie.oro + medaglie.argento + medaglie.bronzo;
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${country}</td>
-      <td>${medaglie.oro}</td>
-      <td>${medaglie.argento}</td>
-      <td>${medaglie.bronzo}</td>
-      <td>${totale}</td>
-    `;
-    tbody.appendChild(tr);
-  }
+      const div = document.createElement('section');
+      div.className = 'year-section';
 
-  document.getElementById('medagliere').style.display = 'table';
-})();
-</script>
+      div.innerHTML = `
+        <h2>${anno}</h2>
+        <table>
+          <thead>
+            <tr><th>Pos.</th><th>Paese</th><th>Punteggio</th></tr>
+          </thead>
+          <tbody>
+            ${top3.map((entry, i) => {
+              const posEmoji = i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉';
+              const score = calcolaPunteggio(entry).toFixed(1);
+              return `<tr>
+                <td>${posEmoji}</td>
+                <td><img class="flag-icon" src="flags/${entry.code}.png" alt="${entry.paese}" />${entry.paese}</td>
+                <td>${score}</td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+        </table>
+      `;
 
+      return div;
+    }
+
+    // Funzione per caricare il JSON e creare la sezione
+    async function caricaDatiAnno(anno) {
+      try {
+        const response = await fetch(`data-${anno}.json`);
+        if(!response.ok) throw new Error('File non trovato o errore rete');
+        const dati = await response.json();
+
+        // Controllo se ci sono dati validi (voti diversi da zero)
+        const datiValidi = dati.some(entry => entry.voto > 0 || entry.voce > 0 || entry.coreografia > 0);
+        if(!datiValidi) return null;
+
+        return creaTabellaPodio(anno, dati);
+      } catch (e) {
+        console.warn(`Impossibile caricare dati per ${anno}:`, e);
+        return null;
+      }
+    }
+
+    // Carico tutti gli anni in sequenza e li aggiungo al container
+    async function caricaTutti() {
+      for(const anno of anni) {
+        const podioSection = await caricaDatiAnno(anno);
+        if(podioSection) {
+          medagliereContainer.appendChild(podioSection);
+        }
+      }
+
+      if(medagliereContainer.children.length === 0) {
+        medagliereContainer.innerHTML = '<p class="loading">Nessun dato disponibile per il medagliere.</p>';
+      }
+    }
+
+    caricaTutti();
+  </script>
 </body>
 </html>
