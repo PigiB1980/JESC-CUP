@@ -79,11 +79,11 @@ footer {
 }
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; /* 16:9 ratio */
   height: 0;
   overflow: hidden;
+  margin: 20px auto;
   max-width: 100%;
-  margin: 1em auto;
 }
 
 .video-container iframe {
@@ -94,6 +94,7 @@ footer {
   height: 100%;
   border: 0;
 }
+
 
 .video-top {
   position: relative;
