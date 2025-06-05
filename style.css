@@ -95,16 +95,17 @@ footer {
   border: 0;
 }
 
-.video-small {
+.video-top {
   position: relative;
-  padding-bottom: 45%; /* meno alto del classico 56.25% */
+  width: 80%;           /* più piccolo dei video sotto */
+  max-width: 720px;     /* limite massimo */
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* rapporto 16:9 */
   height: 0;
   overflow: hidden;
-  max-width: 600px;
-  margin: 1em auto;
 }
 
-.video-small iframe {
+.video-top iframe {
   position: absolute;
   top: 0;
   left: 0;
