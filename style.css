@@ -156,12 +156,12 @@ footer {
 /* GRIGLIA dei podi per anno */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* 2 colonne di larghezza uguale */
   gap: 30px;
   justify-items: center;
-  align-items: start;
   margin-top: 20px;
 }
+
 
 /* SEZIONE PODIO per anno */
 .year-section {
