@@ -1,82 +1,86 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
-    color: #fff;
-    margin: 0;
-    padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
+  color: #fff;
+  margin: 0;
+  padding: 20px;
 }
 
 header, footer {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 2.5em;
-    margin: 0.2em 0;
+  font-size: 2.5em;
+  margin: 0.2em 0;
 }
 
 main {
-    max-width: 900px;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 16px;
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 16px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
 }
 
 th, td {
-    padding: 12px;
-    text-align: center;
+  padding: 12px;
+  text-align: center;
 }
+
 /* Allinea la seconda colonna (Paese) a sinistra */
 tbody td:nth-child(2) {
-    text-align: left !important;
-    vertical-align: middle;
+  text-align: left !important;
+  vertical-align: middle;
 }
 
 /* Allinea la prima colonna a sinistra */
 td:first-child {
-    text-align: left !important;
-    vertical-align: middle;
+  text-align: left !important;
+  vertical-align: middle;
 }
 
 /* Bandierine dimensioni */
 .flag-icon {
-    width: 24px;
-    height: auto;
-    margin-right: 8px;
-    vertical-align: middle;
+  width: 24px;
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 th {
-    background-color: rgba(255, 255, 255, 0.2);
-    font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
 }
 
 tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
+
 /* Medaglie solo nella prima cella (colonna Posizione) */
 tr:first-child td:first-child::after {
-    content: " 🥇";
+  content: " 🥇";
 }
 tr:nth-child(2) td:first-child::after {
-    content: " 🥈";
+  content: " 🥈";
 }
 tr:nth-child(3) td:first-child::after {
-    content: " 🥉";
+  content: " 🥉";
 }
+
 footer {
-    margin-top: 40px;
-    font-size: 0.9em;
-    opacity: 0.8;
+  margin-top: 40px;
+  font-size: 0.9em;
+  opacity: 0.8;
 }
+
 .video-container {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 ratio */
@@ -95,13 +99,12 @@ footer {
   border: 0;
 }
 
-
 .video-top {
   position: relative;
-  width: 80%;           /* più piccolo dei video sotto */
-  max-width: 720px;     /* limite massimo */
+  width: 80%;
+  max-width: 720px;
   margin: 0 auto;
-  padding-bottom: 56.25%; /* rapporto 16:9 */
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
 }
@@ -116,18 +119,19 @@ footer {
 }
 
 #top-videos h2 {
-  font-family: 'Fredoka', Arial, sans-serif; /* cambia con il font che preferisci */
-  font-size: 3em;  /* dimensione più grande */
-  font-weight: bold; /* grassetto */
-  text-align: center; /* centrato */
-  color: #ffd700; /* colore oro, ad esempio */
-  text-shadow: 1px 1px 2px #000; /* ombra testo per risalto */
+  font-family: 'Fredoka', Arial, sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 1px 1px 2px #000;
 }
 
 .top-three {
   color: yellow;
   font-weight: bold;
-    }
+}
+
 .home-button {
   position: fixed;
   top: 10px;
@@ -149,9 +153,39 @@ footer {
   background-color: #222277;
 }
 
+/* GRIGLIA dei podi per anno */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 30px;
   justify-items: center;
+  align-items: start;
+  margin-top: 20px;
+}
+
+/* SEZIONE PODIO per anno */
+.year-section {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px 20px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.year-section h2 {
+  margin-top: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #ff4081;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+/* Layout mobile: 1 colonna */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
 }
