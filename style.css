@@ -148,3 +148,9 @@ footer {
 .home-button:hover {
   background-color: #222277;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
