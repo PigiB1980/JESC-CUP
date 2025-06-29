@@ -188,4 +188,8 @@ footer {
   .grid-container {
     grid-template-columns: 1fr;
   }
+  /* Centra i numeri delle colonne Oro, Argento, Bronzo nella tabella medagliere */
+table tr td:nth-child(n+2) {
+  text-align: center;
+}
 }
