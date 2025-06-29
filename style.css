@@ -183,7 +183,7 @@ footer {
   margin-bottom: 15px;
 }
 /* Centra i numeri delle colonne Oro, Argento, Bronzo nella tabella medagliere */
-table tr td:nth-child(n+2) {
+#medagliere-table tr td:nth-child(n+2) {
   text-align: center;
 }
 
