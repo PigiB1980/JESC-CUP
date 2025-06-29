@@ -55,19 +55,6 @@
       font-weight: 700;
     }
 
-    tr:nth-child(1) td:first-child {
-      color: gold;
-      font-weight: bold;
-    }
-    tr:nth-child(2) td:first-child {
-      color: silver;
-      font-weight: bold;
-    }
-    tr:nth-child(3) td:first-child {
-      color: #cd7f32; /* bronzo */
-      font-weight: bold;
-    }
-
     img.flag-icon {
       width: 24px;
       height: 16px;
@@ -75,13 +62,6 @@
       margin-right: 8px;
       border-radius: 3px;
       box-shadow: 0 0 3px rgba(0,0,0,0.5);
-    }
-
-    .loading {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 50px;
-      color: #aaa;
     }
   </style>
 </head>
@@ -129,7 +109,7 @@
       const div = document.createElement('section');
       div.className = 'year-section';
 
-      div.innerHTML = 
+      div.innerHTML = `
         <h2>${anno}</h2>
         <table>
           <thead>
@@ -139,15 +119,17 @@
             ${top3.map((entry, i) => {
               const posEmoji = i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉';
               const score = calcolaPunteggio(entry).toFixed(1);
-              return <tr>
-                <td>${posEmoji}</td>
-                <td><img class="flag-icon" src="flags/${entry.code}.png" alt="${entry.paese}" />${entry.paese}</td>
-                <td>${score}</td>
-              </tr>;
+              return `
+                <tr>
+                  <td>${posEmoji}</td>
+                  <td><img class="flag-icon" src="flags/${entry.code}.png" alt="${entry.paese}" />${entry.paese}</td>
+                  <td>${score}</td>
+                </tr>
+              `;
             }).join('')}
           </tbody>
         </table>
-      ;
+      `;
 
       return div;
     }
@@ -170,24 +152,24 @@
       const div = document.createElement('section');
       div.className = 'year-section';
 
-      div.innerHTML = 
+      div.innerHTML = `
         <h2>Classifica Medaglie Totale</h2>
         <table>
           <thead>
             <tr><th>Paese</th><th>🥇 Oro</th><th>🥈 Argento</th><th>🥉 Bronzo</th></tr>
           </thead>
           <tbody>
-            ${classificaArray.map(c => 
+            ${classificaArray.map(c => `
               <tr>
                 <td>${c.paese}</td>
                 <td>${c.oro}</td>
                 <td>${c.argento}</td>
                 <td>${c.bronzo}</td>
               </tr>
-            ).join('')}
+            `).join('')}
           </tbody>
         </table>
-      ;
+      `;
 
       medagliereContainer.insertBefore(div, medagliereContainer.firstChild);
     }
@@ -195,37 +177,30 @@
     // Funzione per caricare il JSON e creare la sezione
     async function caricaDatiAnno(anno) {
       try {
-        const response = await fetch(data-${anno}.json);
+        const response = await fetch(`data-${anno}.json`);
         if(!response.ok) throw new Error('File non trovato o errore rete');
         const dati = await response.json();
 
+        // Verifica se dati validi (almeno un punteggio)
         const datiValidi = dati.some(entry => entry.voto > 0 || entry.voce > 0 || entry.coreografia > 0);
         if(!datiValidi) return null;
 
         return creaTabellaPodio(anno, dati);
       } catch (e) {
-        console.warn(Impossibile caricare dati per ${anno}:, e);
+        console.warn(`Impossibile caricare dati per ${anno}:`, e);
         return null;
       }
     }
 
-    // Carico tutti gli anni in sequenza e li aggiungo al container
-    async function caricaTutti() {
-      for(const anno of anni) {
-        const podioSection = await caricaDatiAnno(anno);
-        if(podioSection) {
-          medagliereContainer.appendChild(podioSection);
-        }
+    // Carica tutti gli anni in sequenza
+    (async () => {
+      for (const anno of anni) {
+        const sezioneAnno = await caricaDatiAnno(anno);
+        if (sezioneAnno) medagliereContainer.appendChild(sezioneAnno);
       }
+      creaClassificaMedaglie();
+    })();
 
-      if(medagliereContainer.children.length === 0) {
-        medagliereContainer.innerHTML = '<p class="loading">Nessun dato disponibile per il medagliere.</p>';
-      } else {
-        creaClassificaMedaglie();
-      }
-    }
-
-    caricaTutti();
   </script>
 </body>
 </html>
