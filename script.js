@@ -25,10 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       data.forEach((item, index) => {
         const tr = document.createElement('tr');
-// Aggiungi la classe top-three alle prime 3 posizioni
-  if (index < 3) {
-    tr.classList.add('top-three');
-  }
+
+        // Aggiungi la classe top-three alle prime 3 posizioni
+        if (index < 3) {
+          tr.classList.add('top-three');
+        }
+
         // Colonna posizione
         const tdPos = document.createElement('td');
         tdPos.textContent = `${index + 1}°`;
@@ -74,3 +76,71 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Errore nel caricamento o elaborazione dati:', error);
     });
 });
+
+// 🏳 Funzione per mappare i nomi dei paesi ai codici delle bandiere
+function getCodiceBandiera(paese) {
+  const mapping = {
+    "Malta": "mt",
+    "Belgio": "be",
+    "Russia": "ru",
+    "Bulgaria": "bg",
+    "Bielorussia": "by",
+    "Svezia": "se",
+    "Armenia": "am",
+    "Ucraina": "ua",
+    "Lettonia": "lv",
+    "Georgia": "ge",
+    "Romania": "ro",
+    "Italia": "it",
+    "Spagna": "es",
+    "Azerbaijan": "az",
+    "Cipro": "cy",
+    "Norvegia": "no",
+    "Paesi Bassi": "nl",
+    "Danimarca": "dk",
+    "Croazia": "hr"
+    // Aggiungi altri se servono
+  };
+  return mapping[paese] || "xx"; // fallback generico
+}
+
+// 🥇 Funzione per creare la classifica totale delle medaglie
+function creaClassificaMedaglie(medagliePerPaese, container) {
+  const classificaArray = Object.entries(medagliePerPaese).map(([paese, medaglie]) => ({
+    paese,
+    oro: medaglie.oro,
+    argento: medaglie.argento,
+    bronzo: medaglie.bronzo
+  }));
+
+  classificaArray.sort((a, b) => {
+    if (b.oro !== a.oro) return b.oro - a.oro;
+    if (b.argento !== a.argento) return b.argento - a.argento;
+    return b.bronzo - a.bronzo;
+  });
+
+  const div = document.createElement('section');
+  div.className = 'year-section';
+
+  div.innerHTML = `
+    <h2>Classifica Medaglie Totale</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Paese</th><th>🥇 Oro</th><th>🥈 Argento</th><th>🥉 Bronzo</th></tr>
+      </thead>
+      <tbody>
+        ${classificaArray.map((c, i) => `
+          <tr>
+            <td>${i + 1}</td>
+            <td><img class="flag-icon" src="flags/${getCodiceBandiera(c.paese)}.png" alt="${c.paese}" />${c.paese}</td>
+            <td>${c.oro}</td>
+            <td>${c.argento}</td>
+            <td>${c.bronzo}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+
+  container.insertBefore(div, container.firstChild);
+}
