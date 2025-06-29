@@ -105,7 +105,7 @@ function getCodiceBandiera(paese) {
 }
 
 // 🥇 Funzione per creare la classifica totale delle medaglie
-function creaClassificaMedaglie(medagliePerPaese, container) {
+function creaClassificaMedaglie() {
   const classificaArray = Object.entries(medagliePerPaese).map(([paese, medaglie]) => ({
     paese,
     oro: medaglie.oro,
@@ -126,13 +126,12 @@ function creaClassificaMedaglie(medagliePerPaese, container) {
     <h2>Classifica Medaglie Totale</h2>
     <table>
       <thead>
-        <tr><th>#</th><th>Paese</th><th>🥇 Oro</th><th>🥈 Argento</th><th>🥉 Bronzo</th></tr>
+        <tr><th>Paese</th><th>🥇 Oro</th><th>🥈 Argento</th><th>🥉 Bronzo</th></tr>
       </thead>
       <tbody>
-        ${classificaArray.map((c, i) => `
+        ${classificaArray.map(c => `
           <tr>
-            <td>${i + 1}</td>
-            <td><img class="flag-icon" src="flags/${getCodiceBandiera(c.paese)}.png" alt="${c.paese}" />${c.paese}</td>
+            <td><img class="flag-icon" src="flags/${getCodiceBandiera(c.paese)}.png" alt="${c.paese}"> ${c.paese}</td>
             <td>${c.oro}</td>
             <td>${c.argento}</td>
             <td>${c.bronzo}</td>
@@ -142,5 +141,5 @@ function creaClassificaMedaglie(medagliePerPaese, container) {
     </table>
   `;
 
-  container.insertBefore(div, container.firstChild);
+  medagliereContainer.insertBefore(div, medagliereContainer.firstChild);
 }
