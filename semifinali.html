@@ -76,37 +76,33 @@
   <a href="index.html" class="btn-home">🏠 Home</a>
   <h1>Semifinali JESC CUP</h1>
 
-  <div id="semifinali-container">
-    <p>Caricamento dati in corso…</p>
-  </div>
+  <div id="semifinali-container"></div>
 
   <script>
-    // Esempio di composizione personalizzata delle semifinali
-    // Ogni semifinale è un array di oggetti con paese, codice bandiera, artista e titolo canzone
+    // Composizione delle 10 semifinali con 7 artisti ciascuna
     const semifinali = [
-      {
-        name: "Semifinale 1",
-        link: "semifinale1.html",
-        songs: [
-          {country: "Russia", code: "ru", artist: "Polina Bogusevic", title: "Wings"},
-          {country: "Ucraina", code: "ua", artist: "Anastasija Basinska", title: "Don't stop"},
-          // ... altre canzoni
-        ]
-      },
-      {
-        name: "Semifinale 2",
-        link: "semifinale2.html",
-        songs: [
-          {country: "Malta", code: "mt", artist: "Gianluca Cilia", title: "Dawra Tond"},
-          {country: "Georgia", code: "ge", artist: "Tamar Edilashvili", title: "Your voice"},
-          // ...
-        ]
-      },
-      // ... fino a Semifinale 10
+      { name: "Semifinale 1", link: "semifinale1.html", songs: [
+        {country: "Paese1", code: "p1", artist: "Artista1", title: "Canzone1"},
+        {country: "Paese2", code: "p2", artist: "Artista2", title: "Canzone2"},
+        {country: "Paese3", code: "p3", artist: "Artista3", title: "Canzone3"},
+        {country: "Paese4", code: "p4", artist: "Artista4", title: "Canzone4"},
+        {country: "Paese5", code: "p5", artist: "Artista5", title: "Canzone5"},
+        {country: "Paese6", code: "p6", artist: "Artista6", title: "Canzone6"},
+        {country: "Paese7", code: "p7", artist: "Artista7", title: "Canzone7"},
+      ]},
+      { name: "Semifinale 2", link: "semifinale2.html", songs: [
+        {country: "Paese8", code: "p8", artist: "Artista8", title: "Canzone8"},
+        {country: "Paese9", code: "p9", artist: "Artista9", title: "Canzone9"},
+        {country: "Paese10", code: "p10", artist: "Artista10", title: "Canzone10"},
+        {country: "Paese11", code: "p11", artist: "Artista11", title: "Canzone11"},
+        {country: "Paese12", code: "p12", artist: "Artista12", title: "Canzone12"},
+        {country: "Paese13", code: "p13", artist: "Artista13", title: "Canzone13"},
+        {country: "Paese14", code: "p14", artist: "Artista14", title: "Canzone14"},
+      ]},
+      // ... aggiungi qui Semifinale 3 fino a Semifinale 10 nello stesso formato
     ];
 
     const container = document.getElementById("semifinali-container");
-    container.innerHTML = "";
 
     semifinali.forEach(semi => {
       const h2 = document.createElement("h2");
