@@ -20,7 +20,7 @@
       width: 95%;
       margin: 0 auto;
       border-collapse: collapse;
-      background: #111111; /* sfondo pieno */
+      background: #111111; /* sfondo opaco */
       border-radius: 12px;
       overflow: hidden;
       font-size: 0.9rem;
@@ -63,45 +63,52 @@
       </tr>
     </thead>
     <tbody>
-      <!-- qui lo script JS inserisce le righe -->
+      <!-- righe generate via JS -->
     </tbody>
   </table>
 
   <script>
-    const years = Array.from({length: 22}, (_, i) => 2003 + i); // 2003–2024
+    const years = Array.from({length: 22}, (_, i) => 2003 + i);
     const allSongs = [];
 
-    function loadYear(year) {
-      return fetch(`data-${year}.json`)
-        .then(res => res.json())
-        .then(data => {
+    async function loadData() {
+      for (let year of years) {
+        try {
+          const res = await fetch(`data-${year}.json`);
+          if (!res.ok) continue;
+          const data = await res.json();
           data.forEach(entry => {
             const points = (entry.voto * 10) * entry.voce * entry.coreografia;
             allSongs.push({
               year: year,
               country: entry.paese,
-              flag: entry.bandiera,
+              flag: entry.code, // usa 'code' dai JSON
               points: points
             });
           });
-        });
-    }
+        } catch (err) {
+          console.error(`Errore caricando ${year}:`, err);
+        }
+      }
 
-    Promise.all(years.map(loadYear)).then(() => {
+      // ordina dal punteggio più alto
       allSongs.sort((a, b) => b.points - a.points);
-      const tbody = document.querySelector("#ranking tbody");
 
+      // popola la tabella
+      const tbody = document.querySelector("#ranking tbody");
       allSongs.forEach((song, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
           <td>${index + 1}</td>
           <td>${song.year}</td>
-          <td><img src="flags/${song.flag}.png" class="flag-icon"> ${song.country}</td>
+          <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
           <td>${song.points.toFixed(1)}</td>
         `;
-        tbody.appendChild(row);
+        tbody.appendChild(tr);
       });
-    });
+    }
+
+    loadData();
   </script>
 </body>
 </html>
