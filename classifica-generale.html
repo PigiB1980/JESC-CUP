@@ -6,7 +6,7 @@
   <title>Classifica Generale - JESC CUP</title>
   <style>
     body {
-      background: #1e1e50; /* stesso sfondo della pagina medagliere */
+      background: #1e1e50;
       color: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -21,7 +21,7 @@
       width: 95%;
       margin: 20px auto;
       border-collapse: collapse;
-      background: rgba(255,255,255,0.05); /* sfondo opaco simile alla pagina medagliere */
+      background: rgba(255,255,255,0.05);
       border-radius: 12px;
       overflow: hidden;
       font-size: 0.9rem;
@@ -30,6 +30,7 @@
     th, td {
       padding: 8px 10px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: left; /* <-- titoli e celle allineati a sinistra */
     }
     th {
       background: #ff4081;
@@ -130,7 +131,6 @@
 
       allSongs.sort((a,b)=>b.points-a.points);
 
-      // Calcolo semifinaliste
       let semifinali = [];
       for (let year of years) {
         const songsOfYear = allSongs.filter(s => s.year === year)
@@ -149,7 +149,6 @@
 
       const semiSet = new Set(semifinali.map(s => `${s.year}-${s.country}`));
 
-      // Popola tabella principale
       const tbody = document.querySelector("#ranking tbody");
       allSongs.forEach((song,index)=>{
         const tr = document.createElement("tr");
@@ -164,7 +163,6 @@
         tbody.appendChild(tr);
       });
 
-      // Popola tabella semifinali
       const tbodySemi = document.querySelector("#semifinali tbody");
       semifinali.forEach((song,index)=>{
         const tr = document.createElement("tr");
