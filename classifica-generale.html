@@ -50,7 +50,6 @@
       vertical-align: middle;
       border-radius: 2px;
     }
-    /* Pulsante Home */
     .btn-home {
       position: absolute;
       top: 20px;
@@ -84,6 +83,7 @@
         <th>Anno</th>
         <th>Nazione</th>
         <th>Punteggio</th>
+        <th>Q</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -149,25 +149,20 @@
       // Ordina semifinali per punteggio
       semifinali.sort((a,b) => b.points - a.points);
 
-      // Crea un set per evidenziare le semifinaliste nella tabella principale
+      // Crea un set per segnare le semifinaliste
       const semiSet = new Set(semifinali.map(s => `${s.year}-${s.country}`));
 
       // Popola tabella principale
       const tbody = document.querySelector("#ranking tbody");
       allSongs.forEach((song, index) => {
         const tr = document.createElement("tr");
-
-        // Evidenzia semifinaliste
-        if (semiSet.has(`${song.year}-${song.country}`)) {
-          tr.style.background = "rgba(76, 175, 80, 0.7)";
-          tr.style.color = "#fff";
-        }
-
+        const q = semiSet.has(`${song.year}-${song.country}`) ? "Q" : "";
         tr.innerHTML = `
           <td>${index + 1}</td>
           <td>${song.year}</td>
           <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
           <td>${song.points.toFixed(1)}</td>
+          <td>${q}</td>
         `;
         tbody.appendChild(tr);
       });
