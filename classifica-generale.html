@@ -13,12 +13,12 @@
       text-align: center;
       padding: 20px;
     }
-    h1 {
+    h1, h2 {
       margin-bottom: 20px;
     }
     table {
       width: 95%;
-      margin: 0 auto;
+      margin: 20px auto;
       border-collapse: collapse;
       background: #111111; /* sfondo opaco */
       border-radius: 12px;
@@ -53,6 +53,8 @@
 </head>
 <body>
   <h1>Classifica Generale JESC CUP (2003–2024)</h1>
+
+  <!-- Tabella principale -->
   <table id="ranking">
     <thead>
       <tr>
@@ -62,9 +64,21 @@
         <th>Punteggio</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- righe generate via JS -->
-    </tbody>
+    <tbody></tbody>
+  </table>
+
+  <!-- Tabella semifinali -->
+  <h2>🎵 Canzoni qualificate alle Semifinali</h2>
+  <table id="semifinali">
+    <thead>
+      <tr>
+        <th>Posizione</th>
+        <th>Anno</th>
+        <th>Nazione</th>
+        <th>Punteggio</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
   </table>
 
   <script>
@@ -82,7 +96,7 @@
             allSongs.push({
               year: year,
               country: entry.paese,
-              flag: entry.code, // usa 'code' dai JSON
+              flag: entry.code,
               points: points
             });
           });
@@ -91,10 +105,8 @@
         }
       }
 
-      // ordina dal punteggio più alto
+      // --- Tabella principale ---
       allSongs.sort((a, b) => b.points - a.points);
-
-      // popola la tabella
       const tbody = document.querySelector("#ranking tbody");
       allSongs.forEach((song, index) => {
         const tr = document.createElement("tr");
@@ -105,6 +117,38 @@
           <td>${song.points.toFixed(1)}</td>
         `;
         tbody.appendChild(tr);
+      });
+
+      // --- Tabella semifinali ---
+      const semifinali = [];
+
+      // prime 3 di ogni anno
+      for (let year of years) {
+        const songsOfYear = allSongs.filter(s => s.year === year)
+                                    .sort((a,b)=>b.points - a.points);
+        semifinali.push(...songsOfYear.slice(0,3));
+      }
+
+      // migliori quarte per arrivare a 70
+      const quarte = [];
+      for (let year of years) {
+        const songsOfYear = allSongs.filter(s => s.year === year)
+                                    .sort((a,b)=>b.points - a.points);
+        if (songsOfYear.length > 3) quarte.push(songsOfYear[3]);
+      }
+      quarte.sort((a,b)=>b.points - a.points);
+      semifinali.push(...quarte.slice(0, 70 - semifinali.length));
+
+      const tbodySemi = document.querySelector("#semifinali tbody");
+      semifinali.forEach((song, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${song.year}</td>
+          <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
+          <td>${song.points.toFixed(1)}</td>
+        `;
+        tbodySemi.appendChild(tr);
       });
     }
 
