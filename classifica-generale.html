@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JESC CUP - Classifica Generale</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classifica Generale - JESC CUP</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
-
     body {
       background: url('images/sfondo.png') no-repeat center center fixed;
       background-size: cover;
@@ -15,30 +13,9 @@
       text-align: center;
       padding: 20px;
     }
-
     h1 {
       margin-bottom: 20px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
     }
-
-    .back-btn {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 10px 18px;
-      background: #ff4081;
-      border-radius: 10px;
-      color: white;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(255,64,129,0.4);
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .back-btn:hover {
-      background: #e91e63;
-      transform: scale(1.05);
-    }
-
     table {
       width: 95%;
       margin: 0 auto;
@@ -46,93 +23,97 @@
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
       overflow: hidden;
+      font-size: 0.9rem;
     }
-
     th, td {
-      padding: 10px;
+      padding: 8px 10px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-
     th {
-      background: rgba(255,64,129,0.8);
-      font-weight: 700;
-      cursor: pointer;
+      background: rgba(255,64,129,0.9);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
-
+    tr:nth-child(even) {
+      background: rgba(255,255,255,0.05);
+    }
     tr:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,64,129,0.3);
     }
-
-    .pos {
-      font-weight: 700;
-      color: #ffcc00;
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
     }
   </style>
 </head>
 <body>
-
   <h1>Classifica Generale JESC CUP</h1>
-
-  <!-- Pulsante ritorno -->
-  <a href="index.html" class="back-btn">⬅ Torna alla Home</a>
-
-  <!-- Tabella -->
   <table id="classifica">
     <thead>
       <tr>
         <th>Posizione</th>
         <th>Anno</th>
         <th>Nazione</th>
-        <th>Artista / Canzone</th>
+        <th>Artista</th>
+        <th>Canzone</th>
         <th>Punteggio</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <!-- Righe generate in JS -->
+    </tbody>
   </table>
 
   <script>
-    // Anni da caricare
-    const years = Array.from({length: 22}, (_, i) => 2003 + i);
-    const allSongs = [];
+    const anni = Array.from({length: 22}, (_, i) => 2003 + i); // 2003–2024
+    let allSongs = [];
 
-    // Carica tutti i json
-    Promise.all(
-      years.map(year =>
-        fetch(`data-${year}.json`).then(res => res.json()).then(data => {
+    async function caricaDati() {
+      for (let year of anni) {
+        try {
+          const res = await fetch(`data-${year}.json`);
+          if (!res.ok) continue;
+          const data = await res.json();
           data.forEach(entry => {
-            // Calcolo punteggio secondo la tua formula
             const punteggio = (entry.voto * 10) * entry.voce * entry.coreografia;
             allSongs.push({
               anno: year,
-              nazione: `${entry.flag} ${entry.paese}`,
+              nazione: `<img class="flag-icon" src="flags/${entry.code}.png" alt="Bandiera ${entry.paese}"> ${entry.paese}`,
               artista: entry.artista,
               canzone: entry.canzone,
               punteggio: punteggio
             });
           });
-        })
-      )
-    ).then(() => {
-      // Ordina per punteggio decrescente
+        } catch (err) {
+          console.error(`Errore nel caricamento ${year}:`, err);
+        }
+      }
+
+      // ordina dal punteggio più alto al più basso
       allSongs.sort((a, b) => b.punteggio - a.punteggio);
 
-      // Popola la tabella
+      // popola tabella
       const tbody = document.querySelector("#classifica tbody");
-      allSongs.forEach((song, index) => {
+      allSongs.forEach((song, i) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td class="pos">${index + 1}</td>
+          <td>${i+1}</td>
           <td>${song.anno}</td>
           <td>${song.nazione}</td>
-          <td>${song.artista} – ${song.canzone}</td>
-          <td>${song.punteggio.toFixed(1)}</td>
+          <td>${song.artista}</td>
+          <td>${song.canzone}</td>
+          <td>${song.punteggio.toFixed(2)}</td>
         `;
         tbody.appendChild(tr);
       });
-    }).catch(err => {
-      console.error("Errore nel caricamento dei dati:", err);
-    });
-  </script>
+    }
 
+    caricaDati();
+  </script>
 </body>
 </html>
