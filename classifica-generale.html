@@ -12,6 +12,7 @@
       color: white;
       text-align: center;
       padding: 20px;
+      position: relative;
     }
     h1, h2 {
       margin-bottom: 20px;
@@ -49,9 +50,30 @@
       vertical-align: middle;
       border-radius: 2px;
     }
+    /* Pulsante Home */
+    .btn-home {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #ff4081;
+      color: white;
+      padding: 10px 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn-home:hover {
+      background: #e91e63;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
+  <a href="index.html" class="btn-home">🏠 Home</a>
+  
   <h1>Classifica Generale JESC CUP (2003–2024)</h1>
 
   <!-- Tabella principale -->
@@ -137,7 +159,7 @@
 
         // Evidenzia semifinaliste
         if (semiSet.has(`${song.year}-${song.country}`)) {
-          tr.style.background = "rgba(76, 175, 80, 0.7)"; // verde semitrasparente
+          tr.style.background = "rgba(76, 175, 80, 0.7)";
           tr.style.color = "#fff";
         }
 
