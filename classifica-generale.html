@@ -107,29 +107,14 @@
 
       // --- Tabella principale ---
       allSongs.sort((a, b) => b.points - a.points);
-      const tbody = document.querySelector("#ranking tbody");
-      allSongs.forEach((song, index) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${index + 1}</td>
-          <td>${song.year}</td>
-          <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
-          <td>${song.points.toFixed(1)}</td>
-        `;
-        tbody.appendChild(tr);
-      });
 
-      // --- Tabella semifinali ---
+      // --- Calcolo semifinaliste ---
       let semifinali = [];
-
-      // prime 3 di ogni anno
       for (let year of years) {
         const songsOfYear = allSongs.filter(s => s.year === year)
                                     .sort((a,b)=>b.points - a.points);
         semifinali.push(...songsOfYear.slice(0,3));
       }
-
-      // migliori quarte per arrivare a 70
       const quarte = [];
       for (let year of years) {
         const songsOfYear = allSongs.filter(s => s.year === year)
@@ -139,9 +124,33 @@
       quarte.sort((a,b)=>b.points - a.points);
       semifinali.push(...quarte.slice(0, 70 - semifinali.length));
 
-      // ORDINA SEMIFINALI PER PUNTEGGIO
+      // Ordina semifinali per punteggio
       semifinali.sort((a,b) => b.points - a.points);
 
+      // Crea un set per evidenziare le semifinaliste nella tabella principale
+      const semiSet = new Set(semifinali.map(s => `${s.year}-${s.country}`));
+
+      // Popola tabella principale
+      const tbody = document.querySelector("#ranking tbody");
+      allSongs.forEach((song, index) => {
+        const tr = document.createElement("tr");
+
+        // Evidenzia semifinaliste
+        if (semiSet.has(`${song.year}-${song.country}`)) {
+          tr.style.background = "rgba(76, 175, 80, 0.7)"; // verde semitrasparente
+          tr.style.color = "#fff";
+        }
+
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${song.year}</td>
+          <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
+          <td>${song.points.toFixed(1)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Popola tabella semifinali
       const tbodySemi = document.querySelector("#semifinali tbody");
       semifinali.forEach((song, index) => {
         const tr = document.createElement("tr");
