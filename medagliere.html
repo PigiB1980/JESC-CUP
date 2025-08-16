@@ -3,204 +3,182 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Medagliere JESC CUP 2003-2024</title>
+  <title>Classifica Generale - JESC CUP</title>
   <style>
     body {
-      background: #1e1e50;
+      background: #1e1e50; /* stesso sfondo della pagina medagliere */
       color: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 20px;
+      position: relative;
     }
-
-    h1 {
+    h1, h2 {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
-
-    .year-section {
-      margin-bottom: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 15px 20px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    }
-
-    .year-section h2 {
-      margin-top: 0;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.5rem;
-      border-bottom: 2px solid #ff4081;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-    }
-
     table {
-      width: 100%;
+      width: 95%;
+      margin: 20px auto;
       border-collapse: collapse;
-      color: white;
+      background: rgba(255,255,255,0.05); /* sfondo opaco simile alla pagina medagliere */
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.9rem;
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
     }
-
     th, td {
-      padding: 8px;
-      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-
     th {
-      border-bottom: 1px solid #ff4081;
+      background: #ff4081;
+      color: #fff;
       font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 1;
     }
-
-    img.flag-icon {
-      width: 24px;
+    tr:nth-child(even) {
+      background: rgba(255,255,255,0.02);
+    }
+    tr:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .flag-icon {
+      width: 22px;
       height: 16px;
+      margin-right: 6px;
       vertical-align: middle;
-      margin-right: 8px;
-      border-radius: 3px;
+      border-radius: 2px;
       box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    }
+    .btn-home {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #ff4081;
+      color: white;
+      padding: 10px 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn-home:hover {
+      background: #e91e63;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="home-button">🏠 Home</a>
-  <h1>Medagliere JESC CUP - Podio dal 2003 al 2024</h1>
+  <a href="index.html" class="btn-home">🏠 Home</a>
+  
+  <h1>Classifica Generale JESC CUP (2003–2024)</h1>
 
-  <div id="medagliere-container">
-    <p class="loading">Caricamento dati in corso…</p>
-  </div>
+  <table id="ranking">
+    <thead>
+      <tr>
+        <th>Posizione</th>
+        <th>Anno</th>
+        <th>Nazione</th>
+        <th>Punteggio</th>
+        <th>Q</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>🎵 Canzoni qualificate alle Semifinali</h2>
+  <table id="semifinali">
+    <thead>
+      <tr>
+        <th>Posizione</th>
+        <th>Anno</th>
+        <th>Nazione</th>
+        <th>Punteggio</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 
   <script>
-    const anni = [];
-    for(let y = 2003; y <= 2024; y++) anni.push(y);
+    const years = Array.from({length: 22}, (_, i) => 2003 + i);
+    const allSongs = [];
 
-    const medagliereContainer = document.getElementById('medagliere-container');
-    medagliereContainer.innerHTML = ''; // pulisco loading
-
-    // Oggetto per contare medaglie totali
-    const medagliePerPaese = {};
-
-    // Funzione per calcolare il punteggio
-    function calcolaPunteggio(entry) {
-      return (entry.voto * 10) * entry.voce * entry.coreografia;
-    }
-
-    // Funzione per creare la mini tabella podio
-    function creaTabellaPodio(anno, dati) {
-      // Ordino in base al punteggio decrescente
-      dati.sort((a, b) => calcolaPunteggio(b) - calcolaPunteggio(a));
-
-      // Prendo i primi 3
-      const top3 = dati.slice(0, 3);
-
-      // Conta le medaglie per paese
-      top3.forEach((entry, i) => {
-        if (!medagliePerPaese[entry.paese]) {
-          medagliePerPaese[entry.paese] = { oro: 0, argento: 0, bronzo: 0 };
+    async function loadData() {
+      for (let year of years) {
+        try {
+          const res = await fetch(`data-${year}.json`);
+          if (!res.ok) continue;
+          const data = await res.json();
+          data.forEach(entry => {
+            const points = (entry.voto * 10) * entry.voce * entry.coreografia;
+            allSongs.push({
+              year: year,
+              country: entry.paese,
+              flag: entry.code,
+              points: points
+            });
+          });
+        } catch (err) {
+          console.error(`Errore caricando ${year}:`, err);
         }
-        if (i === 0) medagliePerPaese[entry.paese].oro++;
-        else if (i === 1) medagliePerPaese[entry.paese].argento++;
-        else medagliePerPaese[entry.paese].bronzo++;
+      }
+
+      allSongs.sort((a,b)=>b.points-a.points);
+
+      // Calcolo semifinaliste
+      let semifinali = [];
+      for (let year of years) {
+        const songsOfYear = allSongs.filter(s => s.year === year)
+                                    .sort((a,b)=>b.points - a.points);
+        semifinali.push(...songsOfYear.slice(0,3));
+      }
+      const quarte = [];
+      for (let year of years) {
+        const songsOfYear = allSongs.filter(s => s.year === year)
+                                    .sort((a,b)=>b.points - a.points);
+        if (songsOfYear.length > 3) quarte.push(songsOfYear[3]);
+      }
+      quarte.sort((a,b)=>b.points - a.points);
+      semifinali.push(...quarte.slice(0, 70 - semifinali.length));
+      semifinali.sort((a,b)=>b.points - a.points);
+
+      const semiSet = new Set(semifinali.map(s => `${s.year}-${s.country}`));
+
+      // Popola tabella principale
+      const tbody = document.querySelector("#ranking tbody");
+      allSongs.forEach((song,index)=>{
+        const tr = document.createElement("tr");
+        const q = semiSet.has(`${song.year}-${song.country}`) ? "Q" : "";
+        tr.innerHTML = `
+          <td>${index+1}</td>
+          <td>${song.year}</td>
+          <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
+          <td>${song.points.toFixed(1)}</td>
+          <td>${q}</td>
+        `;
+        tbody.appendChild(tr);
       });
 
-      const div = document.createElement('section');
-      div.className = 'year-section';
-
-      div.innerHTML = `
-        <h2>${anno}</h2>
-        <table>
-          <thead>
-            <tr><th>Pos.</th><th>Paese</th><th>Punteggio</th></tr>
-          </thead>
-          <tbody>
-            ${top3.map((entry, i) => {
-              const posEmoji = i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉';
-              const score = calcolaPunteggio(entry).toFixed(1);
-              return `
-                <tr>
-                  <td>${posEmoji}</td>
-                  <td><img class="flag-icon" src="flags/${entry.code}.png" alt="${entry.paese}" />${entry.paese}</td>
-                  <td>${score}</td>
-                </tr>
-              `;
-            }).join('')}
-          </tbody>
-        </table>
-      `;
-
-      return div;
-    }
-
-    // Funzione per creare la classifica totale medaglie
-    function creaClassificaMedaglie() {
-      const classificaArray = Object.entries(medagliePerPaese).map(([paese, medaglie]) => ({
-        paese,
-        oro: medaglie.oro,
-        argento: medaglie.argento,
-        bronzo: medaglie.bronzo
-      }));
-
-      classificaArray.sort((a, b) => {
-        if (b.oro !== a.oro) return b.oro - a.oro;
-        if (b.argento !== a.argento) return b.argento - a.argento;
-        return b.bronzo - a.bronzo;
+      // Popola tabella semifinali
+      const tbodySemi = document.querySelector("#semifinali tbody");
+      semifinali.forEach((song,index)=>{
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${index+1}</td>
+          <td>${song.year}</td>
+          <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
+          <td>${song.points.toFixed(1)}</td>
+        `;
+        tbodySemi.appendChild(tr);
       });
-
-      const div = document.createElement('section');
-      div.className = 'year-section';
-
-      div.innerHTML = `
-        <h2>Classifica Medaglie Totale</h2>
-        <table>
-          <thead>
-            <tr><th>Paese</th><th>🥇 Oro</th><th>🥈 Argento</th><th>🥉 Bronzo</th></tr>
-          </thead>
-          <tbody>
-            ${classificaArray.map(c => `
-              <tr>
-                <td>${c.paese}</td>
-                <td>${c.oro}</td>
-                <td>${c.argento}</td>
-                <td>${c.bronzo}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      `;
-
-      medagliereContainer.insertBefore(div, medagliereContainer.firstChild);
     }
 
-    // Funzione per caricare il JSON e creare la sezione
-    async function caricaDatiAnno(anno) {
-      try {
-        const response = await fetch(`data-${anno}.json`);
-        if(!response.ok) throw new Error('File non trovato o errore rete');
-        const dati = await response.json();
-
-        // Verifica se dati validi (almeno un punteggio)
-        const datiValidi = dati.some(entry => entry.voto > 0 || entry.voce > 0 || entry.coreografia > 0);
-        if(!datiValidi) return null;
-
-        return creaTabellaPodio(anno, dati);
-      } catch (e) {
-        console.warn(`Impossibile caricare dati per ${anno}:`, e);
-        return null;
-      }
-    }
-
-    // Carica tutti gli anni in sequenza
-    (async () => {
-      for (const anno of anni) {
-        const sezioneAnno = await caricaDatiAnno(anno);
-        if (sezioneAnno) medagliereContainer.appendChild(sezioneAnno);
-      }
-      creaClassificaMedaglie();
-    })();
-
+    loadData();
   </script>
 </body>
 </html>
