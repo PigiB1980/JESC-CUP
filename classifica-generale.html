@@ -120,7 +120,7 @@
       });
 
       // --- Tabella semifinali ---
-      const semifinali = [];
+      let semifinali = [];
 
       // prime 3 di ogni anno
       for (let year of years) {
@@ -138,6 +138,9 @@
       }
       quarte.sort((a,b)=>b.points - a.points);
       semifinali.push(...quarte.slice(0, 70 - semifinali.length));
+
+      // ORDINA SEMIFINALI PER PUNTEGGIO
+      semifinali.sort((a,b) => b.points - a.points);
 
       const tbodySemi = document.querySelector("#semifinali tbody");
       semifinali.forEach((song, index) => {
