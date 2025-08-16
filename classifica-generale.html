@@ -1,119 +1,107 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Classifica Generale - JESC CUP</title>
   <style>
-  body {
-    background: url('images/sfondo.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  h1 {
-    margin-bottom: 20px;
-  }
-  table {
-    width: 95%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    background: #111111; /* ← sfondo opaco (nero) */
-    border-radius: 12px;
-    overflow: hidden;
-    font-size: 0.9rem;
-  }
-  th, td {
-    padding: 8px 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-  }
-  th {
-    background: #ff4081;
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
-  tr:nth-child(even) {
-    background: #1e1e1e; /* righe alternate, grigio scuro */
-  }
-  tr:hover {
-    background: #333333; /* evidenziazione al passaggio */
-  }
-  .flag-icon {
-    width: 22px;
-    height: 16px;
-    margin-right: 6px;
-    vertical-align: middle;
-    border-radius: 2px;
-  }
-</style>
+    body {
+      background: url('images/sfondo.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Montserrat', sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 95%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background: #111111; /* sfondo pieno */
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    th {
+      background: #ff4081;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tr:nth-child(even) {
+      background: #1e1e1e;
+    }
+    tr:hover {
+      background: #333333;
+    }
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Classifica Generale JESC CUP</h1>
-  <table id="classifica">
+  <h1>Classifica Generale JESC CUP (2003–2024)</h1>
+  <table id="ranking">
     <thead>
       <tr>
         <th>Posizione</th>
         <th>Anno</th>
         <th>Nazione</th>
-        <th>Artista</th>
-        <th>Canzone</th>
         <th>Punteggio</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Righe generate in JS -->
+      <!-- qui lo script JS inserisce le righe -->
     </tbody>
   </table>
 
   <script>
-    const anni = Array.from({length: 22}, (_, i) => 2003 + i); // 2003–2024
-    let allSongs = [];
+    const years = Array.from({length: 22}, (_, i) => 2003 + i); // 2003–2024
+    const allSongs = [];
 
-    async function caricaDati() {
-      for (let year of anni) {
-        try {
-          const res = await fetch(`data-${year}.json`);
-          if (!res.ok) continue;
-          const data = await res.json();
+    function loadYear(year) {
+      return fetch(`data-${year}.json`)
+        .then(res => res.json())
+        .then(data => {
           data.forEach(entry => {
-            const punteggio = (entry.voto * 10) * entry.voce * entry.coreografia;
+            const points = (entry.voto * 10) * entry.voce * entry.coreografia;
             allSongs.push({
-              anno: year,
-              nazione: `<img class="flag-icon" src="flags/${entry.code}.png" alt="Bandiera ${entry.paese}"> ${entry.paese}`,
-              artista: entry.artista,
-              canzone: entry.canzone,
-              punteggio: punteggio
+              year: year,
+              country: entry.paese,
+              flag: entry.bandiera,
+              points: points
             });
           });
-        } catch (err) {
-          console.error(`Errore nel caricamento ${year}:`, err);
-        }
-      }
-
-      // ordina dal punteggio più alto al più basso
-      allSongs.sort((a, b) => b.punteggio - a.punteggio);
-
-      // popola tabella
-      const tbody = document.querySelector("#classifica tbody");
-      allSongs.forEach((song, i) => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${i+1}</td>
-          <td>${song.anno}</td>
-          <td>${song.nazione}</td>
-          <td>${song.artista}</td>
-          <td>${song.canzone}</td>
-          <td>${song.punteggio.toFixed(2)}</td>
-        `;
-        tbody.appendChild(tr);
-      });
+        });
     }
 
-    caricaDati();
+    Promise.all(years.map(loadYear)).then(() => {
+      allSongs.sort((a, b) => b.points - a.points);
+      const tbody = document.querySelector("#ranking tbody");
+
+      allSongs.forEach((song, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${song.year}</td>
+          <td><img src="flags/${song.flag}.png" class="flag-icon"> ${song.country}</td>
+          <td>${song.points.toFixed(1)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    });
   </script>
 </body>
 </html>
