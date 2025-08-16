@@ -6,25 +6,26 @@
   <title>Classifica Generale - JESC CUP</title>
   <style>
     body {
-      background: url('images/sfondo.png') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Montserrat', sans-serif;
+      background: #1e1e50; /* stesso sfondo della pagina medagliere */
       color: white;
-      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
       padding: 20px;
       position: relative;
     }
     h1, h2 {
+      text-align: center;
       margin-bottom: 20px;
     }
     table {
       width: 95%;
       margin: 20px auto;
       border-collapse: collapse;
-      background: #111111; /* sfondo opaco */
+      background: rgba(255,255,255,0.05); /* sfondo opaco simile alla pagina medagliere */
       border-radius: 12px;
       overflow: hidden;
       font-size: 0.9rem;
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
     }
     th, td {
       padding: 8px 10px;
@@ -33,15 +34,16 @@
     th {
       background: #ff4081;
       color: #fff;
+      font-weight: 700;
       position: sticky;
       top: 0;
       z-index: 1;
     }
     tr:nth-child(even) {
-      background: #1e1e1e;
+      background: rgba(255,255,255,0.02);
     }
     tr:hover {
-      background: #333333;
+      background: rgba(255,255,255,0.1);
     }
     .flag-icon {
       width: 22px;
@@ -49,6 +51,7 @@
       margin-right: 6px;
       vertical-align: middle;
       border-radius: 2px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.5);
     }
     .btn-home {
       position: absolute;
@@ -75,7 +78,6 @@
   
   <h1>Classifica Generale JESC CUP (2003–2024)</h1>
 
-  <!-- Tabella principale -->
   <table id="ranking">
     <thead>
       <tr>
@@ -89,7 +91,6 @@
     <tbody></tbody>
   </table>
 
-  <!-- Tabella semifinali -->
   <h2>🎵 Canzoni qualificate alle Semifinali</h2>
   <table id="semifinali">
     <thead>
@@ -127,10 +128,9 @@
         }
       }
 
-      // --- Tabella principale ---
-      allSongs.sort((a, b) => b.points - a.points);
+      allSongs.sort((a,b)=>b.points-a.points);
 
-      // --- Calcolo semifinaliste ---
+      // Calcolo semifinaliste
       let semifinali = [];
       for (let year of years) {
         const songsOfYear = allSongs.filter(s => s.year === year)
@@ -145,20 +145,17 @@
       }
       quarte.sort((a,b)=>b.points - a.points);
       semifinali.push(...quarte.slice(0, 70 - semifinali.length));
+      semifinali.sort((a,b)=>b.points - a.points);
 
-      // Ordina semifinali per punteggio
-      semifinali.sort((a,b) => b.points - a.points);
-
-      // Crea un set per segnare le semifinaliste
       const semiSet = new Set(semifinali.map(s => `${s.year}-${s.country}`));
 
       // Popola tabella principale
       const tbody = document.querySelector("#ranking tbody");
-      allSongs.forEach((song, index) => {
+      allSongs.forEach((song,index)=>{
         const tr = document.createElement("tr");
         const q = semiSet.has(`${song.year}-${song.country}`) ? "Q" : "";
         tr.innerHTML = `
-          <td>${index + 1}</td>
+          <td>${index+1}</td>
           <td>${song.year}</td>
           <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
           <td>${song.points.toFixed(1)}</td>
@@ -169,10 +166,10 @@
 
       // Popola tabella semifinali
       const tbodySemi = document.querySelector("#semifinali tbody");
-      semifinali.forEach((song, index) => {
+      semifinali.forEach((song,index)=>{
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${index + 1}</td>
+          <td>${index+1}</td>
           <td>${song.year}</td>
           <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
           <td>${song.points.toFixed(1)}</td>
