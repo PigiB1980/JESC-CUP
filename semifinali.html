@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Semifinali JESC CUP</title>
+  <style>
+    body {
+      background: #1e1e50;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255,255,255,0.05);
+    }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
+    }
+    th {
+      background: #ff4081;
+      font-weight: 700;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    tr:nth-child(even) {
+      background: rgba(255,255,255,0.02);
+    }
+    tr:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    }
+    .btn-home {
+      display: inline-block;
+      margin-bottom: 20px;
+      background: #ff4081;
+      color: white;
+      padding: 10px 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="btn-home">🏠 Home</a>
+  <h1>Semifinali JESC CUP</h1>
+
+  <div id="semifinali-container">
+    <p>Caricamento dati in corso…</p>
+  </div>
+
+  <script>
+    const anni = Array.from({length: 22}, (_, i) => 2003 + i);
+    const allSongs = [];
+
+    async function loadData() {
+      for (let year of anni) {
+        try {
+          const res = await fetch(`data-${year}.json`);
+          if (!res.ok) continue;
+          const data = await res.json();
+          data.forEach(entry => {
+            const points = (entry.voto * 10) * entry.voce * entry.coreografia;
+            allSongs.push({
+              year: year,
+              country: entry.paese,
+              flag: entry.code,
+              points: points
+            });
+          });
+        } catch (err) {
+          console.error(`Errore caricando ${year}:`, err);
+        }
+      }
+
+      // Ordino tutte le canzoni
+      allSongs.sort((a,b)=>b.points-a.points);
+
+      // Seleziono i 70 qualificati
+      let semifinali = [];
+      for (let year of anni) {
+        const songsOfYear = allSongs.filter(s => s.year === year)
+                                    .sort((a,b)=>b.points - a.points);
+        semifinali.push(...songsOfYear.slice(0,3));
+      }
+      const quarte = [];
+      for (let year of anni) {
+        const songsOfYear = allSongs.filter(s => s.year === year)
+                                    .sort((a,b)=>b.points - a.points);
+        if (songsOfYear.length > 3) quarte.push(songsOfYear[3]);
+      }
+      quarte.sort((a,b)=>b.points - a.points);
+      semifinali.push(...quarte.slice(0, 70 - semifinali.length));
+      semifinali.sort((a,b)=>b.points - a.points);
+
+      // Divido in 10 semifinali
+      const semifinaleTables = [];
+      const perSemi = Math.ceil(semifinali.length / 10);
+      for(let i=0;i<10;i++){
+        semifinaleTables.push(semifinali.slice(i*perSemi, (i+1)*perSemi));
+      }
+
+      const container = document.getElementById("semifinali-container");
+      container.innerHTML = "";
+
+      semifinaleTables.forEach((semiSongs,index)=>{
+        const h2 = document.createElement("h2");
+        h2.textContent = `Semifinale ${index+1}`;
+        container.appendChild(h2);
+
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        thead.innerHTML = `<tr>
+          <th>Posizione</th>
+          <th>Anno</th>
+          <th>Nazione</th>
+          <th>Punteggio</th>
+        </tr>`;
+        table.appendChild(thead);
+
+        const tbody = document.createElement("tbody");
+        semiSongs.forEach((song,pos)=>{
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${pos+1}</td>
+            <td>${song.year}</td>
+            <td><img src="flags/${song.flag}.png" class="flag-icon" alt="${song.country}"> ${song.country}</td>
+            <td>${song.points.toFixed(1)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        container.appendChild(table);
+      });
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
