@@ -11,37 +11,52 @@
       margin: 0;
       padding: 20px;
     }
+
     h1 {
       font-size: 4em;
       text-align: center;
       margin: 30px 0 10px;
+      background: linear-gradient(to right, #ffcc00, #ff0066);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    h2 {
+
+    .highlight {
       text-align: center;
-      font-size: 1.5em;
-      font-weight: normal;
-      margin-bottom: 40px;
+      font-size: 1.6em;
+      font-weight: bold;
+      margin: 20px auto 50px;
+      padding: 15px 25px;
+      background: rgba(255, 204, 0, 0.15);
+      border: 2px solid #ffcc00;
+      border-radius: 12px;
+      display: inline-block;
     }
+
     h3 {
       font-size: 1.2em;
       margin: 15px 0 8px;
     }
+
     .flag-icon {
       height: 20px;
       vertical-align: middle;
       margin-right: 8px;
     }
+
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 20px;
       margin: 20px 0 40px;
     }
+
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
     }
+
     .video-container iframe {
       position: absolute;
       top: 0;
@@ -50,30 +65,49 @@
       height: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
+    .video-container iframe:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
     .nav-links {
       text-align: center;
       margin-top: 40px;
     }
+
     .nav-links a {
       background: #ffcc00;
       color: #000;
       text-decoration: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       margin: 0 10px;
       border-radius: 8px;
       font-weight: bold;
-      transition: background 0.3s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      display: inline-block;
     }
+
     .nav-links a:hover {
       background: #ffaa00;
+      box-shadow: 0 6px 16px rgba(255,170,0,0.6);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 500px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
   <h1>🎶 SEMIFINALE 1 🎶</h1>
-  <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
+  <div class="highlight">7 canzoni, 1 posto in finale. Chi passerà?</div>
 
   <div class="video-grid">
     <div>
