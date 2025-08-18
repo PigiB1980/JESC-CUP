@@ -17,11 +17,10 @@
       margin: 30px 0 10px;
     }
     h2.subtitle {
-      font-family: 'Verdana', sans-serif;
-      font-size: 1.6em;
       text-align: center;
+      font-size: 1.5em;
       font-weight: normal;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
     h3 {
       font-size: 1.2em;
@@ -68,6 +67,31 @@
     }
     .nav-links a:hover {
       background: #ffaa00;
+    }
+    /* Stile per il box di voto */
+    #vote-form {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    #vote-form div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    #vote-form button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      background: #ff4081;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #vote-form button:hover {
+      background: #e91e63;
     }
   </style>
 </head>
@@ -126,6 +150,37 @@
       </div>
     </div>
   </div>
+
+  <!-- Box di voto -->
+  <h2 class="subtitle">Vota la tua canzone preferita!</h2>
+  <form id="vote-form">
+    <div>
+      <label><input type="radio" name="song" value="Ucraina 2008 – Matrosy"> Ucraina 2008 – Viktoria Petryk – "Matrosy"</label>
+      <label><input type="radio" name="song" value="Ucraina 2021 – Vazhil"> Ucraina 2021 – Olena Usenko – "Vazhil"</label>
+      <label><input type="radio" name="song" value="Norvegia 2004 – En Stjerne skal jeg bli"> Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</label>
+      <label><input type="radio" name="song" value="Ucraina 2017 – Don't stop"> Ucraina 2017 – Anastasiya Baginska – "Don't stop"</label>
+      <label><input type="radio" name="song" value="Lettonia 2010 – Viva la dance"> Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</label>
+      <label><input type="radio" name="song" value="Armenia 2019 – Colours of your dream"> Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</label>
+      <label><input type="radio" name="song" value="Australia 2015 – My girls"> Australia 2015 – Bella Paige – "My girls"</label>
+    </div>
+    <button type="submit">Vota</button>
+  </form>
+  <p id="vote-message" style="text-align:center; font-weight:bold; margin-top:20px;"></p>
+
+  <script>
+    const form = document.getElementById('vote-form');
+    const message = document.getElementById('vote-message');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const choice = form.song.value;
+      if(choice){
+        message.textContent = `Grazie! Hai votato: ${choice}`;
+      } else {
+        message.textContent = `Seleziona una canzone prima di votare!`;
+      }
+    });
+  </script>
 
   <div class="nav-links">
     <a href="index.html">⬅️ Torna all’Indice</a>
