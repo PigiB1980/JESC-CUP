@@ -70,9 +70,8 @@
       background: #ffaa00;
     }
 
-    /* CLASSIFICA - inizialmente nascosta */
+    /* CLASSIFICA - sempre visibile */
     .classifica {
-       /* <- togli questa riga per mostrarla */
       max-width: 600px;
       margin: 50px auto;
       padding: 20px;
@@ -112,6 +111,11 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       text-transform: uppercase;
     }
+
+    /* Nasconde artista + titolo */
+    .nascosto {
+      visibility: hidden; /* testo nascosto ma spazio mantenuto */
+    }
   </style>
 </head>
 <body>
@@ -121,66 +125,60 @@
 
   <div class="video-grid">
     <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2008 – Viktoria Petryk – "Matrosy"</h3>
+      <h3>🇺🇦 Ucraina 2008 – Viktoria Petryk – "Matrosy"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/Q4qM87SOMz4" title="Ucraina 2008 – Matrosy" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/oNXuIVBfIdY" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
     <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2021 – Olena Usenko – "Vazhil"</h3>
+      <h3>🇺🇦 Ucraina 2021 – Olena Usenko – "Vazhil"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/tYBeJ_VBzgs" title="Ucraina 2021 – Vazhil" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/oanhlMkHB9c" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
     <div>
-      <h3><img class="flag-icon" src="flags/no.png"> Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</h3>
+      <h3>🇳🇴 Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/u6DNJtgblJQ" title="Norvegia 2004 – En Stjerne skal jeg bli" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/gHB2p1Kf7mw" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
     <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2017 – Anastasiya Baginska – "Don't stop"</h3>
+      <h3>🇺🇦 Ucraina 2017 – Anastasiya Baginska – "Don't stop"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/USZsQEejK8o" title="Ucraina 2017 – Don't stop" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/fboFjYpMH14" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
     <div>
-      <h3><img class="flag-icon" src="flags/lv.png"> Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</h3>
+      <h3>🇱🇻 Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/splCSKK8jVQ" title="Lettonia 2010 – Viva la dance" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/TYXQ0rAFHvo" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
     <div>
-      <h3><img class="flag-icon" src="flags/am.png"> Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</h3>
+      <h3>🇦🇲 Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/sWNEG54GEto" title="Armenia 2019 – Colours of your dream" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/M8lpU9XgRRs" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
     <div>
-      <h3><img class="flag-icon" src="flags/au.png"> Australia 2015 – Bella Paige – "My girls"</h3>
+      <h3>🇦🇺 Australia 2015 – Bella Paige – "My girls"</h3>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/t3B8swgwt64" title="Australia 2015 – My girls" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/xCpOnl5sMBc" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
-  <!-- CLASSIFICA (inizialmente nascosta) -->
+  <!-- CLASSIFICA (sempre visibile, ma con artisti/canzoni nascosti) -->
   <div class="classifica">
     <h2>Classifica Semifinale 1</h2>
     <ol>
-      <li>🇺🇦 Ucraina 2008 – Viktoria Petryk – "Matrosy" <span class="badge-final">IN FINALE!</span></li>
-      <li>🇺🇦 Ucraina 2021 – Olena Usenko – "Vazhil"</li>
-      <li>🇳🇴 Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</li>
-      <li>🇺🇦 Ucraina 2017 – Anastasiya Baginska – "Don't stop"</li>
-      <li>🇱🇻 Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</li>
-      <li>🇦🇲 Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</li>
-      <li>🇦🇺 Australia 2015 – Bella Paige – "My girls"</li>
+      <li>🇺🇦 <span class="nascosto">Ucraina 2008 – Viktoria Petryk – "Matrosy"</span> <span class="badge-final">IN FINALE!</span></li>
+      <li>🇺🇦 <span class="nascosto">Ucraina 2021 – Olena Usenko – "Vazhil"</span></li>
+      <li>🇳🇴 <span class="nascosto">Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</span></li>
+      <li>🇺🇦 <span class="nascosto">Ucraina 2017 – Anastasiya Baginska – "Don't stop"</span></li>
+      <li>🇱🇻 <span class="nascosto">Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</span></li>
+      <li>🇦🇲 <span class="nascosto">Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</span></li>
+      <li>🇦🇺 <span class="nascosto">Australia 2015 – Bella Paige – "My girls"</span></li>
     </ol>
   </div>
 
