@@ -69,6 +69,47 @@
     .nav-links a:hover {
       background: #ffaa00;
     }
+
+    /* CLASSIFICA */
+    .classifica {
+      margin-top: 60px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .classifica h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+    .classifica ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .classifica li {
+      font-size: 1.2em;
+      padding: 10px 15px;
+      margin: 8px 0;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    .classifica li:hover {
+      transform: scale(1.03);
+      background: rgba(255,255,255,0.15);
+    }
+    .classifica li:first-child {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: #ff3333;
+      background: rgba(255,255,255,0.2);
+      text-align: center;
+      border: 2px solid #ff3333;
+      box-shadow: 0 0 15px rgba(255, 50, 50, 0.8);
+    }
   </style>
 </head>
 <body>
@@ -77,54 +118,20 @@
   <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2008 – Viktoria Petryk – "Matrosy"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/Q4qM87SOMz4" title="Ucraina 2008 – Matrosy" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
+    <!-- VIDEO come prima -->
+  </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2021 – Olena Usenko – "Vazhil"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/tYBeJ_VBzgs" title="Ucraina 2021 – Vazhil" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div>
-      <h3><img class="flag-icon" src="flags/no.png"> Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/u6DNJtgblJQ" title="Norvegia 2004 – En Stjerne skal jeg bli" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2017 – Anastasiya Baginska – "Don't stop"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/USZsQEejK8o" title="Ucraina 2017 – Don't stop" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div>
-      <h3><img class="flag-icon" src="flags/lv.png"> Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/splCSKK8jVQ" title="Lettonia 2010 – Viva la dance" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div>
-      <h3><img class="flag-icon" src="flags/am.png"> Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/sWNEG54GEto" title="Armenia 2019 – Colours of your dream" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div>
-      <h3><img class="flag-icon" src="flags/au.png"> Australia 2015 – Bella Paige – "My girls"</h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/t3B8swgwt64" title="Australia 2015 – My girls" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
+  <div class="classifica">
+    <h2>Classifica Semifinale 1</h2>
+    <ol>
+      <li>Ucraina 2008 – Viktoria Petryk – "Matrosy"</li>
+      <li>Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</li>
+      <li>Australia 2015 – Bella Paige – "My girls"</li>
+      <li>Ucraina 2017 – Anastasiya Baginska – "Don't stop"</li>
+      <li>Ucraina 2021 – Olena Usenko – "Vazhil"</li>
+      <li>Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</li>
+      <li>Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</li>
+    </ol>
   </div>
 
   <div class="nav-links">
