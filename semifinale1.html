@@ -70,41 +70,33 @@
       background: #ffaa00;
     }
 
-    /* --- CLASSIFICA --- */
+    /* CLASSIFICA - inizialmente nascosta */
     .classifica {
-      margin-top: 60px;
-      text-align: center;
+      display: none; /* <- togli questa riga per mostrarla */
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
     .classifica h2 {
-      font-size: 2em;
+      text-align: center;
       margin-bottom: 20px;
+      font-size: 2em;
     }
     .classifica ol {
       list-style: none;
       padding: 0;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: left;
     }
     .classifica li {
       font-size: 1.2em;
-      padding: 12px 18px;
-      margin: 10px 0;
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    .classifica li:hover {
-      transform: scale(1.02);
-      background: rgba(255,255,255,0.2);
-    }
-    .classifica li.first {
-      font-size: 1.6em;
+    .classifica li:first-child {
+      color: #00aaff; /* blu evidenziato */
       font-weight: bold;
-      color: #ff3333;
-      background: rgba(255,255,255,0.2);
-      text-align: center;
     }
   </style>
 </head>
@@ -164,17 +156,17 @@
     </div>
   </div>
 
-  <!-- CLASSIFICA -->
+  <!-- CLASSIFICA (inizialmente nascosta) -->
   <div class="classifica">
-    <h2>🏆 Classifica Semifinale 1 🏆</h2>
+    <h2>Classifica Semifinale 1</h2>
     <ol>
-      <li class="first">1° – Ucraina 2008 – Viktoria Petryk – "Matrosy"</li>
-      <li>2° – Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</li>
-      <li>3° – Australia 2015 – Bella Paige – "My girls"</li>
-      <li>4° – Ucraina 2021 – Olena Usenko – "Vazhil"</li>
-      <li>5° – Ucraina 2017 – Anastasiya Baginska – "Don't stop"</li>
-      <li>6° – Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</li>
-      <li>7° – Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</li>
+      <li>🇺🇦 Ucraina 2008 – Viktoria Petryk – "Matrosy"</li>
+      <li>🇺🇦 Ucraina 2021 – Olena Usenko – "Vazhil"</li>
+      <li>🇳🇴 Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</li>
+      <li>🇺🇦 Ucraina 2017 – Anastasiya Baginska – "Don't stop"</li>
+      <li>🇱🇻 Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</li>
+      <li>🇦🇲 Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</li>
+      <li>🇦🇺 Australia 2015 – Bella Paige – "My girls"</li>
     </ol>
   </div>
 
