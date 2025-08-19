@@ -12,10 +12,20 @@
       margin: 0;
       padding: 20px;
     }
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+    h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 3em; /* più grande */
+  background: linear-gradient(90deg, #ff4081, #ffea00, #00ffff, #ff4081);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
     table {
       width: 90%;
       margin: 20px auto;
