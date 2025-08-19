@@ -72,6 +72,7 @@
 
     /* CLASSIFICA - inizialmente nascosta */
     .classifica {
+       /* <- togli questa riga per mostrarla */
       max-width: 600px;
       margin: 50px auto;
       padding: 20px;
@@ -92,10 +93,24 @@
       font-size: 1.2em;
       padding: 8px 12px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .classifica li:first-child {
       color: #00aaff; /* blu evidenziato */
       font-weight: bold;
+    }
+    .badge-final {
+      background: #ff3333; /* rosso acceso */
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-left: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      text-transform: uppercase;
     }
   </style>
 </head>
