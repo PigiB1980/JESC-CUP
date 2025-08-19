@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>JESC CUP – Semifinale 3</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 4em;
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 1.2em;
+      margin: 15px 0 8px;
+    }
+    .flag-icon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+      margin: 20px 0 40px;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .nav-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .nav-links a {
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover {
+      background: #ffaa00;
+    }
+
+    /* Classifica stylosa */
+    .classifica table {
+      width: 80%;
+      margin: 40px auto;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .classifica th, .classifica td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
+    }
+    .in-finale {
+      background: red;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    /* Nasconde bandiere, artisti e titoli */
+    .classifica tbody td:nth-child(n+2) {
+      display: none;
+    }
+    /* Mantiene visibile il box IN FINALE! */
+    .classifica tbody td:first-child + .in-finale {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎶 SEMIFINALE 3 🎶</h1>
+  <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
+
+  <div class="video-grid">
+    <div>
+      <h3><img class="flag-icon" src="flags/se.png"> Svezia 2007 – Frida Sandén – "Nu elle aldrig"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Svezia 2007 – Nu elle aldrig" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h3><img class="flag-icon" src="flags/pl.png"> Polonia 2023 – Maja Krzyzewska – "I just need a friend"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Polonia 2023 – I just need a friend" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h3><img class="flag-icon" src="flags/ro.png"> Romania 2008 – Madalina & Andrada – "Salvati planeta"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Romania 2008 – Salvati planeta" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h3><img class="flag-icon" src="flags/fr.png"> Francia 2020 – Valentina – "J'imagine"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Francia 2020 – J'imagine" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h3><img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2013 – Myléne & Rosanne – "Double me"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Paesi Bassi 2013 – Double me" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h3><img class="flag-icon" src="flags/es.png"> Spagna 2024 – Chloe DelaRosa – "Como la Lola"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Spagna 2024 – Como la Lola" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div>
+      <h3><img class="flag-icon" src="flags/am.png"> Armenia 2022 – Nare – "Dance"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/XXXXXXX" title="Armenia 2022 – Dance" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classifica semifinale 3 -->
+  <div class="classifica">
+    <h2>Classifica Semifinale 3</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Artista</th>
+          <th>Canzone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1°</td>
+          <td><img class="flag-icon" src="flags/fr.png" alt="Francia"> Francia 2020</td>
+          <td>Valentina</td>
+          <td>"J'imagine"</td>
+          <td><span class="in-finale">IN FINALE!</span></td>
+        </tr>
+        <tr>
+          <td>2°</td>
+          <td><img class="flag-icon" src="flags/se.png" alt="Svezia"> Svezia 2007</td>
+          <td>Frida Sandén</td>
+          <td>"Nu elle aldrig"</td>
+        </tr>
+        <tr>
+          <td>3°</td>
+          <td><img class="flag-icon" src="flags/pl.png" alt="Polonia"> Polonia 2023</td>
+          <td>Maja Krzyzewska</td>
+          <td>"I just need a friend"</td>
+        </tr>
+        <tr>
+          <td>4°</td>
+          <td><img class="flag-icon" src="flags/ro.png" alt="Romania"> Romania 2008</td>
+          <td>Madalina & Andrada</td>
+          <td>"Salvati planeta"</td>
+        </tr>
+        <tr>
+          <td>5°</td>
+          <td><img class="flag-icon" src="flags/nl.png" alt="Paesi Bassi"> Paesi Bassi 2013</td>
+          <td>Myléne & Rosanne</td>
+          <td>"Double me"</td>
+        </tr>
+        <tr>
+          <td>6°</td>
+          <td><img class="flag-icon" src="flags/es.png" alt="Spagna"> Spagna 2024</td>
+          <td>Chloe DelaRosa</td>
+          <td>"Como la Lola"</td>
+        </tr>
+        <tr>
+          <td>7°</td>
+          <td><img class="flag-icon" src="flags/am.png" alt="Armenia"> Armenia 2022</td>
+          <td>Nare</td>
+          <td>"Dance"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">⬅️ Torna all’Indice</a>
+    <a href="semifinale4.html">Vai alla Semifinale 4 ➡️</a>
+  </div>
+
+</body>
+</html>
