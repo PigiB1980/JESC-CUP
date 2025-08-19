@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -45,7 +45,7 @@
 
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(3, 1fr); /* fissi 3 per riga */
       gap: 20px;
     }
 
@@ -83,6 +83,13 @@
 
     th {
       background: rgba(0,0,0,0.4);
+    }
+
+    /* nascondi contenuto classifica */
+    td.hidden {
+      color: transparent;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      user-select: none;
     }
   </style>
 </head>
@@ -183,51 +190,51 @@
     </tr>
     <tr>
       <td>1</td>
-      <td>Malta 2013</td>
-      <td>Gaia Cauchi</td>
-      <td>The start</td>
+      <td class="hidden">Malta 2013</td>
+      <td class="hidden">Gaia Cauchi</td>
+      <td class="hidden">The start</td>
       <td>---</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>Bielorussia 2016</td>
-      <td>Alexander Minyonok</td>
-      <td>Musyka Moih Pobeto</td>
+      <td class="hidden">Bielorussia 2016</td>
+      <td class="hidden">Alexander Minyonok</td>
+      <td class="hidden">Musyka Moih Pobeto</td>
       <td>---</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>Ucraina 2009</td>
-      <td>Andranik Aleksanyan</td>
-      <td>Try Topoli, Try surmy</td>
+      <td class="hidden">Ucraina 2009</td>
+      <td class="hidden">Andranik Aleksanyan</td>
+      <td class="hidden">Try Topoli, Try surmy</td>
       <td>---</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>Paesi Bassi 2023</td>
-      <td>Sep & Jasmine</td>
-      <td>Holding on to you</td>
+      <td class="hidden">Paesi Bassi 2023</td>
+      <td class="hidden">Sep & Jasmine</td>
+      <td class="hidden">Holding on to you</td>
       <td>---</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>Ucraina 2011</td>
-      <td>Kristall</td>
-      <td>Europe</td>
+      <td class="hidden">Ucraina 2011</td>
+      <td class="hidden">Kristall</td>
+      <td class="hidden">Europe</td>
       <td>---</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>Kazakistan 2022</td>
-      <td>David Charlin</td>
-      <td>Jer-Ana (Mother Earth)</td>
+      <td class="hidden">Kazakistan 2022</td>
+      <td class="hidden">David Charlin</td>
+      <td class="hidden">Jer-Ana (Mother Earth)</td>
       <td>---</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>Danimarca 2005</td>
-      <td>Nicolai</td>
-      <td>Shake shake shake</td>
+      <td class="hidden">Danimarca 2005</td>
+      <td class="hidden">Nicolai</td>
+      <td class="hidden">Shake shake shake</td>
       <td>---</td>
     </tr>
   </table>
