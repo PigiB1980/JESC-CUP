@@ -11,233 +11,180 @@
       margin: 0;
       padding: 20px;
     }
-
-    header {
+    h1 {
       text-align: center;
+      font-size: 3em;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      margin-bottom: 40px;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 50px;
       margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 3em;
-      color: #ffcc00;
-      text-shadow: 2px 2px 5px #000;
+    /* --- VIDEO (lasciati identici) --- */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
     }
+    .video-item { text-align: center; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
+    iframe { border-radius: 12px; width: 100%; height: 200px; }
 
-    h2 {
-      text-align: center;
-      margin-top: 30px;
-      margin-bottom: 15px;
-      color: #ffcc00;
+    /* --- CLASSIFICA stile Semifinale 1 --- */
+    .classifica table {
+      width: 80%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
     }
-
-    h3 {
-      text-align: center;
-      margin-bottom: 10px;
-      line-height: 1.4;
+    .classifica th, .classifica td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
     }
-
-    h3 img.flag-icon {
-      width: 30px;
+    .flag-icon {
       height: 20px;
       vertical-align: middle;
       margin-right: 8px;
     }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* fissi 3 per riga */
-      gap: 20px;
+    .in-finale {
+      background: red;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 8px;
     }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    th, td {
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 10px;
-      text-align: center;
-    }
-
-    th {
-      background: rgba(0,0,0,0.4);
-    }
-
-    /* nascondi contenuto classifica */
-    td.hidden {
-      color: transparent;
-      text-shadow: 0 0 10px rgba(255,255,255,0.5);
-      user-select: none;
-    }
+    /* Nasconde Paese/Artista/Canzone nelle righe dati */
+    .classifica tbody td:nth-child(n+2) { display: none; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Semifinale 2 - JESC CUP</h1>
-  </header>
+  <h1>Semifinale 2 - JESC CUP</h1>
 
-  <section class="video-grid">
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/mt.png"> Malta 2013 – Gaia Cauchi<br>
-        <span style="font-style: italic;">"The start"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Malta 2013 – The start" frameborder="0" allowfullscreen></iframe>
+  <div class="video-grid">
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇲🇹 Malta 2013 - Gaia Cauchi</div>
+        <div class="line2">The start</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/NE0PLN3L6Sk" allowfullscreen></iframe>
     </div>
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/by.png"> Bielorussia 2016 – Alexander Minyonok<br>
-        <span style="font-style: italic;">"Musyka Moih Pobeto"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Bielorussia 2016 – Musyka Moih Pobeto" frameborder="0" allowfullscreen></iframe>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇧🇾 Bielorussia 2016 - Alexander Minyonok</div>
+        <div class="line2">Musyka Moih Pobeto</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/3i6cVgXoKHo" allowfullscreen></iframe>
     </div>
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/ua.png"> Ucraina 2009 – Andranik Aleksanyan<br>
-        <span style="font-style: italic;">"Try Topoli, Try surmy"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Ucraina 2009 – Try Topoli, Try surmy" frameborder="0" allowfullscreen></iframe>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇺🇦 Ucraina 2009 - Andranik Aleksanyan</div>
+        <div class="line2">Try Topoli, Try surmy</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/0aMc2sgbErU" allowfullscreen></iframe>
     </div>
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2023 – Sep & Jasmine<br>
-        <span style="font-style: italic;">"Holding on to you"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Paesi Bassi 2023 – Holding on to you" frameborder="0" allowfullscreen></iframe>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇳🇱 Paesi Bassi 2023 - Sep & Jasmine</div>
+        <div class="line2">Holding on to you</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/_PMPB1VfeHQ" allowfullscreen></iframe>
     </div>
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/ua.png"> Ucraina 2011 – Kristall<br>
-        <span style="font-style: italic;">"Europe"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Ucraina 2011 – Europe" frameborder="0" allowfullscreen></iframe>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇺🇦 Ucraina 2011 - Kristall</div>
+        <div class="line2">Europe</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/dGGhA4J5R2Y" allowfullscreen></iframe>
     </div>
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/kz.png"> Kazakistan 2022 – David Charlin<br>
-        <span style="font-style: italic;">"Jer-Ana (Mother Earth)"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Kazakistan 2022 – Jer-Ana (Mother Earth)" frameborder="0" allowfullscreen></iframe>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇰🇿 Kazakistan 2022 - David Charlin</div>
+        <div class="line2">Jer-Ana (Mother Earth)</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/zSFXz4s_8iM" allowfullscreen></iframe>
     </div>
-
-    <div>
-      <h3>
-        <img class="flag-icon" src="flags/dk.png"> Danimarca 2005 – Nicolai<br>
-        <span style="font-style: italic;">"Shake shake shake"</span>
-      </h3>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXXXX" 
-          title="Danimarca 2005 – Shake shake shake" frameborder="0" allowfullscreen></iframe>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇩🇰 Danimarca 2005 - Nicolai</div>
+        <div class="line2">Shake shake shake</div>
       </div>
+      <iframe src="https://www.youtube.com/embed/xpc6x6vhfKc" allowfullscreen></iframe>
     </div>
+  </div>
 
-  </section>
+  <!-- Classifica semifinale 2 (dati nascosti, bandierine incluse ma nascoste) -->
+  <div class="classifica">
+    <h2>Classifica Semifinale 2</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Artista</th>
+          <th>Canzone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1° <span class="in-finale">IN FINALE!</span></td>
+          <td><img class="flag-icon" src="flags/mt.png" alt="Malta"> Malta 2013</td>
+          <td>Gaia Cauchi</td>
+          <td>"The start"</td>
+        </tr>
+        <tr>
+          <td>2°</td>
+          <td><img class="flag-icon" src="flags/by.png" alt="Bielorussia"> Bielorussia 2016</td>
+          <td>Alexander Minyonok</td>
+          <td>"Musyka Moih Pobeto"</td>
+        </tr>
+        <tr>
+          <td>3°</td>
+          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2009</td>
+          <td>Andranik Aleksanyan</td>
+          <td>"Try Topoli, Try surmy"</td>
+        </tr>
+        <tr>
+          <td>4°</td>
+          <td><img class="flag-icon" src="flags/nl.png" alt="Paesi Bassi"> Paesi Bassi 2023</td>
+          <td>Sep & Jasmine</td>
+          <td>"Holding on to you"</td>
+        </tr>
+        <tr>
+          <td>5°</td>
+          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2011</td>
+          <td>Kristall</td>
+          <td>"Europe"</td>
+        </tr>
+        <tr>
+          <td>6°</td>
+          <td><img class="flag-icon" src="flags/kz.png" alt="Kazakistan"> Kazakistan 2022</td>
+          <td>David Charlin</td>
+          <td>"Jer-Ana (Mother Earth)"</td>
+        </tr>
+        <tr>
+          <td>7°</td>
+          <td><img class="flag-icon" src="flags/dk.png" alt="Danimarca"> Danimarca 2005</td>
+          <td>Nicolai</td>
+          <td>"Shake shake shake"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h2>Classifica Finale</h2>
-  <table>
-    <tr>
-      <th>Posizione</th>
-      <th>Paese</th>
-      <th>Artista</th>
-      <th>Canzone</th>
-      <th>Punteggio</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td class="hidden">Malta 2013</td>
-      <td class="hidden">Gaia Cauchi</td>
-      <td class="hidden">The start</td>
-      <td>---</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td class="hidden">Bielorussia 2016</td>
-      <td class="hidden">Alexander Minyonok</td>
-      <td class="hidden">Musyka Moih Pobeto</td>
-      <td>---</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td class="hidden">Ucraina 2009</td>
-      <td class="hidden">Andranik Aleksanyan</td>
-      <td class="hidden">Try Topoli, Try surmy</td>
-      <td>---</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td class="hidden">Paesi Bassi 2023</td>
-      <td class="hidden">Sep & Jasmine</td>
-      <td class="hidden">Holding on to you</td>
-      <td>---</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td class="hidden">Ucraina 2011</td>
-      <td class="hidden">Kristall</td>
-      <td class="hidden">Europe</td>
-      <td>---</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td class="hidden">Kazakistan 2022</td>
-      <td class="hidden">David Charlin</td>
-      <td class="hidden">Jer-Ana (Mother Earth)</td>
-      <td>---</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td class="hidden">Danimarca 2005</td>
-      <td class="hidden">Nicolai</td>
-      <td class="hidden">Shake shake shake</td>
-      <td>---</td>
-    </tr>
-  </table>
-
+  <div class="buttons" style="display:flex; justify-content:center; gap:20px; margin-top:40px;">
+    <a href="semifinali.html">⬅️ Torna alle Semifinali</a>
+    <a href="semifinale3.html">Vai a Semifinale 3 ➡️</a>
+  </div>
 </body>
 </html>
