@@ -12,7 +12,6 @@
       padding: 20px;
     }
     h1 {
-      font-family: 'Segoe UI', sans-serif;
       font-size: 4em;
       text-align: center;
       margin: 30px 0 10px;
@@ -23,21 +22,24 @@
       font-weight: normal;
       margin-bottom: 40px;
     }
-    h3 {
-      font-size: 1.2em;
-      margin: 15px 0 8px;
-    }
     .flag-icon {
       height: 20px;
       vertical-align: middle;
       margin-right: 8px;
     }
+
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
       margin: 20px 0 40px;
     }
+    .video-item, .video-grid > div { text-align: center; width: 100%; max-width: 400px; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -52,6 +54,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
+
+    /* --- NAV LINKS --- */
     .nav-links {
       text-align: center;
       margin-top: 40px;
@@ -66,9 +70,9 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-    .nav-links a:hover {
-      background: #ffaa00;
-    }
+    .nav-links a:hover { background: #ffaa00; }
+
+    /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
       margin: 40px auto;
@@ -89,12 +93,7 @@
       border-radius: 4px;
       font-weight: bold;
     }
-    .classifica tbody td:nth-child(n+2) {
-      display: none;
-    }
-    .classifica tbody td:first-child + .in-finale {
-      display: inline-block;
-    }
+    .classifica tbody td:nth-child(n+2) { display: none; }
   </style>
 </head>
 <body>
@@ -170,43 +169,42 @@
           <td><img class="flag-icon" src="flags/fr.png" alt="Francia"> Francia 2022</td>
           <td>Lissandro</td>
           <td>"Oh Maman!"</td>
-          <td><span class="in-finale">IN FINALE!</span></td>
         </tr>
         <tr>
           <td>2°</td>
-          <td><img class="flag-icon" src="flags/es.png" alt="Spagna"> Spagna 2021</td>
-          <td>Levi Diaz</td>
-          <td>"Reìr"</td>
-        </tr>
-        <tr>
-          <td>3°</td>
-          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2012</td>
-          <td>Anastasiya Petryk</td>
-          <td>"Nebo"</td>
-        </tr>
-        <tr>
-          <td>4°</td>
-          <td><img class="flag-icon" src="flags/ge.png" alt="Georgia"> Georgia 2016</td>
-          <td>Mariam Mamadashvili</td>
-          <td>"Mzeo"</td>
-        </tr>
-        <tr>
-          <td>5°</td>
-          <td><img class="flag-icon" src="flags/rs.png" alt="Serbia"> Serbia 2010</td>
-          <td>Sonja Skoric</td>
-          <td>"Carobna Noc"</td>
-        </tr>
-        <tr>
-          <td>6°</td>
           <td><img class="flag-icon" src="flags/es.png" alt="Spagna"> Spagna 2006</td>
           <td>Dani</td>
           <td>"Te doy mi voz"</td>
         </tr>
         <tr>
-          <td>7°</td>
+          <td>3°</td>
+          <td><img class="flag-icon" src="flags/ge.png" alt="Georgia"> Georgia 2016</td>
+          <td>Mariam Mamadashvili</td>
+          <td>"Mzeo"</td>
+        </tr>
+        <tr>
+          <td>4°</td>
+          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2012</td>
+          <td>Anastasiya Petryk</td>
+          <td>"Nebo"</td>
+        </tr>
+        <tr>
+          <td>5°</td>
           <td><img class="flag-icon" src="flags/kz.png" alt="Kazakistan"> Kazakistan 2020</td>
           <td>Karakat Bashanova</td>
           <td>"Forever"</td>
+        </tr>
+        <tr>
+          <td>6°</td>
+          <td><img class="flag-icon" src="flags/rs.png" alt="Serbia"> Serbia 2010</td>
+          <td>Sonja Skoric</td>
+          <td>"Carobna Noc"</td>
+        </tr>
+        <tr>
+          <td>7°</td>
+          <td><img class="flag-icon" src="flags/es.png" alt="Spagna"> Spagna 2021</td>
+          <td>Levi Diaz</td>
+          <td>"Reìr"</td>
         </tr>
       </tbody>
     </table>
