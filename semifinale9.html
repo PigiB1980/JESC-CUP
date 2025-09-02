@@ -12,7 +12,6 @@
       padding: 20px;
     }
     h1 {
-      font-family: 'Segoe UI', sans-serif;
       font-size: 4em;
       text-align: center;
       margin: 30px 0 10px;
@@ -23,21 +22,24 @@
       font-weight: normal;
       margin-bottom: 40px;
     }
-    h3 {
-      font-size: 1.2em;
-      margin: 15px 0 8px;
-    }
     .flag-icon {
       height: 20px;
       vertical-align: middle;
       margin-right: 8px;
     }
+
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
       margin: 20px 0 40px;
     }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -52,6 +54,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
+
+    /* --- NAV LINKS --- */
     .nav-links {
       text-align: center;
       margin-top: 40px;
@@ -66,9 +70,9 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-    .nav-links a:hover {
-      background: #ffaa00;
-    }
+    .nav-links a:hover { background: #ffaa00; }
+
+    /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
       margin: 40px auto;
@@ -89,12 +93,6 @@
       border-radius: 4px;
       font-weight: bold;
     }
-    .classifica tbody td:nth-child(n+2) {
-      display: none;
-    }
-    .classifica tbody td:first-child + .in-finale {
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
@@ -103,44 +101,71 @@
   <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
-    <div>
-      <h3><img class="flag-icon" src="flags/be.png"> Belgio 2003 – X!NK – "De Vriendschapsband"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/be.png"> Belgio 2003 – X!NK</div>
+        <div class="line2">"De Vriendschapsband"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Belgio 2003 – De Vriendschapsband" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/kz.png"> Kazakistan 2019 – Yerzhan Maxim – "Armanynnan Qalma"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/kz.png"> Kazakistan 2019 – Yerzhan Maxim</div>
+        <div class="line2">"Armanynnan Qalma"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Kazakistan 2019 – Armanynnan Qalma" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/se.png"> Svezia 2006 – Molly Sandén – "Det finaste nagom kan fa"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/se.png"> Svezia 2006 – Molly Sandén</div>
+        <div class="line2">"Det finaste nagom kan fa"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Svezia 2006 – Det finaste nagom kan fa" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/pl.png"> Polonia 2021 – Sara James – "Somebody"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/pl.png"> Polonia 2021 – Sara James</div>
+        <div class="line2">"Somebody"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Polonia 2021 – Somebody" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/cy.png"> Cipro 2007 – Yiorgos Ioannides – "I musiki dini ftera"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/cy.png"> Cipro 2007 – Yiorgos Ioannides</div>
+        <div class="line2">"I musiki dini ftera"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Cipro 2007 – I musiki dini ftera" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/am.png"> Armenia 2014 – Betty – "People of the sun"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/am.png"> Armenia 2014 – Betty</div>
+        <div class="line2">"People of the sun"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Armenia 2014 – People of the sun" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/it.png"> Italia 2024 – Simone Grande – "Pigiama Party"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/it.png"> Italia 2024 – Simone Grande</div>
+        <div class="line2">"Pigiama Party"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Italia 2024 – Pigiama Party" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -180,9 +205,9 @@
         </tr>
         <tr>
           <td>4°</td>
-          <td><img class="flag-icon" src="flags/am.png" alt="Armenia"> Armenia 2014</td>
-          <td>Betty</td>
-          <td>"People of the sun"</td>
+          <td><img class="flag-icon" src="flags/be.png" alt="Belgio"> Belgio 2003</td>
+          <td>X!NK</td>
+          <td>"De Vriendschapsband"</td>
         </tr>
         <tr>
           <td>5°</td>
@@ -192,9 +217,9 @@
         </tr>
         <tr>
           <td>6°</td>
-          <td><img class="flag-icon" src="flags/be.png" alt="Belgio"> Belgio 2003</td>
-          <td>X!NK</td>
-          <td>"De Vriendschapsband"</td>
+          <td><img class="flag-icon" src="flags/am.png" alt="Armenia"> Armenia 2014</td>
+          <td>Betty</td>
+          <td>"People of the sun"</td>
         </tr>
         <tr>
           <td>7°</td>
