@@ -12,7 +12,6 @@
       padding: 20px;
     }
     h1 {
-      font-family: 'Segoe UI', sans-serif;
       font-size: 4em;
       text-align: center;
       margin: 30px 0 10px;
@@ -23,21 +22,24 @@
       font-weight: normal;
       margin-bottom: 40px;
     }
-    h3 {
-      font-size: 1.2em;
-      margin: 15px 0 8px;
-    }
     .flag-icon {
       height: 20px;
       vertical-align: middle;
       margin-right: 8px;
     }
+
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
       margin: 20px 0 40px;
     }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -52,6 +54,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
+
+    /* --- NAV LINKS --- */
     .nav-links {
       text-align: center;
       margin-top: 40px;
@@ -66,9 +70,9 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-    .nav-links a:hover {
-      background: #ffaa00;
-    }
+    .nav-links a:hover { background: #ffaa00; }
+
+    /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
       margin: 40px auto;
@@ -89,12 +93,7 @@
       border-radius: 4px;
       font-weight: bold;
     }
-    .classifica tbody td:nth-child(n+2) {
-      display: none;
-    }
-    .classifica tbody td:first-child + .in-finale {
-      display: inline-block;
-    }
+    .classifica tbody td:nth-child(n+2) { display: none; }
   </style>
 </head>
 <body>
@@ -103,44 +102,71 @@
   <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
-    <div>
-      <h3><img class="flag-icon" src="flags/ru.png"> Russia 2009 – Katya Ryabova – "Malenky Prints"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/ru.png"> Russia 2009 – Katya Ryabova</div>
+        <div class="line2">"Malenky Prints"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Russia 2009 – Malenky Prints" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/pl.png"> Polonia 2018 – Roksana Wiegel – "Anyone i want to be"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/pl.png"> Polonia 2018 – Roksana Wiegel</div>
+        <div class="line2">"Anyone I want to be"</div>
+      </div>
       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/XXXXX" title="Polonia 2018 – Anyone i want to be" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Polonia 2018 – Anyone I want to be" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/ru.png"> Russia 2013 – Dayana Kirillova – "Dream on"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/ru.png"> Russia 2013 – Dayana Kirillova</div>
+        <div class="line2">"Dream on"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Russia 2013 – Dream on" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/pl.png"> Polonia 2022 – Laura – "To the moon"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/pl.png"> Polonia 2022 – Laura</div>
+        <div class="line2">"To the moon"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Polonia 2022 – To the moon" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/hr.png"> Croazia 2005 – Lorena Jelusic – "Rock baby"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/hr.png"> Croazia 2005 – Lorena Jelusic</div>
+        <div class="line2">"Rock baby"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Croazia 2005 – Rock baby" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/by.png"> Bielorussia 2015 – Ruslan Aslanov – "Volschebstvo (Magic)"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/by.png"> Bielorussia 2015 – Ruslan Aslanov</div>
+        <div class="line2">"Volschebstvo (Magic)"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Bielorussia 2015 – Volschebstvo (Magic)" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/fr.png"> Francia 2021 – Enzo – "Tic Tac"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/fr.png"> Francia 2021 – Enzo</div>
+        <div class="line2">"Tic Tac"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/XXXXX" title="Francia 2021 – Tic Tac" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -161,46 +187,46 @@
       <tbody>
         <tr>
           <td>1°</td>
-          <td><img class="flag-icon" src="flags/pl.png" alt="Polonia"> Polonia 2022</td>
-          <td>Laura</td>
-          <td>"To the moon"</td>
+          <td><img class="flag-icon" src="flags/pl.png" alt="Polonia"> Polonia 2018</td>
+          <td>Roksana Wiegel</td>
+          <td>"Anyone I want to be"</td>
           <td><span class="in-finale">IN FINALE!</span></td>
         </tr>
         <tr>
           <td>2°</td>
-          <td><img class="flag-icon" src="flags/pl.png" alt="Polonia"> Polonia 2018</td>
-          <td>Roksana Wiegel</td>
-          <td>"Anyone i want to be"</td>
-        </tr>
-        <tr>
-          <td>3°</td>
           <td><img class="flag-icon" src="flags/ru.png" alt="Russia"> Russia 2013</td>
           <td>Dayana Kirillova</td>
           <td>"Dream on"</td>
         </tr>
         <tr>
-          <td>4°</td>
-          <td><img class="flag-icon" src="flags/fr.png" alt="Francia"> Francia 2021</td>
-          <td>Enzo</td>
-          <td>"Tic Tac"</td>
+          <td>3°</td>
+          <td><img class="flag-icon" src="flags/pl.png" alt="Polonia"> Polonia 2022</td>
+          <td>Laura</td>
+          <td>"To the moon"</td>
         </tr>
         <tr>
-          <td>5°</td>
+          <td>4°</td>
           <td><img class="flag-icon" src="flags/ru.png" alt="Russia"> Russia 2009</td>
           <td>Katya Ryabova</td>
           <td>"Malenky Prints"</td>
         </tr>
         <tr>
-          <td>6°</td>
+          <td>5°</td>
           <td><img class="flag-icon" src="flags/hr.png" alt="Croazia"> Croazia 2005</td>
           <td>Lorena Jelusic</td>
           <td>"Rock baby"</td>
         </tr>
         <tr>
-          <td>7°</td>
+          <td>6°</td>
           <td><img class="flag-icon" src="flags/by.png" alt="Bielorussia"> Bielorussia 2015</td>
           <td>Ruslan Aslanov</td>
           <td>"Volschebstvo (Magic)"</td>
+        </tr>
+        <tr>
+          <td>7°</td>
+          <td><img class="flag-icon" src="flags/fr.png" alt="Francia"> Francia 2021</td>
+          <td>Enzo</td>
+          <td>"Tic Tac"</td>
         </tr>
       </tbody>
     </table>
@@ -208,7 +234,7 @@
 
   <div class="nav-links">
     <a href="semifinale9.html">⬅️ Torna alla Semifinale 9</a>
-    <a href="index.html">Torna all’Indice ➡️</a>
+    <a href="semifinale11.html">Vai alla Semifinale 11 ➡️</a>
   </div>
 
 </body>
