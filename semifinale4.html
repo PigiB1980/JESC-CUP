@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Semifinale 4 - JESC CUP</title>
+  <title>JESC CUP – Semifinale 4</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,35 +12,70 @@
       padding: 20px;
     }
     h1 {
+      font-size: 4em;
       text-align: center;
-      font-size: 3em;
-      color: #ffcc00;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-      margin-bottom: 40px;
+      margin: 30px 0 10px;
     }
     h2 {
       text-align: center;
-      margin-top: 50px;
-      margin-bottom: 20px;
+      font-size: 1.5em;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+    .flag-icon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
     }
 
-    /* --- VIDEO --- */
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       justify-items: center;
+      margin: 20px 0 40px;
     }
-    .video-item { text-align: center; }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
     .video-title { margin-bottom: 10px; }
     .video-title .line1 { font-weight: bold; font-size: 1.1em; }
     .video-title .line2 { font-style: italic; font-size: 0.95em; }
-    iframe { border-radius: 12px; width: 100%; height: 200px; }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* --- NAV LINKS --- */
+    .nav-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .nav-links a {
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover { background: #ffaa00; }
 
     /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
-      margin: 30px auto;
+      margin: 40px auto;
       border-collapse: collapse;
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
@@ -51,96 +86,90 @@
       border-bottom: 1px solid rgba(255,255,255,0.2);
       text-align: left;
     }
-    .flag-icon {
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
     .in-finale {
       background: red;
       color: white;
       padding: 2px 6px;
       border-radius: 4px;
       font-weight: bold;
-      margin-left: 8px;
     }
-    /* Nasconde Paese/Artista/Canzone */
     .classifica tbody td:nth-child(n+2) { display: none; }
-
-    /* --- BOTTONI --- */
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .buttons a {
-      background: #ffcc00;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .buttons a:hover {
-      background: #ffaa00;
-    }
   </style>
 </head>
 <body>
-  <h1>Semifinale 4 - JESC CUP</h1>
+
+  <h1>🎶 SEMIFINALE 4 🎶</h1>
   <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇦🇲 Armenia 2010 - Vladimir Arzumanyan</div>
-        <div class="line2">mam</div>
+        <div class="line1"><img class="flag-icon" src="flags/am.png"> Armenia 2010 – Vladimir Arzumanyan</div>
+        <div class="line2">"mam"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/YpwkMlfxFs8" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/YpwkMlfxFs8" title="Armenia 2010 – mam" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇧🇬 Bulgaria 2014 - Krisia, Hasan & Ibrahim</div>
-        <div class="line2">Planet of the children</div>
+        <div class="line1"><img class="flag-icon" src="flags/bg.png"> Bulgaria 2014 – Krisia, Hasan & Ibrahim</div>
+        <div class="line2">"Planet of the children"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/hBB9f3YdGEs" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/hBB9f3YdGEs" title="Bulgaria 2014 – Planet of the children" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇱🇻 Lettonia 2003 - Dzintars Cica</div>
-        <div class="line2">Tu esi vasara</div>
+        <div class="line1"><img class="flag-icon" src="flags/lv.png"> Lettonia 2003 – Dzintars Cica</div>
+        <div class="line2">"Tu esi vasara"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/qFIa7lCpYZ4" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/qFIa7lCpYZ4" title="Lettonia 2003 – Tu esi vasara" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇬🇪 Georgia 2018 - Tamar Edilashvili</div>
-        <div class="line2">Your voice</div>
+        <div class="line1"><img class="flag-icon" src="flags/ge.png"> Georgia 2018 – Tamar Edilashvili</div>
+        <div class="line2">"Your voice"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/9YxluL89od0" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/9YxluL89od0" title="Georgia 2018 – Your voice" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇲🇹 Malta 2004 - Young Talent Team</div>
-        <div class="line2">Power of a song</div>
+        <div class="line1"><img class="flag-icon" src="flags/mt.png"> Malta 2004 – Young Talent Team</div>
+        <div class="line2">"Power of a song"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/kVr_RVPiXIc" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/kVr_RVPiXIc" title="Malta 2004 – Power of a song" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇦🇲 Armenia 2016 - Anahit & Mary</div>
-        <div class="line2">Tarber</div>
+        <div class="line1"><img class="flag-icon" src="flags/am.png"> Armenia 2016 – Anahit & Mary</div>
+        <div class="line2">"Tarber"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/iJb9GDt19KU" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/iJb9GDt19KU" title="Armenia 2016 – Tarber" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇵🇱 Polonia 2020 - Ala Tracz</div>
-        <div class="line2">I'll be standing</div>
+        <div class="line1"><img class="flag-icon" src="flags/pl.png"> Polonia 2020 – Ala Tracz</div>
+        <div class="line2">"I'll be standing"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/wisOIodsOQU" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/wisOIodsOQU" title="Polonia 2020 – I'll be standing" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
@@ -158,16 +187,15 @@
       <tbody>
         <tr>
           <td>1°</td>
-          <td><img class="flag-icon" src="flags/bg.png" alt="Bulgaria"> Bulgaria 2014</td>
-          <td>Krisia, Hasan & Ibrahim</td>
-          <td>"Planet of the children"</td>
-          <td><span class="in-finale">IN FINALE!</span></td>
-        </tr>
-        <tr>
-          <td>2°</td>
           <td><img class="flag-icon" src="flags/am.png" alt="Armenia"> Armenia 2010</td>
           <td>Vladimir Arzumanyan</td>
           <td>"mam"</td>
+        </tr>
+        <tr>
+          <td>2°</td>
+          <td><img class="flag-icon" src="flags/bg.png" alt="Bulgaria"> Bulgaria 2014</td>
+          <td>Krisia, Hasan & Ibrahim</td>
+          <td>"Planet of the children"</td>
         </tr>
         <tr>
           <td>3°</td>
@@ -203,9 +231,10 @@
     </table>
   </div>
 
-  <div class="buttons">
-    <a href="index.html">⬅️ Torna all’Indice</a>
+  <div class="nav-links">
+    <a href="semifinale3.html">⬅️ Torna alla Semifinale 3</a>
     <a href="semifinale5.html">Vai alla Semifinale 5 ➡️</a>
   </div>
+
 </body>
 </html>
