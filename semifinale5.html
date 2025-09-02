@@ -28,45 +28,51 @@
       margin-right: 8px;
     }
 
-    /* --- VIDEO --- */
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(450px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       justify-items: center;
       margin: 20px 0 40px;
     }
-    .video-item { 
-      text-align: center; 
-    }
-    .video-title { 
-      margin-bottom: 10px; 
-    }
-    .video-title .line1 { 
-      font-weight: bold; 
-      font-size: 1.1em; 
-    }
-    .video-title .line2 { 
-      font-style: italic; 
-      font-size: 0.95em; 
-    }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
-      width: 100%;
     }
-    .video-container iframe { 
+    .video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%; 
-      height: 280px; /* video più alto */
+      width: 100%;
+      height: 100%;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
 
-    /* Classifica stylosa */
+    /* --- NAV LINKS --- */
+    .nav-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .nav-links a {
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover { background: #ffaa00; }
+
+    /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
       margin: 40px auto;
@@ -87,30 +93,7 @@
       border-radius: 4px;
       font-weight: bold;
     }
-    .classifica tbody td:nth-child(n+2) {
-      display: none;
-    }
-    .classifica tbody td:first-child + .in-finale {
-      display: inline-block;
-    }
-
-    .nav-links {
-      text-align: center;
-      margin-top: 40px;
-    }
-    .nav-links a {
-      background: #ffcc00;
-      color: #000;
-      text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .nav-links a:hover {
-      background: #ffaa00;
-    }
+    .classifica tbody td:nth-child(n+2) { display: none; }
   </style>
 </head>
 <body>
@@ -120,49 +103,70 @@
 
   <div class="video-grid">
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/cy.png"> Cipro 2004 – Marius Tofis – "Onira"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/cy.png"> Cipro 2004 – Marius Tofis</div>
+        <div class="line2">"Onira"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/QxOLLhTWXc4" title="Cipro 2004 – Onira" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/rs.png"> Serbia 2015 – Lena Stamenkovic – "Lenina Pesma"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/rs.png"> Serbia 2015 – Lena Stamenkovic</div>
+        <div class="line2">"Lenina Pesma"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/R7AUTZfy-0E" title="Serbia 2015 – Lenina Pesma" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/by.png"> Bielorussia 2007 – Alexej Zhigalkovich – "S druz'yami"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/by.png"> Bielorussia 2007 – Alexej Zhigalkovich</div>
+        <div class="line2">"S druz'yami"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/-SqnGcd-HBs" title="Bielorussia 2007 – S druz'yami" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/it.png"> Italia 2014 – Vincenzo Cantiello – "Tu primo grande amore"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/it.png"> Italia 2014 – Vincenzo Cantiello</div>
+        <div class="line2">"Tu primo grande amore"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/QkgSsBw5hTM" title="Italia 2014 – Tu primo grande amore" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/mt.png"> Malta 2008 – Daniel Testa – "Junior Swing"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/mt.png"> Malta 2008 – Daniel Testa</div>
+        <div class="line2">"Junior Swing"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/TB-aF3fRX-M" title="Malta 2008 – Junior Swing" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/es.png"> Spagna 2023 – Sandra Valero – "Loviu"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/es.png"> Spagna 2023 – Sandra Valero</div>
+        <div class="line2">"Loviu"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/DLw4kS1PSNQ" title="Spagna 2023 – Loviu" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
     <div class="video-item">
-      <h3><img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2005 – Tess – "Stupid"</h3>
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2005 – Tess</div>
+        <div class="line2">"Stupid"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/D9M2Jr627L4" title="Paesi Bassi 2005 – Stupid" frameborder="0" allowfullscreen></iframe>
       </div>
