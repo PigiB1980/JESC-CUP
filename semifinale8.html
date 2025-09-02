@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>JESC CUP – Semifinale 8</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1e1e50, #3b3b8f);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 4em;
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+    h3 {
+      font-size: 1.2em;
+      margin: 15px 0 8px;
+    }
+    .flag-icon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 20px;
+      margin: 20px 0 40px;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .nav-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .nav-links a {
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover {
+      background: #ffaa00;
+    }
+    .classifica table {
+      width: 80%;
+      margin: 40px auto;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .classifica th, .classifica td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
+    }
+    .in-finale {
+      background: red;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .classifica tbody td:nth-child(n+2) {
+      display: none;
+    }
+    .classifica tbody td:first-child + .in-finale {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎶 SEMIFINALE 8 🎶</h1>
+  <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
+
+  <div class="video-grid">
+    <div>
+      <h3><img class="flag-icon" src="flags/bg.png"> Bulgaria 2011 – Ivan Ivanov – "Superhero"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/wQ0iLG8tNeQ" title="Bulgaria 2011 – Superhero" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div>
+      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2024 – Artem Kotenko – "Hear me now"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/wXAjWwMuHqE" title="Ucraina 2024 – Hear me now" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div>
+      <h3><img class="flag-icon" src="flags/az.png"> Azerbaijan 2012 – Omar & Suada – "Girls & Boys"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/E9uLxzR7SiY" title="Azerbaijan 2012 – Girls & Boys" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div>
+      <h3><img class="flag-icon" src="flags/mt.png"> Malta 2015 – Destiny Chukunyere – "Not my soul"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/85Sxw9asfX0" title="Malta 2015 – Not my soul" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div>
+      <h3><img class="flag-icon" src="flags/by.png"> Bielorussia 2003 – Volha Satsiuk – "Tantsuy"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/guRtqN9hNgY" title="Bielorussia 2003 – Tantsuy" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div>
+      <h3><img class="flag-icon" src="flags/mt.png"> Malta 2017 – Gianluca Cilia – "Dawra Tond"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/eWU_PfOqeX0" title="Malta 2017 – Dawra Tond" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div>
+      <h3><img class="flag-icon" src="flags/by.png"> Bielorussia 2006 – Andrey Kunets – "Noviy Den"</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/jwMAvVQBEHU" title="Bielorussia 2006 – Noviy Den" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="classifica">
+    <h2>Classifica Semifinale 8</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Artista</th>
+          <th>Canzone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1°</td>
+          <td><img class="flag-icon" src="flags/mt.png" alt="Malta"> Malta 2015</td>
+          <td>Destiny Chukunyere</td>
+          <td>"Not my soul"</td>
+          <td><span class="in-finale">IN FINALE!</span></td>
+        </tr>
+        <tr>
+          <td>2°</td>
+          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2024</td>
+          <td>Artem Kotenko</td>
+          <td>"Hear me now"</td>
+        </tr>
+        <tr>
+          <td>3°</td>
+          <td><img class="flag-icon" src="flags/az.png" alt="Azerbaijan"> Azerbaijan 2012</td>
+          <td>Omar & Suada</td>
+          <td>"Girls & Boys"</td>
+        </tr>
+        <tr>
+          <td>4°</td>
+          <td><img class="flag-icon" src="flags/bg.png" alt="Bulgaria"> Bulgaria 2011</td>
+          <td>Ivan Ivanov</td>
+          <td>"Superhero"</td>
+        </tr>
+        <tr>
+          <td>5°</td>
+          <td><img class="flag-icon" src="flags/mt.png" alt="Malta"> Malta 2017</td>
+          <td>Gianluca Cilia</td>
+          <td>"Dawra Tond"</td>
+        </tr>
+        <tr>
+          <td>6°</td>
+          <td><img class="flag-icon" src="flags/by.png" alt="Bielorussia"> Bielorussia 2003</td>
+          <td>Volha Satsiuk</td>
+          <td>"Tantsuy"</td>
+        </tr>
+        <tr>
+          <td>7°</td>
+          <td><img class="flag-icon" src="flags/by.png" alt="Bielorussia"> Bielorussia 2006</td>
+          <td>Andrey Kunets</td>
+          <td>"Noviy Den"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nav-links">
+    <a href="semifinale7.html">⬅️ Torna alla Semifinale 7</a>
+    <a href="semifinale9.html">Vai alla Semifinale 9 ➡️</a>
+  </div>
+
+</body>
+</html>
