@@ -22,19 +22,55 @@
       font-weight: normal;
       margin-bottom: 40px;
     }
+    .flag-icon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
 
-    /* --- VIDEO --- */
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       justify-items: center;
+      margin: 20px 0 40px;
     }
-    .video-item { text-align: center; }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
     .video-title { margin-bottom: 10px; }
     .video-title .line1 { font-weight: bold; font-size: 1.1em; }
     .video-title .line2 { font-style: italic; font-size: 0.95em; }
-    iframe { border-radius: 12px; width: 100%; height: 220px; }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* --- NAV LINKS --- */
+    .nav-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .nav-links a {
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover { background: #ffaa00; }
 
     /* --- CLASSIFICA --- */
     .classifica table {
@@ -68,58 +104,72 @@
   <div class="video-grid">
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇺🇦 Ucraina 2008 - Viktoria Petryk</div>
-        <div class="line2">Matrosy</div>
+        <div class="line1"><img class="flag-icon" src="flags/ua.png"> Ucraina 2008 – Viktoria Petryk</div>
+        <div class="line2">"Matrosy"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/Q4qM87SOMz4" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/Q4qM87SOMz4" title="Ucraina 2008 – Matrosy" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇺🇦 Ucraina 2021 - Olena Usenko</div>
-        <div class="line2">Vazhil</div>
+        <div class="line1"><img class="flag-icon" src="flags/ua.png"> Ucraina 2021 – Olena Usenko</div>
+        <div class="line2">"Vazhil"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/tYBeJ_VBzgs" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/tYBeJ_VBzgs" title="Ucraina 2021 – Vazhil" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇳🇴 Norvegia 2004 - @Lek</div>
-        <div class="line2">En Stjerne skal jeg bli</div>
+        <div class="line1"><img class="flag-icon" src="flags/no.png"> Norvegia 2004 – @Lek</div>
+        <div class="line2">"En Stjerne skal jeg bli"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/u6DNJtgblJQ" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/u6DNJtgblJQ" title="Norvegia 2004 – En Stjerne skal jeg bli" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇺🇦 Ucraina 2017 - Anastasiya Baginska</div>
-        <div class="line2">Don't stop</div>
+        <div class="line1"><img class="flag-icon" src="flags/ua.png"> Ucraina 2017 – Anastasiya Baginska</div>
+        <div class="line2">"Don't stop"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/USZsQEejK8o" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/USZsQEejK8o" title="Ucraina 2017 – Don't stop" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇱🇻 Lettonia 2010 - Sarlote & Sea Stones</div>
-        <div class="line2">Viva la dance</div>
+        <div class="line1"><img class="flag-icon" src="flags/lv.png"> Lettonia 2010 – Sarlote & Sea Stones</div>
+        <div class="line2">"Viva la dance"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/splCSKK8jVQ" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/splCSKK8jVQ" title="Lettonia 2010 – Viva la dance" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇦🇲 Armenia 2019 - Karina Ignatiyan</div>
-        <div class="line2">Colours of your dream</div>
+        <div class="line1"><img class="flag-icon" src="flags/am.png"> Armenia 2019 – Karina Ignatiyan</div>
+        <div class="line2">"Colours of your dream"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/sWNEG54GEto" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/sWNEG54GEto" title="Armenia 2019 – Colours of your dream" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
 
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇦🇺 Australia 2015 - Bella Paige</div>
-        <div class="line2">My girls</div>
+        <div class="line1"><img class="flag-icon" src="flags/au.png"> Australia 2015 – Bella Paige</div>
+        <div class="line2">"My girls"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/t3B8swgwt64" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/t3B8swgwt64" title="Australia 2015 – My girls" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
@@ -137,16 +187,15 @@
       <tbody>
         <tr>
           <td>1°</td>
-          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2021</td>
-          <td>Olena Usenko</td>
-          <td>"Vazhil"</td>
-          <td><span class="in-finale">IN FINALE!</span></td>
-        </tr>
-        <tr>
-          <td>2°</td>
           <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2008</td>
           <td>Viktoria Petryk</td>
           <td>"Matrosy"</td>
+        </tr>
+        <tr>
+          <td>2°</td>
+          <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2021</td>
+          <td>Olena Usenko</td>
+          <td>"Vazhil"</td>
         </tr>
         <tr>
           <td>3°</td>
@@ -183,7 +232,7 @@
   </div>
 
   <div class="nav-links">
-    <a href="index.html">⬅️ Torna all’Indice</a>
+    <a href="semifinale7.html">⬅️ Torna all’ultima Semifinale</a>
     <a href="semifinale2.html">Vai alla Semifinale 2 ➡️</a>
   </div>
 
