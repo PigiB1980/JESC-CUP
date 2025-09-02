@@ -30,7 +30,7 @@
     th, td {
       padding: 8px 10px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
-      text-align: left; /* <-- titoli e celle allineati a sinistra */
+      text-align: left;
     }
     th {
       background: #ff4081;
@@ -100,6 +100,7 @@
         <th>Anno</th>
         <th>Nazione</th>
         <th>Punteggio</th>
+        <th>Tipo</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -131,38 +132,49 @@
 
       allSongs.sort((a,b)=>b.points-a.points);
 
+      // 3 migliori di ogni anno
       let semifinali = [];
       for (let year of years) {
         const songsOfYear = allSongs.filter(s => s.year === year)
                                     .sort((a,b)=>b.points - a.points);
-        semifinali.push(...songsOfYear.slice(0,3));
+        semifinali.push(...songsOfYear.slice(0,3).map(s=>({...s, type:"Q"})));
       }
+
+      // raccolgo le quarte
       const quarte = [];
       for (let year of years) {
         const songsOfYear = allSongs.filter(s => s.year === year)
                                     .sort((a,b)=>b.points - a.points);
         if (songsOfYear.length > 3) quarte.push(songsOfYear[3]);
       }
+
+      // solo le migliori 4 quarte
       quarte.sort((a,b)=>b.points - a.points);
-      semifinali.push(...quarte.slice(0, 70 - semifinali.length));
+      const miglioriQuarte = quarte.slice(0,4).map(s=>({...s, type:"Ripescato"}));
+      semifinali.push(...miglioriQuarte);
+
       semifinali.sort((a,b)=>b.points - a.points);
 
-      const semiSet = new Set(semifinali.map(s => `${s.year}-${s.country}`));
+      // set per segnalare Q e Ripescato
+      const qualificati = new Map();
+      semifinali.forEach(s => qualificati.set(`${s.year}-${s.country}`, s.type));
 
+      // tabella completa
       const tbody = document.querySelector("#ranking tbody");
       allSongs.forEach((song,index)=>{
+        const stato = qualificati.get(`${song.year}-${song.country}`) || "";
         const tr = document.createElement("tr");
-        const q = semiSet.has(`${song.year}-${song.country}`) ? "Q" : "";
         tr.innerHTML = `
           <td>${index+1}</td>
           <td>${song.year}</td>
           <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
           <td>${song.points.toFixed(1)}</td>
-          <td>${q}</td>
+          <td>${stato}</td>
         `;
         tbody.appendChild(tr);
       });
 
+      // tabella semifinali
       const tbodySemi = document.querySelector("#semifinali tbody");
       semifinali.forEach((song,index)=>{
         const tr = document.createElement("tr");
@@ -171,6 +183,7 @@
           <td>${song.year}</td>
           <td><img src="flags/${song.flag}.png" class="flag-icon" alt="Bandiera ${song.country}"> ${song.country}</td>
           <td>${song.points.toFixed(1)}</td>
+          <td>${song.type}</td>
         `;
         tbodySemi.appendChild(tr);
       });
