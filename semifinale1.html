@@ -12,65 +12,28 @@
       padding: 20px;
     }
     h1 {
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 4em;
       text-align: center;
-      margin: 30px 0 10px;
-    }
-    h2 {
-      text-align: center;
-      font-size: 1.5em;
-      font-weight: normal;
+      font-size: 3em;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
       margin-bottom: 40px;
     }
-    h3 {
-      font-size: 1.2em;
-      margin: 15px 0 8px;
-    }
-    .flag-icon {
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
+
+    /* --- VIDEO --- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
       margin: 20px 0 40px;
     }
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .nav-links {
-      text-align: center;
-      margin-top: 40px;
-    }
-    .nav-links a {
-      background: #ffcc00;
-      color: #000;
-      text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .nav-links a:hover {
-      background: #ffaa00;
-    }
+    .video-item { text-align: center; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
 
-    /* Classifica stylosa */
+    /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
       margin: 40px auto;
@@ -84,76 +47,97 @@
       border-bottom: 1px solid rgba(255,255,255,0.2);
       text-align: left;
     }
-    .in-finale {
-      background: red;
-      color: white;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: bold;
+    .flag-icon { height: 20px; vertical-align: middle; margin-right: 8px; }
+    .in-finale { background: red; color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 8px; }
+    /* Nasconde Paese/Artista/Canzone */
+    .classifica tbody td:nth-child(n+2) { display: none; }
+
+    /* --- BOTTONI --- */
+    .nav-links { text-align: center; margin-top: 40px; }
+    .nav-links a {
+      background: #ffcc00; color: #000; text-decoration: none;
+      padding: 10px 20px; margin: 0 10px; border-radius: 8px; font-weight: bold;
+      transition: background 0.3s;
     }
-    /* Nasconde bandiere, artisti e titoli */
-    .classifica tbody td:nth-child(n+2) {
-      display: none;
-    }
+    .nav-links a:hover { background: #ffaa00; }
   </style>
 </head>
 <body>
 
   <h1>🎶 SEMIFINALE 1 🎶</h1>
-  <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2008 – Viktoria Petryk – "Matrosy"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇺🇦 Ucraina 2008 – Viktoria Petryk</div>
+        <div class="line2">Matrosy</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/Q4qM87SOMz4" title="Ucraina 2008 – Matrosy" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2021 – Olena Usenko – "Vazhil"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇺🇦 Ucraina 2021 – Olena Usenko</div>
+        <div class="line2">Vazhil</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/tYBeJ_VBzgs" title="Ucraina 2021 – Vazhil" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/no.png"> Norvegia 2004 – @Lek – "En Stjerne skal jeg bli"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇳🇴 Norvegia 2004 – @Lek</div>
+        <div class="line2">En Stjerne skal jeg bli</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/u6DNJtgblJQ" title="Norvegia 2004 – En Stjerne skal jeg bli" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2017 – Anastasiya Baginska – "Don't stop"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇺🇦 Ucraina 2017 – Anastasiya Baginska</div>
+        <div class="line2">Don't stop</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/USZsQEejK8o" title="Ucraina 2017 – Don't stop" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/lv.png"> Lettonia 2010 – Sarlote & Sea Stones – "Viva la dance"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇱🇻 Lettonia 2010 – Sarlote & Sea Stones</div>
+        <div class="line2">Viva la dance</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/splCSKK8jVQ" title="Lettonia 2010 – Viva la dance" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/am.png"> Armenia 2019 – Karina Ignatiyan – "Colours of your dream"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇦🇲 Armenia 2019 – Karina Ignatiyan</div>
+        <div class="line2">Colours of your dream</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/sWNEG54GEto" title="Armenia 2019 – Colours of your dream" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
-    <div>
-      <h3><img class="flag-icon" src="flags/au.png"> Australia 2015 – Bella Paige – "My girls"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1">🇦🇺 Australia 2015 – Bella Paige</div>
+        <div class="line2">My girls</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/t3B8swgwt64" title="Australia 2015 – My girls" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
-  <!-- Classifica semifinale 1 -->
   <div class="classifica">
     <h2>Classifica Semifinale 1</h2>
     <table>
