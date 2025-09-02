@@ -12,7 +12,6 @@
       padding: 20px;
     }
     h1 {
-      font-family: 'Segoe UI', sans-serif;
       font-size: 4em;
       text-align: center;
       margin: 30px 0 10px;
@@ -23,21 +22,24 @@
       font-weight: normal;
       margin-bottom: 40px;
     }
-    h3 {
-      font-size: 1.2em;
-      margin: 15px 0 8px;
-    }
     .flag-icon {
       height: 20px;
       vertical-align: middle;
       margin-right: 8px;
     }
+
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
       margin: 20px 0 40px;
     }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
+    .video-title { margin-bottom: 10px; }
+    .video-title .line1 { font-weight: bold; font-size: 1.1em; }
+    .video-title .line2 { font-style: italic; font-size: 0.95em; }
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
@@ -52,6 +54,8 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
+
+    /* --- NAV LINKS --- */
     .nav-links {
       text-align: center;
       margin-top: 40px;
@@ -66,9 +70,9 @@
       font-weight: bold;
       transition: background 0.3s;
     }
-    .nav-links a:hover {
-      background: #ffaa00;
-    }
+    .nav-links a:hover { background: #ffaa00; }
+
+    /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
       margin: 40px auto;
@@ -89,12 +93,7 @@
       border-radius: 4px;
       font-weight: bold;
     }
-    .classifica tbody td:nth-child(n+2) {
-      display: none;
-    }
-    .classifica tbody td:first-child + .in-finale {
-      display: inline-block;
-    }
+    .classifica tbody td:nth-child(n+2) { display: none; }
   </style>
 </head>
 <body>
@@ -103,44 +102,71 @@
   <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
-    <div>
-      <h3><img class="flag-icon" src="flags/bg.png"> Bulgaria 2011 – Ivan Ivanov – "Superhero"</h3>
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/bg.png"> Bulgaria 2011 – Ivan Ivanov</div>
+        <div class="line2">"Superhero"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/wQ0iLG8tNeQ" title="Bulgaria 2011 – Superhero" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/ua.png"> Ucraina 2024 – Artem Kotenko – "Hear me now"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/ua.png"> Ucraina 2024 – Artem Kotenko</div>
+        <div class="line2">"Hear me now"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/wXAjWwMuHqE" title="Ucraina 2024 – Hear me now" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/az.png"> Azerbaijan 2012 – Omar & Suada – "Girls & Boys"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/az.png"> Azerbaijan 2012 – Omar & Suada</div>
+        <div class="line2">"Girls & Boys"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/E9uLxzR7SiY" title="Azerbaijan 2012 – Girls & Boys" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/mt.png"> Malta 2015 – Destiny Chukunyere – "Not my soul"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/mt.png"> Malta 2015 – Destiny Chukunyere</div>
+        <div class="line2">"Not my soul"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/85Sxw9asfX0" title="Malta 2015 – Not my soul" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/by.png"> Bielorussia 2003 – Volha Satsiuk – "Tantsuy"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/by.png"> Bielorussia 2003 – Volha Satsiuk</div>
+        <div class="line2">"Tantsuy"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/guRtqN9hNgY" title="Bielorussia 2003 – Tantsuy" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/mt.png"> Malta 2017 – Gianluca Cilia – "Dawra Tond"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/mt.png"> Malta 2017 – Gianluca Cilia</div>
+        <div class="line2">"Dawra Tond"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/eWU_PfOqeX0" title="Malta 2017 – Dawra Tond" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-    <div>
-      <h3><img class="flag-icon" src="flags/by.png"> Bielorussia 2006 – Andrey Kunets – "Noviy Den"</h3>
+
+    <div class="video-item">
+      <div class="video-title">
+        <div class="line1"><img class="flag-icon" src="flags/by.png"> Bielorussia 2006 – Andrey Kunets</div>
+        <div class="line2">"Noviy Den"</div>
+      </div>
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/jwMAvVQBEHU" title="Bielorussia 2006 – Noviy Den" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -174,15 +200,15 @@
         </tr>
         <tr>
           <td>3°</td>
-          <td><img class="flag-icon" src="flags/az.png" alt="Azerbaijan"> Azerbaijan 2012</td>
-          <td>Omar & Suada</td>
-          <td>"Girls & Boys"</td>
-        </tr>
-        <tr>
-          <td>4°</td>
           <td><img class="flag-icon" src="flags/bg.png" alt="Bulgaria"> Bulgaria 2011</td>
           <td>Ivan Ivanov</td>
           <td>"Superhero"</td>
+        </tr>
+        <tr>
+          <td>4°</td>
+          <td><img class="flag-icon" src="flags/az.png" alt="Azerbaijan"> Azerbaijan 2012</td>
+          <td>Omar & Suada</td>
+          <td>"Girls & Boys"</td>
         </tr>
         <tr>
           <td>5°</td>
