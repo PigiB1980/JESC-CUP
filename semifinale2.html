@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Semifinale 2 - JESC CUP</title>
+  <title>JESC CUP – Semifinale 2</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,35 +12,70 @@
       padding: 20px;
     }
     h1 {
+      font-size: 4em;
       text-align: center;
-      font-size: 3em;
-      color: #ffcc00;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-      margin-bottom: 40px;
+      margin: 30px 0 10px;
     }
     h2 {
       text-align: center;
-      margin-top: 50px;
-      margin-bottom: 20px;
+      font-size: 1.5em;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+    .flag-icon {
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 8px;
     }
 
-    /* --- VIDEO --- */
+    /* --- VIDEO GRID --- */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       justify-items: center;
+      margin: 20px 0 40px;
     }
-    .video-item { text-align: center; }
+    .video-item { text-align: center; width: 100%; max-width: 400px; }
     .video-title { margin-bottom: 10px; }
     .video-title .line1 { font-weight: bold; font-size: 1.1em; }
     .video-title .line2 { font-style: italic; font-size: 0.95em; }
-    iframe { border-radius: 12px; width: 100%; height: 200px; }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* --- NAV LINKS --- */
+    .nav-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .nav-links a {
+      background: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .nav-links a:hover { background: #ffaa00; }
 
     /* --- CLASSIFICA --- */
     .classifica table {
       width: 80%;
-      margin: 30px auto;
+      margin: 40px auto;
       border-collapse: collapse;
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
@@ -51,99 +86,94 @@
       border-bottom: 1px solid rgba(255,255,255,0.2);
       text-align: left;
     }
-    .flag-icon {
-      height: 20px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
     .in-finale {
       background: red;
       color: white;
       padding: 2px 6px;
       border-radius: 4px;
       font-weight: bold;
-      margin-left: 8px;
     }
-    /* Nasconde Paese/Artista/Canzone */
     .classifica tbody td:nth-child(n+2) { display: none; }
-
-    /* --- BOTTONI --- */
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .buttons a {
-      background: #ffcc00;
-      color: #000;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .buttons a:hover {
-      background: #ffaa00;
-    }
   </style>
 </head>
 <body>
-  <h1>Semifinale 2 - JESC CUP</h1>
+
+  <h1>🎶 SEMIFINALE 2 🎶</h1>
+  <h2>7 canzoni, 1 posto in finale. Chi passerà?</h2>
 
   <div class="video-grid">
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇲🇹 Malta 2013 - Gaia Cauchi</div>
-        <div class="line2">The start</div>
+        <div class="line1"><img class="flag-icon" src="flags/mt.png"> Malta 2013 – Gaia Cauchi</div>
+        <div class="line2">"The start"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/thje0DAh_lU" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/thje0DAh_lU" title="Malta 2013 – The start" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇧🇾 Bielorussia 2016 - Alexander Minyonok</div>
-        <div class="line2">Musyka Moih Pobeto</div>
+        <div class="line1"><img class="flag-icon" src="flags/by.png"> Bielorussia 2016 – Alexander Minyonok</div>
+        <div class="line2">"Musyka Moih Pobeto"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/n2PH1B6nhE8" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/n2PH1B6nhE8" title="Bielorussia 2016 – Musyka Moih Pobeto" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇺🇦 Ucraina 2009 - Andranik Aleksanyan</div>
-        <div class="line2">Try Topoli, Try surmy</div>
+        <div class="line1"><img class="flag-icon" src="flags/ua.png"> Ucraina 2009 – Andranik Aleksanyan</div>
+        <div class="line2">"Try Topoli, Try surmy"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/7K9ylQJDupY" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/7K9ylQJDupY" title="Ucraina 2009 – Try Topoli, Try surmy" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇳🇱 Paesi Bassi 2023 - Sep & Jasmine</div>
-        <div class="line2">Holding on to you</div>
+        <div class="line1"><img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2023 – Sep & Jasmine</div>
+        <div class="line2">"Holding on to you"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/dXSqK52uf7Q" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/dXSqK52uf7Q" title="Paesi Bassi 2023 – Holding on to you" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇺🇦 Ucraina 2011 - Kristall</div>
-        <div class="line2">Europe</div>
+        <div class="line1"><img class="flag-icon" src="flags/ua.png"> Ucraina 2011 – Kristall</div>
+        <div class="line2">"Europe"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/xd3vI8qLbw0" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/xd3vI8qLbw0" title="Ucraina 2011 – Europe" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇰🇿 Kazakistan 2022 - David Charlin</div>
-        <div class="line2">Jer-Ana (Mother Earth)</div>
+        <div class="line1"><img class="flag-icon" src="flags/kz.png"> Kazakistan 2022 – David Charlin</div>
+        <div class="line2">"Jer-Ana (Mother Earth)"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/sgx61ms2jP4" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/sgx61ms2jP4" title="Kazakistan 2022 – Jer-Ana (Mother Earth)" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
+
     <div class="video-item">
       <div class="video-title">
-        <div class="line1">🇩🇰 Danimarca 2005 - Nicolai</div>
-        <div class="line2">Shake shake shake</div>
+        <div class="line1"><img class="flag-icon" src="flags/dk.png"> Danimarca 2005 – Nicolai</div>
+        <div class="line2">"Shake shake shake"</div>
       </div>
-      <iframe src="https://www.youtube.com/embed/IHlkrmy9DHw" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/IHlkrmy9DHw" title="Danimarca 2005 – Shake shake shake" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 
-   <div class="classifica">
+  <div class="classifica">
     <h2>Classifica Semifinale 2</h2>
     <table>
       <thead>
@@ -160,7 +190,6 @@
           <td><img class="flag-icon" src="flags/mt.png" alt="Malta"> Malta 2013</td>
           <td>Gaia Cauchi</td>
           <td>"The start"</td>
-          <td><span class="in-finale">IN FINALE!</span></td>
         </tr>
         <tr>
           <td>2°</td>
@@ -202,9 +231,10 @@
     </table>
   </div>
 
-  <div class="buttons">
-    <a href="semifinali.html">⬅️ Torna alle Semifinali</a>
-    <a href="semifinale3.html">Vai a Semifinale 3 ➡️</a>
+  <div class="nav-links">
+    <a href="semifinale1.html">⬅️ Torna alla Semifinale 1</a>
+    <a href="semifinale3.html">Vai alla Semifinale 3 ➡️</a>
   </div>
+
 </body>
 </html>
