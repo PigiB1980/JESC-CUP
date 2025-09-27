@@ -33,7 +33,7 @@
     h1 {
       font-size: 5em;
       margin: 0.2em 0 0.1em;
-      color: #FFD700;
+      color: #1E3A8A; /* blu intenso */
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
 
@@ -65,7 +65,7 @@
     }
 
     th {
-      background: rgba(255, 140, 0, 0.8);
+      background: rgba(0,0,255,0.7); /* blu semi-trasparente */
       font-weight: 700;
       position: sticky;
       top: 0;
@@ -91,7 +91,7 @@
     /* Griglia video */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       justify-items: center;
       margin-bottom: 50px;
@@ -160,7 +160,6 @@
     .btn-home:hover {
       background: #e91e63;
     }
-
   </style>
 </head>
 <body>
@@ -181,13 +180,62 @@
       </tr>
     </thead>
     <tbody id="summary-table">
-      <!-- Righe generate da JS -->
+      <!-- Inserire i finalisti qui -->
+      <tr><td>1°</td><td><img class="flag-icon" src="flags/ua.png"> Ucraina 2021</td><td>Olena Usenko</td><td>Vazhil</td></tr>
+      <tr><td>2°</td><td><img class="flag-icon" src="flags/pl.png"> Polonia 2022</td><td>Laura</td><td>To the moon</td></tr>
+      <tr><td>3°</td><td><img class="flag-icon" src="flags/ru.png"> Russia 2009</td><td>Katya Ryabova</td><td>Malenky Prints</td></tr>
+      <tr><td>4°</td><td><img class="flag-icon" src="flags/it.png"> Italia 2014</td><td>Vincenzo Cantiello</td><td>Tu primo grande amore</td></tr>
+      <tr><td>5°</td><td><img class="flag-icon" src="flags/es.png"> Spagna 2021</td><td>Levi Diaz</td><td>Reìr</td></tr>
+      <tr><td>6°</td><td><img class="flag-icon" src="flags/am.png"> Armenia 2010</td><td>Vladimir Arzumanyan</td><td>Mama</td></tr>
+      <tr><td>7°</td><td><img class="flag-icon" src="flags/bg.png"> Bulgaria 2014</td><td>Krisia</td><td>Planet of the children</td></tr>
+      <tr><td>8°</td><td><img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2005</td><td>Tess</td><td>Stupid</td></tr>
+      <tr><td>9°</td><td><img class="flag-icon" src="flags/cy.png"> Cipro 2004</td><td>Marius Tofis</td><td>Onira</td></tr>
+      <tr><td>10°</td><td><img class="flag-icon" src="flags/lv.png"> Lettonia 2010</td><td>Sarlote & Sea Stones</td><td>Viva la dance</td></tr>
     </tbody>
   </table>
 
   <!-- Griglia video -->
-  <div class="video-grid" id="video-grid">
-    <!-- Video dei finalisti -->
+  <div class="video-grid">
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Ucraina 2021 – Olena Usenko</div><div class="line2">"Vazhil"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Polonia 2022 – Laura</div><div class="line2">"To the moon"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Russia 2009 – Katya Ryabova</div><div class="line2">"Malenky Prints"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Italia 2014 – Vincenzo Cantiello</div><div class="line2">"Tu primo grande amore"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Spagna 2021 – Levi Diaz</div><div class="line2">"Reìr"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Armenia 2010 – Vladimir Arzumanyan</div><div class="line2">"Mama"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Bulgaria 2014 – Krisia</div><div class="line2">"Planet of the children"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Paesi Bassi 2005 – Tess</div><div class="line2">"Stupid"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Cipro 2004 – Marius Tofis</div><div class="line2">"Onira"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="video-item">
+      <div class="video-title"><div class="line1">Lettonia 2010 – Sarlote & Sea Stones</div><div class="line2">"Viva la dance"</div></div>
+      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
+    </div>
   </div>
 
   <!-- Classifica finale nascosta -->
@@ -204,58 +252,10 @@
         </tr>
       </thead>
       <tbody id="final-ranking">
-        <!-- Righe generate da JS -->
+        <!-- Popolare in futuro -->
       </tbody>
     </table>
   </div>
 
-  <script>
-    const finalisti = [
-      {country: "Ucraina 2021", code: "ua", artist: "Olena Usenko", title: "Vazhil", points: 98.5, video: "https://www.youtube.com/embed/tYBeJ_VBzgs"},
-      {country: "Polonia 2022", code: "pl", artist: "Laura", title: "To the moon", points: 95.2, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Russia 2009", code: "ru", artist: "Katya Ryabova", title: "Malenky Prints", points: 92.0, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Italia 2014", code: "it", artist: "Vincenzo Cantiello", title: "Tu primo grande amore", points: 90.8, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Spagna 2021", code: "es", artist: "Levi Diaz", title: "Reìr", points: 89.5, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Armenia 2010", code: "am", artist: "Vladimir Arzumanyan", title: "Mama", points: 88.3, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Bulgaria 2014", code: "bg", artist: "Krisia", title: "Planet of the children", points: 87.6, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Paesi Bassi 2005", code: "nl", artist: "Tess", title: "Stupid", points: 86.4, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Cipro 2004", code: "cy", artist: "Marius Tofis", title: "Onira", points: 85.2, video: "https://www.youtube.com/embed/XXXXX"},
-      {country: "Lettonia 2010", code: "lv", artist: "Sarlote & Sea Stones", title: "Viva la dance", points: 84.9, video: "https://www.youtube.com/embed/XXXXX"}
-    ];
-
-    const summaryTable = document.getElementById("summary-table");
-    const videoGrid = document.getElementById("video-grid");
-    const finalRanking = document.getElementById("final-ranking");
-
-    finalisti.forEach((song, index) => {
-      // tabella riassuntiva
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${index + 1}°</td>
-        <td><img class="flag-icon" src="flags/${song.code}.png"> ${song.country}</td>
-        <td>${song.artist}</td>
-        <td>${song.title}</td>
-      `;
-      summaryTable.appendChild(tr);
-
-      // video grid
-      const videoItem = document.createElement("div");
-      videoItem.className = "video-item";
-      videoItem.innerHTML = `
-        <div class="video-title">
-          <div class="line1"><img class="flag-icon" src="flags/${song.code}.png"> ${song.country} – ${song.artist}</div>
-          <div class="line2">"${song.title}"</div>
-        </div>
-        <div class="video-container">
-          <iframe src="${song.video}" frameborder="0" allowfullscreen title="${song.country} – ${song.title}"></iframe>
-        </div>
-      `;
-      videoGrid.appendChild(videoItem);
-
-      // classifica finale (nascosta)
-      const trFinal = document.createElement("tr");
-      trFinal.innerHTML = `
-        <td>${index + 1}°</td>
-        <td><img class="flag-icon" src="flags/${song.code}.png"> ${song.country}</td>
-        <td>${song.artist}</td>
-        <
+</body>
+</html>
