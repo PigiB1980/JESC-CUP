@@ -57,26 +57,9 @@
       background-color: #87CEFA; /* riga scura */
     }
 
-    /* Contenuto nascosto */
-    .hidden-content {
-      display: none;
-    }
-
-    .show-btn {
-      margin: 10px auto 20px auto;
-      display: inline-block;
-      padding: 10px 15px;
-      font-size: 1rem;
-      border-radius: 8px;
-      background-color: #1e1e50;
-      color: white;
-      cursor: pointer;
-      border: none;
-      transition: background 0.3s;
-    }
-
-    .show-btn:hover {
-      background-color: #3333aa;
+    /* Dati nascosti (testo invisibile) */
+    .hidden-data {
+      color: transparent;
     }
 
     /* Griglia video */
@@ -128,21 +111,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="hidden-content">
-        <td>🇮🇹 Italia</td>
-        <td>Artista 1</td>
-        <td>Canzone 1</td>
+      <tr>
+        <td class="hidden-data">🇮🇹 Italia</td>
+        <td class="hidden-data">Artista 1</td>
+        <td class="hidden-data">Canzone 1</td>
       </tr>
-      <tr class="hidden-content">
-        <td>🇫🇷 Francia</td>
-        <td>Artista 2</td>
-        <td>Canzone 2</td>
+      <tr>
+        <td class="hidden-data">🇫🇷 Francia</td>
+        <td class="hidden-data">Artista 2</td>
+        <td class="hidden-data">Canzone 2</td>
       </tr>
       <!-- altre righe fino a 10 partecipanti -->
     </tbody>
   </table>
-
-  <button class="show-btn" onclick="toggleTable()">Mostra/Nascondi dettagli partecipanti</button>
 
   <!-- Video partecipanti -->
   <div class="video-grid">
@@ -170,49 +151,30 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="gold hidden-content">
+      <tr class="gold">
         <td>1</td>
-        <td>🇮🇹 Italia</td>
-        <td>Artista 1</td>
-        <td>Canzone 1</td>
-        <td>XXX</td>
+        <td class="hidden-data">🇮🇹 Italia</td>
+        <td class="hidden-data">Artista 1</td>
+        <td class="hidden-data">Canzone 1</td>
+        <td class="hidden-data">XXX</td>
       </tr>
-      <tr class="silver hidden-content">
+      <tr class="silver">
         <td>2</td>
-        <td>🇫🇷 Francia</td>
-        <td>Artista 2</td>
-        <td>Canzone 2</td>
-        <td>XXX</td>
+        <td class="hidden-data">🇫🇷 Francia</td>
+        <td class="hidden-data">Artista 2</td>
+        <td class="hidden-data">Canzone 2</td>
+        <td class="hidden-data">XXX</td>
       </tr>
-      <tr class="bronze hidden-content">
+      <tr class="bronze">
         <td>3</td>
-        <td>🇪🇸 Spagna</td>
-        <td>Artista 3</td>
-        <td>Canzone 3</td>
-        <td>XXX</td>
+        <td class="hidden-data">🇪🇸 Spagna</td>
+        <td class="hidden-data">Artista 3</td>
+        <td class="hidden-data">Canzone 3</td>
+        <td class="hidden-data">XXX</td>
       </tr>
       <!-- altre posizioni fino a 10 -->
     </tbody>
   </table>
 
-  <button class="show-btn" onclick="toggleRanking()">Mostra/Nascondi classifica finale</button>
-
-  <script>
-    function toggleTable() {
-      const rows = document.querySelectorAll('table tbody tr.hidden-content');
-      rows.forEach(row => {
-        row.style.display = row.style.display === 'table-row' ? 'none' : 'table-row';
-      });
-    }
-
-    function toggleRanking() {
-      const rows = document.querySelectorAll('table:nth-of-type(2) tbody tr.hidden-content');
-      rows.forEach(row => {
-        row.style.display = row.style.display === 'table-row' ? 'none' : 'table-row';
-      });
-    }
-  </script>
-
 </body>
 </html>
-
