@@ -1,49 +1,110 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JESC CUP – FINALISSIMA</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: url('images/sfondo.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
       margin: 0;
       padding: 20px;
+      background: linear-gradient(180deg, #FFD700 0%, #FFC300 100%);
+      color: #333;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Effetto stelline */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(white, rgba(255,255,255,0) 2px) repeat;
+      background-size: 50px 50px;
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
     }
 
     h1 {
-      font-size: 3.5em;
-      margin-bottom: 10px;
+      font-size: 5em;
+      margin: 0.2em 0 0.1em;
+      color: #FFD700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
     }
 
     h2 {
-      font-size: 1.5em;
+      font-size: 1.8em;
       margin-bottom: 40px;
-      font-weight: normal;
+      color: #fff;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
     }
 
+    /* Tabella riassuntiva */
+    table {
+      width: 90%;
+      margin: 0 auto 40px auto;
+      border-collapse: collapse;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      z-index: 1;
+      position: relative;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      text-align: left;
+      color: white;
+    }
+
+    th {
+      background: rgba(255, 140, 0, 0.8);
+      font-weight: 700;
+      position: sticky;
+      top: 0;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(0,0,0,0.1);
+    }
+
+    tr:hover {
+      background: rgba(0,0,0,0.2);
+    }
+
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    }
+
+    /* Griglia video */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       justify-items: center;
-      margin: 20px 0 40px;
+      margin-bottom: 50px;
     }
 
     .video-item {
-      text-align: center;
       width: 100%;
-      max-width: 400px;
+      max-width: 450px;
+      text-align: center;
     }
 
     .video-title {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .video-title .line1 {
@@ -64,50 +125,22 @@
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Classifica finale nascosta */
+    .classifica {
+      display: none;
+      margin-top: 40px;
     }
 
     .classifica table {
       width: 80%;
-      margin: 40px auto;
-      border-collapse: collapse;
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .classifica th, .classifica td {
-      padding: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      text-align: left;
-    }
-
-    th {
-      background: #ff4081;
-      color: #fff;
-      font-weight: 700;
-    }
-
-    tr:nth-child(even) {
-      background: rgba(255,255,255,0.02);
-    }
-
-    tr:hover {
+      margin: 0 auto;
       background: rgba(255,255,255,0.1);
-    }
-
-    .flag-icon {
-      width: 22px;
-      height: 16px;
-      margin-right: 6px;
-      vertical-align: middle;
-      border-radius: 2px;
-      box-shadow: 0 0 3px rgba(0,0,0,0.5);
     }
 
     .btn-home {
@@ -120,27 +153,46 @@
       border-radius: 8px;
       text-decoration: none;
       cursor: pointer;
+      z-index: 1;
+      position: relative;
     }
 
     .btn-home:hover {
       background: #e91e63;
     }
+
   </style>
 </head>
 <body>
 
   <a href="index.html" class="btn-home">🏠 Home</a>
-  <h1>🎵 FINALISSIMA 🎵</h1>
-  <h2>Le migliori canzoni si sfidano per la vittoria assoluta!</h2>
 
-  <!-- VIDEO GRID -->
+  <h1>FINALISSIMA</h1>
+  <h2>10 canzoni per il TITOLO!</h2>
+
+  <!-- Tabella riassuntiva finalisti -->
+  <table>
+    <thead>
+      <tr>
+        <th>Posizione</th>
+        <th>Paese</th>
+        <th>Artista</th>
+        <th>Canzone</th>
+      </tr>
+    </thead>
+    <tbody id="summary-table">
+      <!-- Righe generate da JS -->
+    </tbody>
+  </table>
+
+  <!-- Griglia video -->
   <div class="video-grid" id="video-grid">
-    <!-- I video finalisti saranno inseriti qui -->
+    <!-- Video dei finalisti -->
   </div>
 
-  <!-- CLASSIFICA -->
+  <!-- Classifica finale nascosta -->
   <div class="classifica">
-    <h2>Classifica FINALISSIMA</h2>
+    <h2>Classifica Finale</h2>
     <table>
       <thead>
         <tr>
@@ -152,24 +204,40 @@
         </tr>
       </thead>
       <tbody id="final-ranking">
-        <!-- Righe della classifica saranno generate qui -->
+        <!-- Righe generate da JS -->
       </tbody>
     </table>
   </div>
 
   <script>
-    // Esempio dati: sostituire con i dati reali
     const finalisti = [
       {country: "Ucraina 2021", code: "ua", artist: "Olena Usenko", title: "Vazhil", points: 98.5, video: "https://www.youtube.com/embed/tYBeJ_VBzgs"},
       {country: "Polonia 2022", code: "pl", artist: "Laura", title: "To the moon", points: 95.2, video: "https://www.youtube.com/embed/XXXXX"},
       {country: "Russia 2009", code: "ru", artist: "Katya Ryabova", title: "Malenky Prints", points: 92.0, video: "https://www.youtube.com/embed/XXXXX"},
-      // aggiungere altri finalisti qui
+      {country: "Italia 2014", code: "it", artist: "Vincenzo Cantiello", title: "Tu primo grande amore", points: 90.8, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Spagna 2021", code: "es", artist: "Levi Diaz", title: "Reìr", points: 89.5, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Armenia 2010", code: "am", artist: "Vladimir Arzumanyan", title: "Mama", points: 88.3, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Bulgaria 2014", code: "bg", artist: "Krisia", title: "Planet of the children", points: 87.6, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Paesi Bassi 2005", code: "nl", artist: "Tess", title: "Stupid", points: 86.4, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Cipro 2004", code: "cy", artist: "Marius Tofis", title: "Onira", points: 85.2, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Lettonia 2010", code: "lv", artist: "Sarlote & Sea Stones", title: "Viva la dance", points: 84.9, video: "https://www.youtube.com/embed/XXXXX"}
     ];
 
+    const summaryTable = document.getElementById("summary-table");
     const videoGrid = document.getElementById("video-grid");
     const finalRanking = document.getElementById("final-ranking");
 
     finalisti.forEach((song, index) => {
+      // tabella riassuntiva
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${index + 1}°</td>
+        <td><img class="flag-icon" src="flags/${song.code}.png"> ${song.country}</td>
+        <td>${song.artist}</td>
+        <td>${song.title}</td>
+      `;
+      summaryTable.appendChild(tr);
+
       // video grid
       const videoItem = document.createElement("div");
       videoItem.className = "video-item";
@@ -184,18 +252,10 @@
       `;
       videoGrid.appendChild(videoItem);
 
-      // classifica
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
+      // classifica finale (nascosta)
+      const trFinal = document.createElement("tr");
+      trFinal.innerHTML = `
         <td>${index + 1}°</td>
         <td><img class="flag-icon" src="flags/${song.code}.png"> ${song.country}</td>
         <td>${song.artist}</td>
-        <td>${song.title}</td>
-        <td>${song.points.toFixed(1)}</td>
-      `;
-      finalRanking.appendChild(tr);
-    });
-  </script>
-
-</body>
-</html>
+        <
