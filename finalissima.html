@@ -15,19 +15,22 @@
       color: #333;
       text-align: center;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Effetto stelline */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: radial-gradient(white, rgba(255,255,255,0) 2px) repeat;
-      background-size: 50px 50px;
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: 0;
+    /* Stelline animate */
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle linear infinite;
+    }
+
+    @keyframes twinkle {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-20px) scale(1.3); opacity: 0.3; }
+      100% { transform: translateY(0) scale(1); opacity: 0.8; }
     }
 
     h1 {
@@ -35,6 +38,8 @@
       margin: 0.2em 0 0.1em;
       color: #1E3A8A; /* blu intenso */
       text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 1;
     }
 
     h2 {
@@ -42,9 +47,10 @@
       margin-bottom: 40px;
       color: #fff;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 1;
     }
 
-    /* Tabella riassuntiva */
     table {
       width: 90%;
       margin: 0 auto 40px auto;
@@ -61,12 +67,13 @@
       padding: 10px 12px;
       border-bottom: 1px solid rgba(255,255,255,0.3);
       text-align: left;
-      color: white;
+      color: transparent; /* testo nascosto */
     }
 
     th {
-      background: rgba(0,0,255,0.7); /* blu semi-trasparente */
+      background: rgba(0,0,255,0.7);
       font-weight: 700;
+      color: white; /* intestazioni visibili */
       position: sticky;
       top: 0;
     }
@@ -79,42 +86,20 @@
       background: rgba(0,0,0,0.2);
     }
 
-    .flag-icon {
-      width: 22px;
-      height: 16px;
-      margin-right: 6px;
-      vertical-align: middle;
-      border-radius: 2px;
-      box-shadow: 0 0 3px rgba(0,0,0,0.5);
-    }
-
-    /* Griglia video */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       justify-items: center;
       margin-bottom: 50px;
+      position: relative;
+      z-index: 1;
     }
 
     .video-item {
       width: 100%;
       max-width: 450px;
       text-align: center;
-    }
-
-    .video-title {
-      margin-bottom: 8px;
-    }
-
-    .video-title .line1 {
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    .video-title .line2 {
-      font-style: italic;
-      font-size: 0.95em;
     }
 
     .video-container {
@@ -131,10 +116,10 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    /* Classifica finale nascosta */
     .classifica {
-      display: none;
       margin-top: 40px;
+      position: relative;
+      z-index: 1;
     }
 
     .classifica table {
@@ -142,6 +127,14 @@
       margin: 0 auto;
       background: rgba(255,255,255,0.1);
     }
+
+    .medaglia {
+      font-weight: bold;
+    }
+
+    .oro { color: gold; }
+    .argento { color: silver; }
+    .bronzo { color: #cd7f32; }
 
     .btn-home {
       display: inline-block;
@@ -169,7 +162,7 @@
   <h1>FINALISSIMA</h1>
   <h2>10 canzoni per il TITOLO!</h2>
 
-  <!-- Tabella riassuntiva finalisti -->
+  <!-- Tabella riassuntiva iniziale -->
   <table>
     <thead>
       <tr>
@@ -180,65 +173,34 @@
       </tr>
     </thead>
     <tbody id="summary-table">
-      <!-- Inserire i finalisti qui -->
-      <tr><td>1°</td><td><img class="flag-icon" src="flags/ua.png"> Ucraina 2021</td><td>Olena Usenko</td><td>Vazhil</td></tr>
-      <tr><td>2°</td><td><img class="flag-icon" src="flags/pl.png"> Polonia 2022</td><td>Laura</td><td>To the moon</td></tr>
-      <tr><td>3°</td><td><img class="flag-icon" src="flags/ru.png"> Russia 2009</td><td>Katya Ryabova</td><td>Malenky Prints</td></tr>
-      <tr><td>4°</td><td><img class="flag-icon" src="flags/it.png"> Italia 2014</td><td>Vincenzo Cantiello</td><td>Tu primo grande amore</td></tr>
-      <tr><td>5°</td><td><img class="flag-icon" src="flags/es.png"> Spagna 2021</td><td>Levi Diaz</td><td>Reìr</td></tr>
-      <tr><td>6°</td><td><img class="flag-icon" src="flags/am.png"> Armenia 2010</td><td>Vladimir Arzumanyan</td><td>Mama</td></tr>
-      <tr><td>7°</td><td><img class="flag-icon" src="flags/bg.png"> Bulgaria 2014</td><td>Krisia</td><td>Planet of the children</td></tr>
-      <tr><td>8°</td><td><img class="flag-icon" src="flags/nl.png"> Paesi Bassi 2005</td><td>Tess</td><td>Stupid</td></tr>
-      <tr><td>9°</td><td><img class="flag-icon" src="flags/cy.png"> Cipro 2004</td><td>Marius Tofis</td><td>Onira</td></tr>
-      <tr><td>10°</td><td><img class="flag-icon" src="flags/lv.png"> Lettonia 2010</td><td>Sarlote & Sea Stones</td><td>Viva la dance</td></tr>
+      <tr><td>1°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>2°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>3°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>4°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>5°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>6°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>7°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>8°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>9°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+      <tr><td>10°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
     </tbody>
   </table>
 
-  <!-- Griglia video -->
+  <!-- Griglia video inizialmente vuota -->
   <div class="video-grid">
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Ucraina 2021 – Olena Usenko</div><div class="line2">"Vazhil"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Polonia 2022 – Laura</div><div class="line2">"To the moon"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Russia 2009 – Katya Ryabova</div><div class="line2">"Malenky Prints"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Italia 2014 – Vincenzo Cantiello</div><div class="line2">"Tu primo grande amore"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Spagna 2021 – Levi Diaz</div><div class="line2">"Reìr"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Armenia 2010 – Vladimir Arzumanyan</div><div class="line2">"Mama"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Bulgaria 2014 – Krisia</div><div class="line2">"Planet of the children"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Paesi Bassi 2005 – Tess</div><div class="line2">"Stupid"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Cipro 2004 – Marius Tofis</div><div class="line2">"Onira"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
-    <div class="video-item">
-      <div class="video-title"><div class="line1">Lettonia 2010 – Sarlote & Sea Stones</div><div class="line2">"Viva la dance"</div></div>
-      <div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="video-item"><div class="video-container"><iframe src="https://www.youtube.com/embed/XXXXX" frameborder="0" allowfullscreen></iframe></div></div>
   </div>
 
-  <!-- Classifica finale nascosta -->
+  <!-- Classifica finale visibile solo con medaglie -->
   <div class="classifica">
     <h2>Classifica Finale</h2>
     <table>
@@ -252,10 +214,35 @@
         </tr>
       </thead>
       <tbody id="final-ranking">
-        <!-- Popolare in futuro -->
+        <tr><td class="medaglia oro">1°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td class="medaglia argento">2°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td class="medaglia bronzo">3°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>4°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>5°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>6°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>7°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>8°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>9°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
+        <tr><td>10°</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td><td>XXXXX</td></tr>
       </tbody>
     </table>
   </div>
+
+  <script>
+    // Genera 50 stelline casuali
+    for(let i=0;i<50;i++){
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random()*3 + 2; // 2-5px
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.top = Math.random()*100 + '%';
+      star.style.left = Math.random()*100 + '%';
+      star.style.animationDuration = (Math.random()*5 + 5) + 's';
+      star.style.animationDelay = (Math.random()*5) + 's';
+      document.body.appendChild(star);
+    }
+  </script>
 
 </body>
 </html>
