@@ -29,26 +29,23 @@
       z-index: 0;
     }
 
-    /* Pulsante HOME */
+    /* Pulsante Home */
     .btn-home {
       position: absolute;
       top: 20px;
       left: 20px;
       background: #0033cc;
-      color: #FFD700;
+      color: #fff;
       padding: 10px 16px;
       font-weight: bold;
       border: none;
       border-radius: 8px;
       text-decoration: none;
       cursor: pointer;
-      z-index: 10;
-      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 2;
     }
-
     .btn-home:hover {
-      background: #002080;
-      transform: scale(1.05);
+      background: #001f80;
     }
 
     h1 {
@@ -66,12 +63,10 @@
       position: relative;
     }
 
-    /* Tabelle con righe separate */
     table {
       width: 90%;
       margin: 0 auto 40px auto;
-      border-collapse: separate;
-      border-spacing: 0 5px;
+      border-collapse: collapse;
       background: #87CEFA; /* celeste chiaro */
       border-radius: 12px;
       overflow: hidden;
@@ -81,17 +76,17 @@
 
     th, td {
       padding: 12px 15px;
-      border-bottom: 2px solid rgba(0,0,0,0.2);
-      background: #87CEFA;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
 
     th {
       background: #0033cc;
       color: #FFD700;
       font-weight: bold;
+      font-size: 1.1em;
     }
 
-    /* Solo il primo finalista visibile */
+    /* Riga nascosta */
     .hidden-row td {
       color: transparent;
     }
@@ -131,9 +126,8 @@
     .final-classifica table {
       width: 80%;
       margin: 40px auto;
-      border-collapse: separate;
-      border-spacing: 0 5px;
-      background: #87CEFA;
+      border-collapse: collapse;
+      background: #87CEFA; /* celeste chiaro */
       border-radius: 12px;
       overflow: hidden;
       z-index: 1;
@@ -142,13 +136,11 @@
 
     .final-classifica th, .final-classifica td {
       padding: 12px 15px;
-      border-bottom: 2px solid rgba(0,0,0,0.2);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
       font-weight: bold;
     }
 
-    /* Larghezza colonna Posizione */
-    .final-classifica th:first-child,
-    .final-classifica td:first-child {
+    .final-classifica th:first-child, .final-classifica td:first-child {
       width: 60px;
     }
 
@@ -162,6 +154,14 @@
     .gold { background: #FFD700; color: #000; }
     .silver { background: #C0C0C0; color: #000; }
     .bronze { background: #cd7f32; color: #fff; }
+
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
+    }
 
   </style>
 </head>
@@ -184,54 +184,54 @@
     <tbody>
       <!-- Primo finalista visibile -->
       <tr>
-        <td>Ucraina 2021</td>
+        <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2021</td>
         <td>Olena Usenko</td>
         <td>"Vazhil"</td>
       </tr>
 
       <!-- Altri finalisti invisibili -->
       <tr class="hidden-row">
-        <td>Ucraina 2008</td>
+        <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2008</td>
         <td>Viktoria Petryk</td>
         <td>"Matrosy"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Australia 2015</td>
+        <td><img class="flag-icon" src="flags/au.png" alt="Australia"> Australia 2015</td>
         <td>Bella Paige</td>
         <td>"My girls"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Lettonia 2010</td>
+        <td><img class="flag-icon" src="flags/lv.png" alt="Lettonia"> Lettonia 2010</td>
         <td>Sarlote & Sea Stones</td>
         <td>"Viva la dance"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Armenia 2019</td>
+        <td><img class="flag-icon" src="flags/am.png" alt="Armenia"> Armenia 2019</td>
         <td>Karina Ignatiyan</td>
         <td>"Colours of your dream"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Norvegia 2004</td>
+        <td><img class="flag-icon" src="flags/no.png" alt="Norvegia"> Norvegia 2004</td>
         <td>@Lek</td>
         <td>"En Stjerne skal jeg bli"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Ucraina 2017</td>
+        <td><img class="flag-icon" src="flags/ua.png" alt="Ucraina"> Ucraina 2017</td>
         <td>Anastasiya Baginska</td>
         <td>"Don't stop"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Armenia 2022</td>
+        <td><img class="flag-icon" src="flags/am.png" alt="Armenia"> Armenia 2022</td>
         <td>Nare</td>
         <td>"Dance"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Paesi Bassi 2019</td>
+        <td><img class="flag-icon" src="flags/nl.png" alt="Paesi Bassi"> Paesi Bassi 2019</td>
         <td>Matheu</td>
         <td>"Dans met jou"</td>
       </tr>
       <tr class="hidden-row">
-        <td>Polonia 2022</td>
+        <td><img class="flag-icon" src="flags/pl.png" alt="Polonia"> Polonia 2022</td>
         <td>Laura</td>
         <td>"To the moon"</td>
       </tr>
@@ -242,52 +242,52 @@
   <div class="video-grid">
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 1"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 1"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 2"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 2"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 3"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 3"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 4"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 4"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 5"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 5"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 6"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 6"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 7"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 7"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 8"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 8"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 9"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 9"></iframe>
       </div>
     </div>
     <div class="video-item">
       <div class="video-container">
-        <iframe src="" title="Video Finalista 10"></iframe>
+        <iframe src="https://www.youtube.com/embed/XXXXX" title="Video Finalista 10"></iframe>
       </div>
     </div>
   </div>
@@ -323,6 +323,7 @@
           <td></td>
           <td></td>
         </tr>
+        <!-- Le altre posizioni -->
         <tr><td>4°</td><td></td><td></td><td></td></tr>
         <tr><td>5°</td><td></td><td></td><td></td></tr>
         <tr><td>6°</td><td></td><td></td><td></td></tr>
