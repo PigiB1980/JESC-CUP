@@ -29,27 +29,6 @@
       z-index: 0;
     }
 
-    /* PULSANTE HOME */
-    .btn-home {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: #0033cc;
-      color: white;
-      padding: 10px 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      z-index: 2;
-    }
-    .btn-home:hover {
-      background: #001f99;
-      transform: scale(1.05);
-    }
-
     h1 {
       font-size: 4em;
       color: #0033cc;
@@ -65,10 +44,12 @@
       position: relative;
     }
 
+    /* Tabelle con righe separate */
     table {
       width: 90%;
       margin: 0 auto 40px auto;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0 5px; /* separazione tra le righe */
       background: #87CEFA; /* celeste chiaro */
       border-radius: 12px;
       overflow: hidden;
@@ -78,7 +59,8 @@
 
     th, td {
       padding: 12px 15px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 2px solid rgba(0,0,0,0.2); /* bordo più evidente */
+      background: #87CEFA; /* sfondo celeste uniforme */
     }
 
     th {
@@ -127,7 +109,8 @@
     .final-classifica table {
       width: 80%;
       margin: 40px auto;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0 5px; /* separazione tra le righe */
       background: #87CEFA; /* celeste chiaro */
       border-radius: 12px;
       overflow: hidden;
@@ -137,7 +120,7 @@
 
     .final-classifica th, .final-classifica td {
       padding: 12px 15px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 2px solid rgba(0,0,0,0.2);
       font-weight: bold;
     }
 
@@ -155,8 +138,6 @@
   </style>
 </head>
 <body>
-
-  <a href="index.html" class="btn-home">🏠 Home</a>
 
   <h1>FINALISSIMA</h1>
   <h2>10 canzoni per il TITOLO!</h2>
@@ -312,7 +293,6 @@
           <td></td>
           <td></td>
         </tr>
-        <!-- Le altre posizioni -->
         <tr><td>4°</td><td></td><td></td><td></td></tr>
         <tr><td>5°</td><td></td><td></td><td></td></tr>
         <tr><td>6°</td><td></td><td></td><td></td></tr>
