@@ -1,124 +1,145 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FINALISSIMA - JESC CUP</title>
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    padding: 20px;
-    background: radial-gradient(circle at top left, #ffd700, #ffec8b) no-repeat fixed;
-    font-family: 'Comic Neue', cursive;
-    color: #000;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JESC CUP - FINALISSIMA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-  /* Pulsante HOME */
-  .btn-home {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: #ff4081;
-    color: white;
-    padding: 10px 16px;
-    font-weight: bold;
-    border-radius: 8px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .btn-home:hover {
-    background: #e91e63;
-  }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle, #FFD700 0%, #FFC107 80%);
+      margin: 0;
+      padding: 20px;
+      color: #000;
+      text-align: center;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-  h1 {
-    text-align: center;
-    font-size: 4em;
-    color: #0000ff; /* blu per risaltare */
-    margin-top: 0;
-  }
-  h2 {
-    text-align: center;
-    font-size: 1.5em;
-    margin-top: 0;
-  }
+    /* Stelline luccicanti */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('images/stars.png') repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
 
-  /* Tabella riassuntiva */
-  .summary-table table {
-    width: 90%;
-    margin: 20px auto;
-    border-collapse: separate;
-    border-spacing: 0 8px; /* separa bene le righe */
-    background: #87cefa; /* celeste */
-    color: #000;
-    font-weight: bold;
-  }
-  .summary-table th, .summary-table td {
-    padding: 10px;
-    text-align: left;
-  }
-  .summary-table th {
-    text-decoration: underline;
-  }
+    h1 {
+      font-size: 4em;
+      color: #0033cc;
+      margin-bottom: 10px;
+      z-index: 1;
+      position: relative;
+    }
 
-  /* Video grid */
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    justify-items: center;
-    margin: 30px 0;
-  }
-  .video-item {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-  }
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-  }
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 30px;
+      z-index: 1;
+      position: relative;
+    }
 
-  /* Classifica finale */
-  .final-classifica table {
-    width: 90%;
-    margin: 40px auto;
-    border-collapse: separate;
-    border-spacing: 0 4px;
-    background: #f0f8ff; /* leggermente celeste */
-  }
-  .final-classifica th, .final-classifica td {
-    padding: 8px;
-    text-align: left;
-  }
-  .final-classifica th:nth-child(1),
-  .final-classifica td:nth-child(1) {
-    width: 60px;
-  }
-  .medal.gold { color: gold; font-weight: bold; }
-  .medal.silver { color: silver; font-weight: bold; }
-  .medal.bronze { color: #cd7f32; font-weight: bold; }
-</style>
+    table {
+      width: 90%;
+      margin: 0 auto 40px auto;
+      border-collapse: collapse;
+      background: #87CEFA; /* celeste chiaro */
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 1;
+      position: relative;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    th {
+      background: #0033cc;
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    /* Solo il primo finalista visibile */
+    .hidden-row td {
+      color: transparent;
+    }
+
+    /* Video grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      justify-items: center;
+      margin-bottom: 40px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .video-item {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      border: none;
+    }
+
+    /* Classifica finale */
+    .final-classifica table {
+      width: 80%;
+      margin: 40px auto;
+      border-collapse: collapse;
+      background: #87CEFA; /* celeste chiaro */
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 1;
+      position: relative;
+    }
+
+    .final-classifica th, .final-classifica td {
+      padding: 12px 15px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      font-weight: bold;
+    }
+
+    .medal {
+      font-weight: bold;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .gold { background: #FFD700; color: #000; }
+    .silver { background: #C0C0C0; color: #000; }
+    .bronze { background: #cd7f32; color: #fff; }
+
+  </style>
 </head>
 <body>
 
-<a href="index.html" class="btn-home">🏠 Home</a>
+  <h1>FINALISSIMA</h1>
+  <h2>10 canzoni per il TITOLO!</h2>
 
-<h1>FINALISSIMA</h1>
-<h2>10 canzoni per il TITOLO!</h2>
-
-<!-- Tabella riassuntiva -->
-<div class="summary-table">
-  <table>
+  <!-- Tabella riassuntiva finalisti -->
+  <table id="summary-table">
     <thead>
       <tr>
         <th>Paese</th>
@@ -127,80 +148,158 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td style="color:transparent;">Finalista 1</td><td style="color:transparent;">Artista 1</td><td style="color:transparent;">Canzone 1</td></tr>
-      <tr><td style="color:transparent;">Finalista 2</td><td style="color:transparent;">Artista 2</td><td style="color:transparent;">Canzone 2</td></tr>
-      <tr><td style="color:transparent;">Finalista 3</td><td style="color:transparent;">Artista 3</td><td style="color:transparent;">Canzone 3</td></tr>
-      <tr><td style="color:transparent;">Finalista 4</td><td style="color:transparent;">Artista 4</td><td style="color:transparent;">Canzone 4</td></tr>
-      <tr><td style="color:transparent;">Finalista 5</td><td style="color:transparent;">Artista 5</td><td style="color:transparent;">Canzone 5</td></tr>
-      <tr><td style="color:transparent;">Finalista 6</td><td style="color:transparent;">Artista 6</td><td style="color:transparent;">Canzone 6</td></tr>
-      <tr><td style="color:transparent;">Finalista 7</td><td style="color:transparent;">Artista 7</td><td style="color:transparent;">Canzone 7</td></tr>
-      <tr><td style="color:transparent;">Finalista 8</td><td style="color:transparent;">Artista 8</td><td style="color:transparent;">Canzone 8</td></tr>
-      <tr><td style="color:transparent;">Finalista 9</td><td style="color:transparent;">Artista 9</td><td style="color:transparent;">Canzone 9</td></tr>
-      <tr><td style="color:transparent;">Finalista 10</td><td style="color:transparent;">Artista 10</td><td style="color:transparent;">Canzone 10</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- Video grid -->
-<div class="video-grid">
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-  <div class="video-item">
-    <div class="video-container"><iframe src="" frameborder="0" allowfullscreen></iframe></div>
-  </div>
-</div>
-
-<!-- Classifica finale -->
-<div class="final-classifica">
-  <h2>Classifica Finale</h2>
-  <table>
-    <thead>
+      <!-- Primo finalista visibile -->
       <tr>
-        <th>Posizione</th>
-        <th>Paese</th>
-        <th>Artista</th>
-        <th>Canzone</th>
+        <td>Ucraina 2021</td>
+        <td>Olena Usenko</td>
+        <td>"Vazhil"</td>
       </tr>
-    </thead>
-    <tbody>
-      <tr><td class="medal gold">1°</td><td></td><td></td><td></td></tr>
-      <tr><td class="medal silver">2°</td><td></td><td></td><td></td></tr>
-      <tr><td class="medal bronze">3°</td><td></td><td></td><td></td></tr>
-      <tr><td>4°</td><td></td><td></td><td></td></tr>
-      <tr><td>5°</td><td></td><td></td><td></td></tr>
-      <tr><td>6°</td><td></td><td></td><td></td></tr>
-      <tr><td>7°</td><td></td><td></td><td></td></tr>
-      <tr><td>8°</td><td></td><td></td><td></td></tr>
-      <tr><td>9°</td><td></td><td></td><td></td></tr>
-      <tr><td>10°</td><td></td><td></td><td></td></tr>
+
+      <!-- Altri finalisti invisibili -->
+      <tr class="hidden-row">
+        <td>Ucraina 2008</td>
+        <td>Viktoria Petryk</td>
+        <td>"Matrosy"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Australia 2015</td>
+        <td>Bella Paige</td>
+        <td>"My girls"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Lettonia 2010</td>
+        <td>Sarlote & Sea Stones</td>
+        <td>"Viva la dance"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Armenia 2019</td>
+        <td>Karina Ignatiyan</td>
+        <td>"Colours of your dream"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Norvegia 2004</td>
+        <td>@Lek</td>
+        <td>"En Stjerne skal jeg bli"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Ucraina 2017</td>
+        <td>Anastasiya Baginska</td>
+        <td>"Don't stop"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Armenia 2022</td>
+        <td>Nare</td>
+        <td>"Dance"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Paesi Bassi 2019</td>
+        <td>Matheu</td>
+        <td>"Dans met jou"</td>
+      </tr>
+      <tr class="hidden-row">
+        <td>Polonia 2022</td>
+        <td>Laura</td>
+        <td>"To the moon"</td>
+      </tr>
     </tbody>
   </table>
-</div>
+
+  <!-- Video finalisti -->
+  <div class="video-grid">
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 1"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 2"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 3"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 4"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 5"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 6"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 7"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 8"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 9"></iframe>
+      </div>
+    </div>
+    <div class="video-item">
+      <div class="video-container">
+        <iframe src="" title="Video Finalista 10"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classifica finale -->
+  <div class="final-classifica">
+    <h2>Classifica Finale</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Artista</th>
+          <th>Canzone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="medal gold">1°</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="medal silver">2°</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="medal bronze">3°</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <!-- Le altre posizioni -->
+        <tr><td>4°</td><td></td><td></td><td></td></tr>
+        <tr><td>5°</td><td></td><td></td><td></td></tr>
+        <tr><td>6°</td><td></td><td></td><td></td></tr>
+        <tr><td>7°</td><td></td><td></td><td></td></tr>
+        <tr><td>8°</td><td></td><td></td><td></td></tr>
+        <tr><td>9°</td><td></td><td></td><td></td></tr>
+        <tr><td>10°</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
 
 </body>
 </html>
