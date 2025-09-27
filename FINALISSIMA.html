@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JESC CUP – FINALISSIMA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('images/sfondo.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      font-weight: normal;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      margin: 20px 0 40px;
+    }
+
+    .video-item {
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .video-title {
+      margin-bottom: 10px;
+    }
+
+    .video-title .line1 {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .video-title .line2 {
+      font-style: italic;
+      font-size: 0.95em;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .classifica table {
+      width: 80%;
+      margin: 40px auto;
+      border-collapse: collapse;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .classifica th, .classifica td {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-align: left;
+    }
+
+    th {
+      background: #ff4081;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(255,255,255,0.02);
+    }
+
+    tr:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .flag-icon {
+      width: 22px;
+      height: 16px;
+      margin-right: 6px;
+      vertical-align: middle;
+      border-radius: 2px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    }
+
+    .btn-home {
+      display: inline-block;
+      margin-bottom: 20px;
+      background: #ff4081;
+      color: white;
+      padding: 10px 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-home:hover {
+      background: #e91e63;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="btn-home">🏠 Home</a>
+  <h1>🎵 FINALISSIMA 🎵</h1>
+  <h2>Le migliori canzoni si sfidano per la vittoria assoluta!</h2>
+
+  <!-- VIDEO GRID -->
+  <div class="video-grid" id="video-grid">
+    <!-- I video finalisti saranno inseriti qui -->
+  </div>
+
+  <!-- CLASSIFICA -->
+  <div class="classifica">
+    <h2>Classifica FINALISSIMA</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Posizione</th>
+          <th>Paese</th>
+          <th>Artista</th>
+          <th>Canzone</th>
+          <th>Punteggio</th>
+        </tr>
+      </thead>
+      <tbody id="final-ranking">
+        <!-- Righe della classifica saranno generate qui -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Esempio dati: sostituire con i dati reali
+    const finalisti = [
+      {country: "Ucraina 2021", code: "ua", artist: "Olena Usenko", title: "Vazhil", points: 98.5, video: "https://www.youtube.com/embed/tYBeJ_VBzgs"},
+      {country: "Polonia 2022", code: "pl", artist: "Laura", title: "To the moon", points: 95.2, video: "https://www.youtube.com/embed/XXXXX"},
+      {country: "Russia 2009", code: "ru", artist: "Katya Ryabova", title: "Malenky Prints", points: 92.0, video: "https://www.youtube.com/embed/XXXXX"},
+      // aggiungere altri finalisti qui
+    ];
+
+    const videoGrid = document.getElementById("video-grid");
+    const finalRanking = document.getElementById("final-ranking");
+
+    finalisti.forEach((song, index) => {
+      // video grid
+      const videoItem = document.createElement("div");
+      videoItem.className = "video-item";
+      videoItem.innerHTML = `
+        <div class="video-title">
+          <div class="line1"><img class="flag-icon" src="flags/${song.code}.png"> ${song.country} – ${song.artist}</div>
+          <div class="line2">"${song.title}"</div>
+        </div>
+        <div class="video-container">
+          <iframe src="${song.video}" frameborder="0" allowfullscreen title="${song.country} – ${song.title}"></iframe>
+        </div>
+      `;
+      videoGrid.appendChild(videoItem);
+
+      // classifica
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${index + 1}°</td>
+        <td><img class="flag-icon" src="flags/${song.code}.png"> ${song.country}</td>
+        <td>${song.artist}</td>
+        <td>${song.title}</td>
+        <td>${song.points.toFixed(1)}</td>
+      `;
+      finalRanking.appendChild(tr);
+    });
+  </script>
+
+</body>
+</html>
