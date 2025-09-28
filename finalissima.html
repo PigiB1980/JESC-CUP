@@ -106,9 +106,30 @@
       background-color: #cd7f32 !important;
       font-weight: bold;
     }
+    .home-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: #0044cc; /* blu */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #002a80; /* blu più scuro al passaggio del mouse */
+}
+
   </style>
 </head>
 <body>
+  <!-- Pulsante HOME -->
+<a href="index.html" class="home-button">🏠 HOME</a>
 <h1>
     <img src="images/logotitle.png" alt="JESC CUP Logo" class="logo" />
   </h1>
