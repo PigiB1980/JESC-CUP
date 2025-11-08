@@ -73,66 +73,53 @@
       display: none;
     }
 
-    /* Titoli dei video più grandi */
     .video-title {
       text-align: center;
       margin-bottom: 10px;
-      font-size: 1.4rem; /* dimensione generale titolo */
+      font-size: 1.4rem;
       color: #1e1e50;
     }
 
     .video-title div:first-child {
       font-weight: bold;
-      font-size: 1.5rem; /* riga artista più grande */
+      font-size: 1.5rem;
     }
 
     .video-title div:last-child {
       font-style: italic;
-      font-size: 1.3rem; /* riga canzone più grande */
+      font-size: 1.3rem;
     }
 
     /* Classifica finale */
-    .gold {
-      background-color: gold !important;
-      font-weight: bold;
-    }
+    .gold { background-color: gold !important; font-weight: bold; }
+    .silver { background-color: silver !important; font-weight: bold; }
+    .bronze { background-color: #cd7f32 !important; font-weight: bold; }
 
-    .silver {
-      background-color: silver !important;
-      font-weight: bold;
-    }
-
-    .bronze {
-      background-color: #cd7f32 !important;
-      font-weight: bold;
-    }
     .home-button {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background-color: #0044cc; /* blu */
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
-}
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #0044cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
 
-.home-button:hover {
-  background-color: #002a80; /* blu più scuro al passaggio del mouse */
-}
-
+    .home-button:hover {
+      background-color: #002a80;
+    }
   </style>
 </head>
 <body>
   <!-- Pulsante HOME -->
-<a href="index.html" class="home-button">🏠 HOME</a>
-<h1>
-    <img src="images/logotitle.png" alt="JESC CUP Logo" class="logo" />
-  </h1>
+  <a href="index.html" class="home-button">🏠 HOME</a>
+
+  <h1><img src="images/logotitle.png" alt="JESC CUP Logo" class="logo" /></h1>
   <h1>LA FINALISSIMA</h1>
   <h2>10 canzoni per il TITOLO</h2>
 
@@ -143,200 +130,92 @@
       <th>Artista</th>
       <th>Canzone</th>
     </tr>
-    <tr>
-      <td>🇺🇦 Ucraina</td>
-      <td>Olena Usenko</td>
-      <td>Vazhil</td>
-    </tr>
-    <tr>
-    <td>🇲🇹 Malta</td>
-    <td>Gaia Cauchi</td>
-    <td>The Start</td>
-  </tr>
-    <tr>
-    <td>🇫🇷 Francia</td>
-    <td>Valentina</td>
-    <td>J'imagine</td>
-  </tr>
-    <tr>
-    <td>🇦🇲 Armenia</td>
-    <td>Anahit & Mary</td>
-    <td>Tarber</td>
-  </tr>
-    <tr>
-  <td>🇪🇸 Spagna</td>
-  <td>Sandra Valero</td>
-  <td>Loviu</td>
-</tr>
-    <tr>
-  <td>🇬🇪 Georgia</td>
-  <td>Mariam Mamadashvili</td>
-  <td>Mzeo</td>
-</tr>
-    <tr>
-    <td>🇪🇸 Spagna</td>
-    <td>Sandra Valero</td>
-    <td>Loviu</td>
-  </tr>
-    <tr><td class="hidden">🇵🇱 Polonia</td><td class="hidden">Artista 7</td><td class="hidden">Canzone 7</td></tr>
-    <tr><td class="hidden">🇧🇪 Belgio</td><td class="hidden">Artista 8</td><td class="hidden">Canzone 8</td></tr>
-    <tr><td class="hidden">🇳🇱 Paesi Bassi</td><td class="hidden">Artista 9</td><td class="hidden">Canzone 9</td></tr>
+    <tr><td>🇺🇦 Ucraina</td><td>Olena Usenko</td><td>Vazhil</td></tr>
+    <tr><td>🇲🇹 Malta</td><td>Gaia Cauchi</td><td>The Start</td></tr>
+    <tr><td>🇫🇷 Francia</td><td>Valentina</td><td>J'imagine</td></tr>
+    <tr><td>🇦🇲 Armenia</td><td>Anahit & Mary</td><td>Tarber</td></tr>
+    <tr><td>🇪🇸 Spagna</td><td>Sandra Valero</td><td>Loviu</td></tr>
+    <tr><td>🇬🇪 Georgia</td><td>Mariam Mamadashvili</td><td>Mzeo</td></tr>
+    <tr><td>🇵🇹 Portogallo</td><td>Victoria Nicole</td><td>Esperança</td></tr>
+    <tr><td class="hidden">🇵🇱 Polonia</td><td class="hidden">Artista 8</td><td class="hidden">Canzone 8</td></tr>
+    <tr><td class="hidden">🇧🇪 Belgio</td><td class="hidden">Artista 9</td><td class="hidden">Canzone 9</td></tr>
+    <tr><td class="hidden">🇳🇱 Paesi Bassi</td><td class="hidden">Artista 10</td><td class="hidden">Canzone 10</td></tr>
   </table>
 
   <!-- Sezione Video -->
-<div class="video-grid">
-  <!-- 1. Ucraina - Olena Usenko - Vazhil -->
-  <div class="video-item">
-    <div class="video-title">
-      <div>🇺🇦 Olena Usenko</div>
-      <div><em>"Vazhil"</em></div>
+  <div class="video-grid">
+    <!-- 1. Ucraina -->
+    <div class="video-item">
+      <div class="video-title"><div>🇺🇦 Olena Usenko</div><div><em>"Vazhil"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/UdDhkA7K7g0" title="Olena Usenko - Vazhil" frameborder="0" allowfullscreen></iframe>
     </div>
-    <iframe 
-      src="https://www.youtube.com/embed/UdDhkA7K7g0" 
-      title="Olena Usenko - Vazhil"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
 
-  <!-- 2. Malta - Gaia Cauchi - The Start -->
-  <div class="video-item">
-    <div class="video-title">
-      <div>🇲🇹 Gaia Cauchi</div>
-      <div><em>"The Start"</em></div>
+    <!-- 2. Malta -->
+    <div class="video-item">
+      <div class="video-title"><div>🇲🇹 Gaia Cauchi</div><div><em>"The Start"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/thje0DAh_lU" title="Gaia Cauchi - The Start" frameborder="0" allowfullscreen></iframe>
     </div>
-    <iframe 
-      src="https://www.youtube.com/embed/thje0DAh_lU" 
-      title="Gaia Cauchi - The Start"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
 
-  <!-- 3. Paese 3 -->
-  <div class="video-item">
-    <div class="video-title">
-      <div>🇫🇷 Valentina</div>
-      <div><em>"J'imagine"</em></div>
+    <!-- 3. Francia -->
+    <div class="video-item">
+      <div class="video-title"><div>🇫🇷 Valentina</div><div><em>"J'imagine"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/Fzj2Daf1fhc" title="Valentina - J'imagine" frameborder="0" allowfullscreen></iframe>
     </div>
-    <iframe 
-      src="https://www.youtube.com/embed/Fzj2Daf1fhc" 
-      title="Valentina - J'imagine"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
 
-  <!-- 4. Armenia - Anahit & Mary - Tarber -->
-<div class="video-item">
-  <div class="video-title">
-    <div>🇦🇲 Anahit & Mary</div>
-    <div><em>"Tarber"</em></div>
-  </div>
-  <iframe 
-    src="https://www.youtube.com/embed/FWr-gAW-2as"
-    title="Anahit & Mary - Tarber"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div> 
-
-  <!-- 5. Spagna - Sandra Valero - Loviu -->
-<div class="video-item">
-  <div class="video-title">
-    <div>🇪🇸 Sandra Valero</div>
-    <div><em>"Loviu"</em></div>
-  </div>
-  <iframe
-    src="https://www.youtube.com/embed/nirNhAbJJQI"
-    title="Sandra Valero - Loviu"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-
-  <!-- 6. Georgia - Mariam Mamadashvili - Mzeo -->
-<div class="video-item">
-  <div class="video-title">
-    <div>🇬🇪 Mariam Mamadashvili</div>
-    <div><em>"Mzeo"</em></div>
-  </div>
-  <iframe
-    src="https://www.youtube.com/embed/fVXmbDcoh0s"
-    title="Mariam Mamadashvili - Mzeo"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-  <!-- 7. Portogallo - Victoria Nicole - Believe -->
-<div class="video-item">
-  <div class="video-title">
-    <div>🇵🇹 Victoria Nicole</div>
-    <div><em>"Believe"</em></div>
-  </div>
-  <iframe
-    src="https://www.youtube.com/embed/hxkSQG7wOr4"
-    title="Victoria Nicole - Believe"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-</div>
-
-  <!-- 8. Paese 8 -->
-  <div class="video-item">
-    <div class="video-title">
-      <div>8° finalista</div>
-      <div><em>""</em></div>
+    <!-- 4. Armenia -->
+    <div class="video-item">
+      <div class="video-title"><div>🇦🇲 Anahit & Mary</div><div><em>"Tarber"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/FWr-gAW-2as" title="Anahit & Mary - Tarber" frameborder="0" allowfullscreen></iframe>
     </div>
-    <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="Video finale 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
 
-  <!-- 9. Paese 9 -->
-  <div class="video-item">
-    <div class="video-title">
-      <div>9° finalista</div>
-      <div><em>""</em></div>
+    <!-- 5. Spagna -->
+    <div class="video-item">
+      <div class="video-title"><div>🇪🇸 Sandra Valero</div><div><em>"Loviu"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/nirNhAbJJQI" title="Sandra Valero - Loviu" frameborder="0" allowfullscreen></iframe>
     </div>
-    <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="Video finale 9" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
 
-  <!-- 10. Paese 10 -->
-  <div class="video-item">
-    <div class="video-title">
-      <div>10° finalista</div>
-      <div><em>""</em></div>
+    <!-- 6. Georgia -->
+    <div class="video-item">
+      <div class="video-title"><div>🇬🇪 Mariam Mamadashvili</div><div><em>"Mzeo"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/fVXmbDcoh0s" title="Mariam Mamadashvili - Mzeo" frameborder="0" allowfullscreen></iframe>
     </div>
-    <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="Video finale 10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <!-- 7. Portogallo -->
+    <div class="video-item">
+      <div class="video-title"><div>🇵🇹 Victoria Nicole</div><div><em>"Esperança"</em></div></div>
+      <iframe src="https://www.youtube.com/embed/Ysnj4_JK_0g" title="Victoria Nicole - Esperança" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- 8. Paese 8 -->
+    <div class="video-item">
+      <div class="video-title"><div>8° finalista</div><div><em>""</em></div></div>
+      <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="Video finale 8" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- 9. Paese 9 -->
+    <div class="video-item">
+      <div class="video-title"><div>9° finalista</div><div><em>""</em></div></div>
+      <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="Video finale 9" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- 10. Paese 10 -->
+    <div class="video-item">
+      <div class="video-title"><div>10° finalista</div><div><em>""</em></div></div>
+      <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="Video finale 10" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-</div>
 
-<!-- Classifica Finale -->
-<h2>CLASSIFICA FINALE</h2>
-<table>
-  <tr>
-    <th>Posizione</th>
-    <th>Nazione</th>
-    <th>Artista</th>
-    <th>Canzone</th>
-  </tr>
-  <tr class="gold"><td>1°</td><td class="hidden">🇮🇹 Italia</td><td class="hidden">Artista 1</td><td class="hidden">Canzone 1</td></tr>
-  <tr class="silver"><td>2°</td><td class="hidden">🇫🇷 Francia</td><td class="hidden">Artista 2</td><td class="hidden">Canzone 2</td></tr>
-  <tr class="bronze"><td>3°</td><td class="hidden">🇪🇸 Spagna</td><td class="hidden">Artista 3</td><td class="hidden">Canzone 3</td></tr>
-  <tr><td>4°</td><td class="hidden">🇩🇪 Germania</td><td class="hidden">Artista 4</td><td class="hidden">Canzone 4</td></tr>
-  <tr><td>5°</td><td class="hidden">🇬🇧 Regno Unito</td><td class="hidden">Artista 5</td><td class="hidden">Canzone 5</td></tr>
-  <tr><td>6°</td><td class="hidden">🇺🇦 Ucraina</td><td class="hidden">Artista 6</td><td class="hidden">Canzone 6</td></tr>
-  <tr><td>7°</td><td class="hidden">🇸🇪 Svezia</td><td class="hidden">Artista 7</td><td class="hidden">Canzone 7</td></tr>
-  <tr><td>8°</td><td class="hidden">🇵🇱 Polonia</td><td class="hidden">Artista 8</td><td class="hidden">Canzone 8</td></tr>
-  <tr><td>9°</td><td class="hidden">🇧🇪 Belgio</td><td class="hidden">Artista 9</td><td class="hidden">Canzone 9</td></tr>
-  <tr><td>10°</td><td class="hidden">🇳🇱 Paesi Bassi</td><td class="hidden">Artista 10</td><td class="hidden">Canzone 10</td></tr>
-</table>
-
-</body>
-</html>
+  <!-- Classifica Finale -->
+  <h2>CLASSIFICA FINALE</h2>
+  <table>
+    <tr><th>Posizione</th><th>Nazione</th><th>Artista</th><th>Canzone</th></tr>
+    <tr class="gold"><td>1°</td><td class="hidden">🇮🇹 Italia</td><td class="hidden">Artista 1</td><td class="hidden">Canzone 1</td></tr>
+    <tr class="silver"><td>2°</td><td class="hidden">🇫🇷 Francia</td><td class="hidden">Artista 2</td><td class="hidden">Canzone 2</td></tr>
+    <tr class="bronze"><td>3°</td><td class="hidden">🇪🇸 Spagna</td><td class="hidden">Artista 3</td><td class="hidden">Canzone 3</td></tr>
+    <tr><td>4°</td><td class="hidden">🇩🇪 Germania</td><td class="hidden">Artista 4</td><td class="hidden">Canzone 4</td></tr>
+    <tr><td>5°</td><td class="hidden">🇬🇧 Regno Unito</td><td class="hidden">Artista 5</td><td class="hidden">Canzone 5</td></tr>
+    <tr><td>6°</td><td class="hidden">🇺🇦 Ucraina</td><td class="hidden">Artista 6</td><td class="hidden">Canzone 6</td></tr>
+    <tr><td>7°</td><td class="hidden">🇵🇹 Portogallo</td><td class="hidden">Victoria Nicole</td><td class="hidden">Esperança</td></tr>
+    <tr><td>8°</td><td class="hidden">🇵🇱 Polonia</td><td class="hidden">Artista 8</td><td class="hidden">Canzone 8</td></tr>
+    <tr><td>9°</td><td class="hidden">🇧🇪 Belgio</td><td class="hidden">Artista 9</td><td class="hidden">Canzone 9</td></tr>
+    <tr><td>10°</td><td class="hidden">🇳🇱 Paesi Bassi</td><td class="hidden">Artista 10
