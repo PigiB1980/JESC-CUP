@@ -35,7 +35,6 @@ h2 {
   color: #1e1e50;
   margin-top: 80px;
   margin-bottom: 25px;
-  text-align: center;
   letter-spacing: 3px;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
@@ -76,7 +75,6 @@ tr:nth-child(even) {
 }
 
 .video-title {
-  text-align: center;
   margin-bottom: 10px;
   font-size: 1.4rem;
   color: #1e1e50;
@@ -129,6 +127,21 @@ tr:nth-child(even) {
 <h1>LA FINALISSIMA</h1>
 <h2>10 canzoni per il TITOLO</h2>
 
+<!-- ✅ TABELLA PARTECIPANTI RIPRISTINATA -->
+<table>
+<tr><th>Nazione</th><th>Artista</th><th>Canzone</th></tr>
+<tr><td>🇺🇦 Ucraina</td><td>Olena Usenko</td><td>Vazhil</td></tr>
+<tr><td>🇲🇹 Malta</td><td>Gaia Cauchi</td><td>The Start</td></tr>
+<tr><td>🇫🇷 Francia</td><td>Valentina</td><td>J'imagine</td></tr>
+<tr><td>🇦🇲 Armenia</td><td>Anahit & Mary</td><td>Tarber</td></tr>
+<tr><td>🇪🇸 Spagna</td><td>Sandra Valero</td><td>Loviu</td></tr>
+<tr><td>🇬🇪 Georgia</td><td>Mariam Mamadashvili</td><td>Mzeo</td></tr>
+<tr><td>🇵🇹 Portogallo</td><td>Victoria Nicole</td><td>Esperança</td></tr>
+<tr><td>🇺🇦 Ucraina</td><td>Artem Kotenko</td><td>Hear Me Now</td></tr>
+<tr><td>🇵🇱 Polonia</td><td>Sara James</td><td>Somebody</td></tr>
+<tr><td>🇵🇱 Polonia</td><td>Roksana Węgiel</td><td>Anyone I Want To Be</td></tr>
+</table>
+
 <!-- VIDEO -->
 <div class="video-grid">
 
@@ -168,8 +181,6 @@ tr:nth-child(even) {
 <h2 class="final-title">CLASSIFICA FINALE</h2>
 
 <table>
-<tr><th>Posizione</th><th>Nazione</th><th>Artista</th><th>Canzone</th></tr>
-
 <tr class="gold"><td>1°</td><td>🇵🇱</td><td>Sara James</td><td>Somebody</td></tr>
 <tr class="silver"><td>2°</td><td>🇫🇷</td><td>Valentina</td><td>J'imagine</td></tr>
 <tr class="bronze"><td>3°</td><td>🇦🇲</td><td>Anahit & Mary</td><td>Tarber</td></tr>
@@ -182,14 +193,13 @@ tr:nth-child(even) {
 <tr><td>10°</td><td>🇪🇸</td><td>Sandra Valero</td><td>Loviu</td></tr>
 </table>
 
-<!-- FUOCHI D'ARTIFICIO -->
 <canvas id="fireworks"></canvas>
 
 <script>
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
 let fireworks = [];
 
@@ -198,7 +208,7 @@ class Firework {
     this.x = Math.random() * canvas.width;
     this.y = canvas.height;
     this.targetY = Math.random() * canvas.height / 2;
-    this.speed = 5 + Math.random() * 3;
+    this.speed = 6;
     this.exploded = false;
     this.particles = [];
   }
@@ -232,6 +242,7 @@ class Firework {
   }
 
   draw() {
+    ctx.fillStyle = "white";
     if (!this.exploded) {
       ctx.beginPath();
       ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
@@ -247,17 +258,11 @@ class Firework {
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  fireworks.forEach(f => {
-    f.update();
-    f.draw();
-  });
+  fireworks.forEach(f => { f.update(); f.draw(); });
   requestAnimationFrame(animate);
 }
 
-setInterval(() => {
-  fireworks.push(new Firework());
-}, 600);
-
+setInterval(() => fireworks.push(new Firework()), 600);
 animate();
 </script>
 
