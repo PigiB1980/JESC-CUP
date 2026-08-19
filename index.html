@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JESC CUP - Home</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
@@ -22,7 +23,7 @@
     }
 
     .logo {
-      width: 700px; /* o la dimensione che preferisci */
+      width: 700px;
       height: auto;
       margin-top: -80px;
       filter: contrast(1.4) brightness(1.5) drop-shadow(2px 2px 3px rgba(0,0,0,0.7));
@@ -59,6 +60,24 @@
       box-shadow: 0 6px 12px rgba(233,30,99,0.6);
     }
 
+    /* Stile speciale per SEMIFINALI */
+    .btn-semifinali {
+      font-size: 1.4rem;
+      padding: 16px 28px;
+      background: linear-gradient(to bottom, #f5f5f5, #bdbdbd);
+      color: #1e1e50;
+      box-shadow: 0 4px 12px rgba(220,220,220,0.6);
+      margin-top: 30px;
+      display: inline-block;
+      border: 1px solid #ffffff;
+    }
+
+    .btn-semifinali:hover {
+      background: linear-gradient(to bottom, #ffffff, #a9a9a9);
+      transform: scale(1.06);
+      box-shadow: 0 6px 14px rgba(220,220,220,0.8);
+    }
+
     /* Stile speciale per FINALISSIMA */
     .btn-finalissima {
       font-size: 1.6rem;
@@ -77,6 +96,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Titolo -->
@@ -109,9 +129,14 @@
     <a href="2023.html" class="btn">2023</a>
     <a href="2024.html" class="btn">2024</a>
     <a href="2025.html" class="btn">2025</a>
+
     <a href="medagliere.html" class="btn">Medagliere 🏅</a>
     <a href="classifica-generale.html" class="btn">Classifica Generale 📊</a>
-    <a href="semifinali.html" class="btn">Semifinali</a>
+  </div>
+
+  <!-- Pulsante SEMIFINALI -->
+  <div>
+    <a href="semifinali.html" class="btn btn-semifinali">🥈 SEMIFINALI 🥈</a>
   </div>
 
   <!-- Pulsante FINALISSIMA -->
